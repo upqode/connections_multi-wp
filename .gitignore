@@ -1,0 +1,19 @@
+# Ignore everything
+node_modules/*
+ai1wm-backups/*
+uploads
+upgrade
+.idea
+plugins/*
+resources/*
+themes/*
+/languages
+cache
+w3tc-config/
+mu-plugins/
+wp-cache-config.php
+
+# But not these files...
+!.gitignore
+!themes/connections
+# etc...
