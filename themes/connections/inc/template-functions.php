@@ -39,7 +39,7 @@ add_action( 'wp_head', 'connections_pingback_header' );
 /**
  * Add Options Page
  */
-if( function_exists('acf_add_options_page') ) {
+if ( function_exists('acf_add_options_page') ) {
 
 	acf_add_options_page(array(
 		'page_title' 	=> 'Options',
@@ -48,6 +48,14 @@ if( function_exists('acf_add_options_page') ) {
 		'capability'	=> 'manage_options',
 		'redirect'		=> false
 	));
+
+	// Newtwork Options
+	acf_add_options_page([
+	    'network' 		=> true,
+	    'post_id' 		=> 'acf_network_options',
+	    'page_title' 	=> 'Network Options',
+	    'menu_title' 	=> 'Network Options'
+	]);
 
     /**
      * template for options subpage
