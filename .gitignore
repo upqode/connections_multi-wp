@@ -15,8 +15,8 @@ themes/*
 
 
 # Not folder plugins
-#!/plugins
+!/plugins
 
-# Ingnore all plugins except plugin_name
-#plugins/*
-#!plugins/plugin_name
+# Ingnore all plugins except connections-theme-plugin
+plugins/*
+!plugins/connections-theme-plugin
