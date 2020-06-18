@@ -75,5 +75,5 @@ function conn_main_link(){
     if( !is_multisite() || is_main_site() )
         return false;
 
-    return network_site_url();
+    return main_site_link();
 }
