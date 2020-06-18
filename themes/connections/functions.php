@@ -7,6 +7,9 @@
  * @package connections
  */
 
+ defined( 'CN_THEME_PATH' ) or define( 'CN_THEME_PATH', get_template_directory() );
+ defined( 'CN_THEME_URI' ) or define( 'CN_THEME_URI', get_template_directory_uri() );
+
 if ( ! defined( '_S_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
 	define( '_S_VERSION', '1.0.0' );
@@ -27,7 +30,7 @@ if ( ! function_exists( 'connections_setup' ) ) :
 		 * If you're building a theme based on connections, use a find and replace
 		 * to change 'connections' to the name of your theme in all the template files.
 		 */
-		load_theme_textdomain( 'connections', get_template_directory() . '/languages' );
+		load_theme_textdomain( 'connections', CN_THEME_PATH . '/languages' );
 
 		// Add default posts and comments RSS feed links to head.
 		add_theme_support( 'automatic-feed-links' );
@@ -50,7 +53,7 @@ if ( ! function_exists( 'connections_setup' ) ) :
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus(
 			array(
-				'menu-1' => esc_html__( 'Primary', 'connections' ),
+				'main-menu' => esc_html__( 'Primary', 'connections' ),
 			)
 		);
 
@@ -140,42 +143,38 @@ function connections_widgets_init() {
 add_action( 'widgets_init', 'connections_widgets_init' );
 
 /**
- * Enqueue scripts and styles.
+ * Script & Styles
  */
-function connections_scripts() {
-	wp_enqueue_style( 'connections-style', get_stylesheet_uri(), array(), _S_VERSION );
-	wp_style_add_data( 'connections-style', 'rtl', 'replace' );
+require CN_THEME_PATH . '/inc/helper-functions.php';
 
-	wp_enqueue_script( 'connections-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
-
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
-}
-add_action( 'wp_enqueue_scripts', 'connections_scripts' );
+/**
+ * Script & Styles
+ */
+require CN_THEME_PATH . '/inc/enqueue-script-styles.php';
 
 /**
  * Implement the Custom Header feature.
  */
-require get_template_directory() . '/inc/custom-header.php';
+require CN_THEME_PATH . '/inc/custom-header.php';
 
 /**
  * Custom template tags for this theme.
  */
-require get_template_directory() . '/inc/template-tags.php';
+require CN_THEME_PATH . '/inc/template-tags.php';
 
 /**
  * Functions which enhance the theme by hooking into WordPress.
  */
-require get_template_directory() . '/inc/template-functions.php';
+require CN_THEME_PATH . '/inc/template-functions.php';
 
 /**
  * Customizer additions.
  */
-require get_template_directory() . '/inc/customizer.php';
+require CN_THEME_PATH . '/inc/customizer.php';
 
+// TO DO DELETE
 /**
  * ACF Hooks
  */
-//require get_template_directory() . '/inc/conn-acf-network.php';
+//require CN_THEME_PATH . '/inc/conn-acf-network.php';
 

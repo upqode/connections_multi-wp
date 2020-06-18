@@ -10,18 +10,17 @@
  */
 ?>
 <!doctype html>
-<html <?php language_attributes(); ?>>
-    <head>
-        <meta charset="<?php bloginfo( 'charset' ); ?>">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="profile" href="https://gmpg.org/xfn/11">
-        <?php wp_head(); ?>
-    </head>
+
+<html <?php language_attributes(); ?> <?php conn_get_color_scheme( true ); ?>>
+<head>
+	<meta charset="<?php bloginfo( 'charset' ); ?>">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="profile" href="https://gmpg.org/xfn/11">
 
     <body <?php body_class(); ?>>
         <?php wp_body_open(); ?>
         <div id="page" class="site">
-
+		
             <?php if ( !empty( $link = conn_main_link() ) ) { ?>
                 <a href="<?php echo $link; ?>">Return to Main</a>
             <?php } ?>
@@ -42,3 +41,46 @@
                     ?>
                 </nav><!-- #site-navigation -->
             </header><!-- #masthead -->
+=======
+<body <?php body_class(); ?>>
+<?php wp_body_open(); ?>
+
+<div class="cn-main-wrap">
+
+	<header class="cn-header">
+
+		<div class="cn-header__nav-panel">
+
+			<span class="cn-menu-btn"></span>
+
+			<div class="cn-header__nav">
+				<?php
+				wp_nav_menu(
+					array(
+						'theme_location' => 'main-menu',
+						'menu_id'        => 'primary-menu',
+					)
+				);
+				?>
+			</div>
+
+		</div>
+
+		<div class="cn-header__help-panel">
+			
+			<div class="cn-header__search">
+				<?php get_search_form(); ?>
+				<span class="cn-heade__search__icon">
+					<i class="fa fa-search"></i>
+				</span>
+			</div>
+			<div class="cn-btn-drop-glossary"></div>
+
+		</div>
+
+		<div id="drop-glossary" class="cn-sidebar-glossary">
+			<?php get_template_part( 'template-parts/content', 'glossary' ); ?>
+		</div>
+
+	</header>
+>>>>>>> master

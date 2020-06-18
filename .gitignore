@@ -1,19 +1,22 @@
 # Ignore everything
-node_modules/*
-ai1wm-backups/*
-uploads
-upgrade
-.idea
-plugins/*
-resources/*
-themes/*
-/languages
-cache
-w3tc-config/
-mu-plugins/
-wp-cache-config.php
+/*
 
-# But not these files...
+# Not .gitignore
 !.gitignore
+!package.json
+!gulpfile.js
+
+# Not folder themes
+!/themes
+
+# Ingnore all themes except connections
+themes/*
 !themes/connections
-# etc...
+
+
+# Not folder plugins
+!/plugins
+
+# Ingnore all plugins except connections-theme-plugin
+plugins/*
+!plugins/connections-theme-plugin
