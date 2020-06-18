@@ -21,14 +21,10 @@ get_header();
 		while ( have_posts() ) :
 			the_post();
 
-<<<<<<< HEAD
-			get_template_part( 'template-parts/content', 'front-page' );
-=======
 			$content = get_the_content();
 			$template = ( stripos( $content, 'vc_' ) ) ? 'vc' : 'page';
 
 			get_template_part( 'template-parts/content', $template );
->>>>>>> master
 
 			// If comments are open or we have at least one comment, load up the comment template.
 			if ( comments_open() || get_comments_number() ) :
