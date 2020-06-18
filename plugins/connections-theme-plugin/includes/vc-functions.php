@@ -17,11 +17,11 @@ if ( ! function_exists( 'cr_get_row_offset' ) ) {
 
 
 /**
- * Create responsive options for shortcode
+ * Create responsive margins and paddings
  * @return array
  */
-if ( ! function_exists( 'cn_create_responsive_margins' ) ) {
-    function cn_create_responsive_margins() {
+if ( ! function_exists( 'cn_create_responsive_retreats' ) ) {
+    function cn_create_responsive_retreats() {
         $responsive_options = array(
             array(
                 'type'       => 'dropdown',
@@ -202,9 +202,11 @@ if ( ! function_exists( 'cn_create_responsive_classes' ) ) {
         );
 
         foreach ( $css_classes as $value ) {
+
             if ( isset( $atts[ $value ] ) && $atts[ $value ] != 'none' ) {
                 $resp_classes .= ' ' . $atts[ $value ];
             }
+
         }
 
         return $resp_classes;
@@ -216,22 +218,22 @@ if ( ! function_exists( 'cn_create_responsive_classes' ) ) {
  * @param array $atts - shortcode options
  * @return string
  */
-if ( ! function_exists( 'cn_create_responsive_classes_item' ) ) {
-    function cn_create_responsive_classes_item( $atts ) {
-        $resp_classes = '';
-        $css_classes = array(
-            'desctop_mb_item',
-            'desctop_md_mb_item',
-            'tablets_mb_item',
-            'mobile_mb_item',
-        );
+// if ( ! function_exists( 'cn_create_responsive_classes_item' ) ) {
+//     function cn_create_responsive_classes_item( $atts ) {
+//         $resp_classes = '';
+//         $css_classes = array(
+//             'desctop_mb_item',
+//             'desctop_md_mb_item',
+//             'tablets_mb_item',
+//             'mobile_mb_item',
+//         );
 
-        foreach ( $css_classes as $value ) {
-            if ( isset( $atts[ $value ] ) && $atts[ $value ] != 'none' ) {
-                $resp_classes .= ' ' . $atts[ $value ];
-            }
-        }
+//         foreach ( $css_classes as $value ) {
+//             if ( isset( $atts[ $value ] ) && $atts[ $value ] != 'none' ) {
+//                 $resp_classes .= ' ' . $atts[ $value ];
+//             }
+//         }
 
-        return $resp_classes;
-    }
-}
+//         return $resp_classes;
+//     }
+// }

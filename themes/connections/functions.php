@@ -143,7 +143,12 @@ function connections_widgets_init() {
 add_action( 'widgets_init', 'connections_widgets_init' );
 
 /**
- * Implement the Custom Header feature.
+ * Script & Styles
+ */
+require CN_THEME_PATH . '/inc/helper-functions.php';
+
+/**
+ * Script & Styles
  */
 require CN_THEME_PATH . '/inc/enqueue-script-styles.php';
 

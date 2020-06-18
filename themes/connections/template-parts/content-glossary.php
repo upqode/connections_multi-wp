@@ -32,7 +32,7 @@ while ( $glossary_posts->have_posts() ) : $glossary_posts->the_post();
                         <i class="fa fa-play-circle" aria-hidden="true"></i>
                     </span>
 
-                    <?php cn_get_brightcove_source_code( 'audio', $brightcove_user_id, $brightcove_player_id, $audio, 'glossary-' . get_the_ID(), 'data-autoplay="autoplay"' ); ?>
+                    <?php conn_get_brightcove_source_code( 'audio', $brightcove_user_id, $brightcove_player_id, $audio, 'glossary-' . get_the_ID(), 'data-autoplay="autoplay"' ); ?>
                     
                 </div>
 

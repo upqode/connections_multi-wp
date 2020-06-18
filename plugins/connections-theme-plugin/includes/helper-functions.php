@@ -44,124 +44,76 @@ function cn_get_terms_field( $taxonomy, $field, $output_key = '', $return_wp_err
 
 
 /**
- * Get background color list
+ * Get color list
+ * @param string $key_color
+ * @param int $count_colors
+ * @param string $return_value value which will return in each item color value or color title
  * @return array
  */
-function cn_get_bg_colors() {
+function cn_get_colors( $key_color = 'primary_color', $count_colors = 5, $return_value = 'color' ) {
 
     if ( ! function_exists( 'get_field' ) )
-        return [];
+        return [];        
 
-    $bg_colors = [];
-    $count_colors = 7;
+    $output_colors = [];
+    $theme_options_colors = get_field( $key_color, 'option' ) ?: [];
     
-    for ( $i = 0; $i < $count_colors; $i++ ) {
-        $color = get_field( "bg_main_color_{$i}", "acf_network_options" );
+    for ( $i = 1; $i <= $count_colors; $i++ ) {
+
+        $full_key_color = "{$key_color}_{$i}";
+        $key_title_color = "{$key_color}_title_{$i}";
+        $color = get_field( $full_key_color, 'acf_network_options' );
+
         if ( $color ) {
-            $bg_colors[] = $color;
+            $color_title = get_field( $key_title_color, 'acf_network_options' ) ?: str_replace( '_', ' ', $full_key_color );
+            
+            $value = ( $return_value == 'color' ) ? $color : $color_title;
+            $output_colors[ $full_key_color ] = $value;
         }
     }
 
-    return $bg_colors;
+    // Theme options colors
+    foreach ( $theme_options_colors as $theme_color ) {
 
+        $full_key_color = "{$key_color}_{$i}";
+        $key_title_color = "{$full_key_color}_title_{$i}";
+
+        if ( ! empty( $theme_color['color'] ) ) {
+            $color_title = ( ! empty( $theme_color['title_color'] ) ) ? $theme_color['title_color'] : str_replace( '_', ' ', $full_key_color );
+            $color = $theme_color['color'];
+            $value = ( $return_value == 'color' ) ? $color : $color_title;
+            $output_colors[ $full_key_color ] = $value;
+        }
+
+        $i++;
+
+    }
+
+    return $output_colors;
 }
+
 
 /**
- * Color List
- * @param string $type
- * @param string $type_prefix
+ * Get background color list
+ * @param string $return_value value which will return in each item color value or color title
  * @return array
  */
-function cn_color_list( $type = 'Color', $type_prefix = '' ) {
-    return array(
-        esc_html__( $type . ' - transparent', 'connections' )               => 'lk-' . $type_prefix . '-transparent',
-        esc_html__( $type . ' - navy', 'connections' )                      => 'lk-' . $type_prefix . '-navy',
-        esc_html__( $type . ' - light-blue', 'connections' )                => 'lk-' . $type_prefix . '-light-blue',
-        esc_html__( $type . ' - grey', 'connections' )                      => 'lk-' . $type_prefix . '-grey',
-        esc_html__( $type . ' - white', 'connections' )                     => 'lk-' . $type_prefix . '-white',
-        esc_html__( $type . ' - black', 'connections' )                     => 'lk-' . $type_prefix . '-black',
-    );
-}
+function cn_get_bg_vc_colors( $return_value = 'color' ) {
 
-function cn_alternate_color_list( $type = 'Color', $type_prefix = '' ) {
-    return array(
-        esc_html__( $type . ' - transparent', 'connections' )               => 'lk-p-' . $type_prefix . '-transparent',
-        esc_html__( $type . ' - pale blue', 'connections' )                 => 'lk-p-' . $type_prefix . '-pale-blue',
-        esc_html__( $type . ' - muted blue', 'connections' )                => 'lk-p-' . $type_prefix . '-muted-blue',
-        esc_html__( $type . ' - orange', 'connections' )                    => 'lk-p-' . $type_prefix . '-orange',
-        esc_html__( $type . ' - light gray', 'connections' )                => 'lk-p-' . $type_prefix . '-light-gray',
-        esc_html__( $type . ' - white', 'connections' )                     => 'lk-p-' . $type_prefix . '-white',
-        esc_html__( $type . ' - navy', 'connections' )                      => 'lk-p-' . $type_prefix . '-navy',
-        esc_html__( $type . ' - light-blue', 'connections' )                => 'lk-p-' . $type_prefix . '-light-blue',
-    );
-}
+    $colors[] = 'TRANSPARENT';
+    $colors = array_merge( $colors, cn_get_colors( 'bg_main_color', 7, $return_value ) );
+    $colors = ( $colors ) ? array_flip( $colors ) : $colors;
 
-function cn_border_color( $type = 'Border' ) {
-	return array(
-		esc_html__( $type . ' - blue', 'connections' )                => 'lk-brd-blue',
-		esc_html__( $type . ' - orange', 'connections' )              => 'lk-brd-orange',
-		esc_html__( $type . ' - yellow', 'connections' )              => 'lk-brd-yellow',
-		esc_html__( $type . ' - white', 'connections' )               => 'lk-brd-white',
-		esc_html__( $type . ' - red', 'connections' )                 => 'lk-brd-red',
-		esc_html__( $type . ' - vivid blue', 'connections' )          => 'lk-brd-vivid-blue',
-		esc_html__( $type . ' - light gray', 'connections' )          => 'lk-brd-light-gray',
-		esc_html__( $type . ' - dark gray', 'connections' )           => 'lk-brd-dark-gray',
-	);
-}
-
-
-function cn_button_color_list( $type = 'Color', array $add_colors = [] ) {
-	$colors = array(
-		esc_html__( $type . ' - pale blue', 'connections' )           => '-pale-blue',
-		esc_html__( $type . ' - muted blue', 'connections' )          => '-muted-blue',
-		esc_html__( $type . ' - white', 'connections' )               => '-white',
-		esc_html__( $type . ' - light gray', 'connections' )          => '-light-gray',
-		esc_html__( $type . ' - dark gray', 'connections' )           => '-dark-gray',
-    );
-
-    if ( $add_colors ) {
-        array_unshift( $colors, $add_colors );
-    }
-    
     return $colors;
+
 }
-
-function cn_button_color_list2( $type = 'Color', array $add_colors = [] ) {
-	$colors = array(
-        esc_html__( $type . ' - navy', 'connections' )                      => '-navy',
-        esc_html__( $type . ' - light-blue', 'connections' )                => '-light-blue',
-        esc_html__( $type . ' - grey', 'connections' )                      => '-grey',
-        esc_html__( $type . ' - white', 'connections' )                     => '-white',
-        esc_html__( $type . ' - black', 'connections' )                     => '-black',
-    );
-
-    if ( $add_colors ) {
-        array_unshift( $colors, $add_colors );
-    }
-    
-    return $colors;
-}
-
-function cn_custom_color_list( $type = 'Background color' ) {
-	return array(
-		esc_html__( $type . ' - blue', 'connections' )                => '#425563',
-		esc_html__( $type . ' - orange', 'connections' )              => '#F7941D',
-		esc_html__( $type . ' - yellow', 'connections' )              => '#FFC56E',
-		esc_html__( $type . ' - white', 'connections' )               => '#FFFFFF',
-		esc_html__( $type . ' - red', 'connections' )                 => '#E56A54',
-		esc_html__( $type . ' - vivid blue', 'connections' )          => '#5E8AB4',
-		esc_html__( $type . ' - light gray', 'connections' )          => '#E4E5E5',
-		esc_html__( $type . ' - dark gray', 'connections' )           => '#8F8F8F',
-	);
-}
-
 
 
 function cn_get_asset_posts( $return_key_title = false, $asset_type = '' ) {
 	$asset_posts_list = array();
 
 	$args = array(
-		'post_type'       => 'ch-asset',
+		'post_type'       => 'cn-asset',
 		'posts_per_page'  => -1,
 	);
 

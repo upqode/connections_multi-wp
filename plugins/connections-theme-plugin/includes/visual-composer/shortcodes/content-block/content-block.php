@@ -15,9 +15,14 @@ class CN_Content_Block extends CN_Base_Shortcode {
 
     public function get_params() {
 
-        // $assets_cats = cn_get_terms_field( 'cn-asset-category', 'slug', 'name' );
-
         $this->params = array(
+
+            array(
+                'heading'     => esc_html__( 'Background color', 'connections' ),
+                'type'        => 'dropdown',
+                'param_name'  => 'bg_text_color',
+                'value'       => cn_get_bg_vc_colors( 'title' ),
+            ),
 
             array(
                 'heading'     => esc_html__( 'Title', 'connections' ),
@@ -39,13 +44,7 @@ class CN_Content_Block extends CN_Base_Shortcode {
                 'type'        => 'vc_link',
                 'param_name'  => 'btn_link',
             ),
-
-            array(
-                'heading'     => esc_html__( 'Background color', 'connections' ),
-                'type'        => 'dropdown',
-                'param_name'  => 'bg_text_color',
-                'value'       => cn_get_bg_colors(),
-            ),
+            
             array(
                 'heading'     => esc_html__( 'Image align block', 'connections' ),
                 'type'        => 'dropdown',
@@ -70,15 +69,15 @@ class CN_Content_Block extends CN_Base_Shortcode {
 
 
         );
+
+        $this->add_extras();
         
         /* Add responsive options to shortcode */
-        $responsive_options = cn_create_responsive_margins();
+        $responsive_options = cn_create_responsive_retreats();
 
         if ( ! empty( $responsive_options ) ) {
             $this->params = array_merge( $this->params, $responsive_options );
-        }
-        
-        $this->add_extras();
+        }        
 
     }
 }
