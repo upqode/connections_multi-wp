@@ -60,6 +60,7 @@ class ConnectionsThemePlugin {
                 'sheet',
                 'table',
                 'video-multi',
+                'next-back-links',
                 'content-block',
                 'asset-library',
             ];
