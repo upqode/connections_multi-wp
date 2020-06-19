@@ -111,6 +111,21 @@
             "default_value": ""
         },
         {
+            "key": "field_5eecc400275eb",
+            "label": "Color 6",
+            "name": "primary_color_6",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": ""
+        },
+        {
             "key": "field_5eea24b012e23",
             "label": "Background colors",
             "name": "",
@@ -666,5 +681,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1592542752
+    "modified": 1592575174
 }

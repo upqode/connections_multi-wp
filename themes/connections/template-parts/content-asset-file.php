@@ -21,7 +21,7 @@
     }
 
     if ( $asset_type == 'audio' || $asset_type == 'video' ) {
-        $asset_item_class   .= ' js-item-BC';  
+        $asset_item_class   .= ' js-item-BC';
     }
 
     if ( $asset_type == 'html' ) {
@@ -37,53 +37,53 @@
     }
 ?>
 
-<div class="ch-asset__item js-glossary-item--icon <?php echo $asset_item_wrap_class; ?>">
+<div class="cn-asset__item js-glossary-item--icon <?php echo $asset_item_wrap_class; ?>">
     
-    <a href="#library-<?php echo esc_attr( $unique_section_id ); ?>" class="ch-asset-item__link <?php echo esc_attr( $asset_item_class); ?>"></a>
+    <a href="#library-<?php echo esc_attr( $unique_section_id ); ?>" class="cn-asset-item__link <?php echo esc_attr( $asset_item_class); ?>">dasdasdasdad</a>
     
-    <div class="ch-asset-item">
-        <div class="ch-asset-item__image">
+    <div class="cn-asset-item">
+        <div class="cn-asset-item__image">
             <?php if ( ! empty( $asset_fa_icon ) ) : ?>
                <i class="fa <?php echo $asset_fa_icon;  ?>"></i>
              <?php elseif ( ! empty( $asset_icon_url ) ) : ?>
-                <img src="<?php echo $asset_icon_url; ?>" alt="">
+                <img src="<?php echo $asset_icon_url; ?>" alt="icon">
             <?php endif;
             if ( $asset_type == 'audio' ) : ?>
-                <!-- <i class="fa fa-play lk-asset-item__icon-state" aria-hidden="true"></i> -->
+                <!-- <i class="fa fa-play cn-asset-item__icon-state" aria-hidden="true"></i> -->
             <?php endif; ?>
         </div>
 
         <?php if ( $alt_title ) : ?>
-            <div class="ch-asset-item__bottom lk-txt-center">
-                <h5 class="ch-asset-item__title"><?php echo esc_html( $alt_title ); ?></h5>
+            <div class="cn-asset-item__bottom cn-txt-center">
+                <h5 class="cn-asset-item__title"><?php echo esc_html( $alt_title ); ?></h5>
             </div>
         <?php endif; ?>
     </div>
 </div>
 
-<div id="library-<?php echo esc_attr( $unique_section_id ); ?>" class="white-popup-block mfp-hide lk-popup-wrap <?php echo $asset_type; ?>">
+<div id="library-<?php echo esc_attr( $unique_section_id ); ?>" class="white-popup-block mfp-hide cn-popup-wrap <?php echo $asset_type; ?>">
 
     <?php switch ( $asset_type ) :
 
         case 'image':
             $asset_img_id = get_post_meta( $asset_id, 'asset_image', true ); ?>
-            <div class="lk-content-wrapp lk-content-wrapp--height-auto">
+            <div class="cn-content-wrapp">
                 <?php echo wp_get_attachment_image( $asset_img_id, 'full' ); ?>
             </div>
             <?php break;
 
         case 'audio':
             $asset_audio = get_post_meta( $asset_id, 'asset_audio', true ); ?>
-            <div class="lk-content-wrapp lk-content-wrapp--width">
-                <?php creon_get_brightcove_source_code( 'audio', $brightcove_user_id, $brightcove_player_id, $asset_audio, 'library-' . $unique_section_id, 'data-autoplay="autoplay"' ); ?>
+            <div class="cn-content-wrapp cn-content-wrapp--width">
+                <?php conn_get_brightcove_source_code( 'audio', $brightcove_user_id, $brightcove_player_id, $asset_audio, 'library-' . $unique_section_id, 'data-autoplay="autoplay"' ); ?>
             </div>
             <?php break;
 
         case 'video':
             $asset_video = get_post_meta( $asset_id, 'asset_video', true );
             $aspect_ratio = get_post_meta( $asset_id, 'aspect_ratio', true ); ?>
-            <div class="lk-content-wrapp lk-content-wrapp--width <?php echo $aspect_ratio; ?>">
-                <?php creon_get_brightcove_source_code( 'video', $brightcove_user_id, $brightcove_player_id, $asset_video, 'library-' . $unique_section_id, '', $aspect_ratio ); ?>
+            <div class="cn-content-wrapp cn-content-wrapp--width <?php echo $aspect_ratio; ?>">
+                <?php conn_get_brightcove_source_code( 'video', $brightcove_user_id, $brightcove_player_id, $asset_video, 'library-' . $unique_section_id, '', $aspect_ratio ); ?>
             </div>
             <?php break;
         
@@ -94,7 +94,7 @@
             if ( class_exists( 'WonderPlugin_PDF_Plugin' ) ) :
                 echo do_shortcode( '[wonderplugin_pdf src="' . esc_url( $asset_pdf_url ) . '" ]' );
             else : ?>
-                <div class="lk-content-wrapp lk-content-wrapp--full">
+                <div class="cn-content-wrapp cn-content-wrapp--full">
                     <object data="<?php echo esc_url( $asset_pdf_url ); ?>" type="application/pdf"></object>
                 </div>
             <?php endif; ?>
@@ -103,19 +103,19 @@
         case 'html':
             $asset_zip_id = get_post_meta( $asset_id, 'asset_zip', true );
             $asset_zip_url = wp_get_attachment_url( $asset_zip_id );
-            $path_upload_file = creon_path_uploads( 'basedir' ) . '/unip_files/zip_' . $asset_id . '_' . $asset_zip_id; ?>
+            $path_upload_file = conn_path_uploads( 'basedir' ) . '/unip_files/zip_' . $asset_id . '_' . $asset_zip_id; ?>
 
-            <div class="lk-content-wrapp lk-content-wrapp--full">
+            <div class="cn-content-wrapp cn-content-wrapp--full">
                 <?php if ( ! empty( $asset_zip_url ) ) :
                     // check if the directory is already exists
                     if ( ! is_dir( $path_upload_file ) ) {
                         $unique_id = $asset_id . '_' . $asset_zip_id;    // nothing broken if user change .zip-file in settings
-                        $path_html = creon_unzip_file( $asset_zip_url, $unique_id );
+                        $path_html = conn_unzip_file( $asset_zip_url, $unique_id );
                     } else {
                         $path_html = $path_upload_file;
                     }
 
-                    $src_html = creon_get_unzip_files( $path_html );
+                    $src_html = conn_get_unzip_files( $path_html );
                     
                     if ( ! empty( $src_html[0] ) ) : ?>
                         <!-- <iframe src="<?php echo esc_attr( $src_html[0] ); ?>"></iframe> -->

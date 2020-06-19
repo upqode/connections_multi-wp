@@ -92,3 +92,19 @@ function conn_upload_mimes ( $existing_mimes = array() ) {
 }
 
 add_filter('upload_mimes', 'conn_upload_mimes');
+
+
+/**
+ * Add buttons for toolbar
+ */
+function conn_mce_buttons_2( $buttons ) {	
+	/**
+	 * Add in a core button that's disabled by default
+	 */
+	$buttons[] = 'superscript';
+	$buttons[] = 'subscript';
+
+	return $buttons;
+}
+
+add_filter( 'mce_buttons_2', 'conn_mce_buttons_2' );

@@ -216,6 +216,55 @@
 
     }
 
+
+    /* ------------------------------------------- */
+    /* Magnific Popup */
+    /* ------------------------------------------- */
+    
+    $('.js-popup').magnificPopup({
+        type: 'inline',
+        preloader: false,
+        closeBtnInside: true,
+        // closeOnBgClick: false,
+        callbacks: {
+        open: function() {
+    
+            var magnificPopup   = $.magnificPopup.instance,
+                $current        = magnificPopup.st.el,
+                classes         = $current.attr('class');
+    
+            // window.scrollTop = window.scrollY;
+            $('body, html').addClass('no-scroll');
+            // $('.lk-content-wrapp--full-height').closest('body').addClass('lk-full-height-popup');
+            // calculatePopupHeight();
+            // window.addEventListener('resize', calculatePopupHeight );
+    
+            // if ( classes.indexOf('js-lazy-load-iframe') != -1 ) {
+            //   console.log( $.magnificPopup.instance );
+            //   lazyLoadIframe( $( $current.attr('href') ).find('.js-lazy-loader-iframe') );
+            // }
+    
+            // if ( classes.indexOf('js-lazy-load-asset-pdf') != -1 ) {
+            //   lazyLoadIframe( $( $current.attr('href') ).find('.wonderplugin-pdf-iframe[data-src]') );
+            //   $( $current.attr('href') ).find('.wonderplugin-pdf-iframe[data-src]').addClass('wonderplugin-pdf-iframe');
+            // }
+    
+        },
+        beforeClose: function() {
+            var $video = $('.mfp-ready').find('.video-js');
+            if ( $video.length ) {
+            videojs( $video.attr('id') ).pause();
+            }
+        },
+        close: function() {
+            $('body, html').removeClass('no-scroll').removeClass('lk-full-height-popup');
+            // window.removeEventListener('resize', calculatePopupHeight);
+            // $(window).scrollTop( window.scrollTop );
+            $('.js-popup').removeClass('active');
+        }
+        }
+    });
+
     // Load asset with page
     if ( $('.js-video-BC').length ) {
         BCenqueueScript();

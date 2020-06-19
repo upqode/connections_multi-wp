@@ -115,3 +115,116 @@ function conn_text_colors_css() {
     
     return $css;
 }
+
+/*
+ * Delete directory with files
+ *  
+ * @param string $dirname directory path you want to delete
+ * 
+ * @return bool
+ */
+
+function conn_delete_directory( $dirname ) {
+    if ( is_dir( $dirname ) )
+        $dir_handle = opendir( $dirname );
+    if ( ! $dir_handle )
+        return false;
+    while ( $file = readdir( $dir_handle ) ) {
+           if ( $file != "." && $file != ".." ) {
+                if ( ! is_dir( $dirname . "/" . $file ) )
+                    unlink( $dirname . "/" . $file );
+                else
+                    conn_delete_directory( $dirname . '/' . $file );
+           }
+    }
+    closedir( $dir_handle );
+    rmdir( $dirname );
+    return true;
+}
+
+/*
+ * Get path uploads
+ *  
+ * @param string $return_path
+ * 
+ * @return array by default or string if param $return_path == basedir
+ */
+
+function conn_path_uploads( $return_path = '' ) {
+    require_once ABSPATH . 'wp-admin/includes/file.php';
+    WP_Filesystem();
+    $destination = wp_upload_dir();
+    if ( empty( $destination ) ) {
+        return null;
+    }
+    if ( $return_path == 'basedir' ) {
+        return $destination['basedir'];
+    }
+    return $destination;
+}
+
+
+/*
+ * Unzip files
+ *  
+ * @param string $file_uri full uri to zip archive
+ * @param string $unique_id - unique id for folder
+ * 
+ * @return string path to folder unzip files
+ */
+
+function conn_unzip_file( $file_uri, $unique_id, $custom_folder = '' ) {
+    $base_dir_upload = conn_path_uploads( 'basedir' );
+    $custom_folder = ( ! empty( $custom_folder ) ) ? '/' . $custom_folder : '';
+    // Path to unzip file
+    $destination_path_to = $base_dir_upload . '/unip_files' . $custom_folder . '/zip_' . $unique_id;
+
+    if ( empty( $file_uri ) ) {
+        conn_delete_directory( $destination_path_to );
+    }
+
+    // if ( is_dir( $destination_path_to ) && count( scandir( $destination_path_to ) ) > 2 ) {
+    //     return $destination_path_to;
+    // }
+
+    $file_path = explode( '/uploads', $file_uri );
+
+    $file_path = isset( $file_path[1] ) ? $file_path[1] : '';
+
+    if ( empty( $destination_path_to ) || empty( $base_dir_upload ) ) {
+        return;
+    }
+
+    // Path to zip archive
+    $path_file = $base_dir_upload . $file_path;
+
+    // Unzip file
+    $unzipfile = unzip_file( $path_file, $destination_path_to );
+
+    if ( ! is_wp_error( $unzipfile ) ) {
+        return $destination_path_to;
+    }
+}
+
+/**
+ * Get unzip files
+ *  
+ * @param string $path path file
+ * @param string $expansion_file find files for expansion
+ * @param string $file_name find files for name
+ *               Default return all files
+ * 
+ * @return array
+ */
+
+function conn_get_unzip_files( $path, $expansion_file = 'html', $file_name = '*' ) {
+    $files = array();
+
+    if ( ! $path || ! is_string( $path ) ) return;
+
+    foreach ( glob( $path . '/'. $file_name . '.' . $expansion_file ) as $file ) {
+        $uri_path_file = get_site_url() . '/wp-content' . explode( 'wp-content', $path )[1];
+        $files[] = $uri_path_file . '/'. basename( $file );
+    }
+    return $files;
+}

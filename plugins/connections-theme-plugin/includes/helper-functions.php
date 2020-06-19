@@ -50,7 +50,7 @@ function cn_get_terms_field( $taxonomy, $field, $output_key = '', $return_wp_err
  * @param string $return_value value which will return in each item color value or color title
  * @return array
  */
-function cn_get_colors( $key_color = 'primary_color', $count_colors = 5, $return_value = 'color' ) {
+function cn_get_colors( $key_color = 'primary_color', $count_colors = 6, $return_value = 'color' ) {
 
     if ( ! function_exists( 'get_field' ) )
         return [];        

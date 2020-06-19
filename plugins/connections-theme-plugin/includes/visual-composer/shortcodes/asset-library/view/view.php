@@ -20,7 +20,6 @@ if ( ! empty( $responsive_classes ) ) {
 
 // Select CPT Items
 $taxonomy = 'cn-asset-category';
-$count_posts = ( ! empty( $posts_per_page ) && is_numeric( $posts_per_page ) ) ? $posts_per_page : -1;
 $args = array(
     'taxonomy'   => $taxonomy,
     'slug'       => explode( ',', $categories ),
@@ -30,11 +29,11 @@ $terms = get_terms( $args );
 
 <?php if ( ! empty( $terms ) ) : ?>
     
-    <div <?php echo $el_id; ?> class="lk-asset-library <?php echo esc_attr( $class ); ?>">
-        <div class="lk-asset-library__row">
+    <div <?php echo $el_id; ?> class="cn-asset-library <?php echo esc_attr( $class ); ?>">
+        <div class="cn-asset-library__row">
 
-            <div class="lk-asset-library__col lk-asset-library__col--left">
-                <ul class="lk-asset-library__nav js-sidebar">
+            <div class="cn-asset-library__col cn-asset-library__col--left">
+                <ul class="cn-asset-library__nav js-sidebar">
                     <?php
 
                     $count = 1;
@@ -43,8 +42,8 @@ $terms = get_terms( $args );
                         $active = $count === 1 ? 'active' : '';
 
                         if ( ! empty( $term->name ) ) : ?>
-                            <li class="lk-asset-library__nav-item">
-                                <a href="#<?php echo esc_html( $term->term_id ); ?>" class="ch-btn ch-btn--block ch-btn--dark js-scroll-anchor <?php echo esc_attr($active); ?>">
+                            <li class="cn-asset-library__nav-item">
+                                <a href="#<?php echo esc_html( $term->term_id ); ?>" class="ch-btn js-scroll-anchor <?php echo esc_attr( $active ); ?>">
                                     <?php echo esc_html( $term->name ); ?>
                                 </a>
                             </li>
@@ -57,10 +56,10 @@ $terms = get_terms( $args );
                 </ul>
             </div>
 
-            <div class="lk-asset-library__col lk-asset-library__col--right">
+            <div class="cn-asset-library__col cn-asset-library__col--right">
 
                 <?php foreach ( $terms as $key => $term ) : ?>
-                    <div id="<?php echo esc_html( $term->term_id ); ?>" class="lk-asset-library__item lk-asset-block js-asset-block">
+                    <div id="<?php echo esc_html( $term->term_id ); ?>" class="cn-asset-library__item cn-asset-block js-asset-block">
                         
                         <?php if ( ! empty( $term->name ) ) :
                             printf( '<%1$s class="ch-asset__title ' . esc_attr( $title_color ) . '">%2$s</%1$s>', $title_tag, $term->name );
@@ -70,7 +69,7 @@ $terms = get_terms( $args );
                             'post_type'         => 'cn-asset',
                             'orderby'           => $orderby,
                             'order'             => $order,
-                            'posts_per_page'    => $count_posts,
+                            'posts_per_page'    => ( $posts_per_page ) ? $posts_per_page : 6,
                             'tax_query'         => array(
                                 array(
                                     'taxonomy' => $taxonomy,
