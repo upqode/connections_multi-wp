@@ -57,6 +57,7 @@ class ConnectionsThemePlugin {
 
             $shortcodes = [
                 'banner',
+                'sheet',
                 'content-block',
                 'asset-library',
             ];
