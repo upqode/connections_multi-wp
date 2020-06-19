@@ -13,12 +13,14 @@
 ;
 (function ($, window, document, underfined) {
 
+    let connectionsData = ( typeof connections_data == 'object' ) ? connections_data : {};
+
   
     /* ------------------------------------------- */
     /* LOAD BRIGTCOVE PLAYER DUNAMICALLY */
     /* ------------------------------------------- */
 
-    var playerData        = ( typeof liquiData.brigtcovePlayerData == 'object' ) ? liquiData.brigtcovePlayerData : {},
+    var playerData        = ( typeof connectionsData.brigtcovePlayerData == 'object' ) ? connectionsData.brigtcovePlayerData : {},
         currentPlayerID   = '',
         autoplay          = false,
         iconClass         = '',

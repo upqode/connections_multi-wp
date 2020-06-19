@@ -59,6 +59,7 @@ class ConnectionsThemePlugin {
                 'banner',
                 'sheet',
                 'table',
+                'video-multi',
                 'content-block',
                 'asset-library',
             ];
