@@ -85,10 +85,13 @@ function conn_bg_colors_css() {
     
     $colors = function_exists( 'cn_get_colors' ) ?  cn_get_colors( 'bg_main_color', 7 ) : [];
     $css = '';
+    $counter = 1;
 
     foreach ( $colors as $key => $color ) {
         if ( $color ) {
             $css .= sprintf( '.%s{ background-color: %s }', $key, $color );
+            $css .= sprintf( '.border_main_color_%s{ border-color: %s }', $counter, $color );
+            $counter++;
         }
     }
     
