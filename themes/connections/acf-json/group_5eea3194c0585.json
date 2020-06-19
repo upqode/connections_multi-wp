@@ -1,0 +1,103 @@
+{
+    "key": "group_5eea3194c0585",
+    "title": "Glossary Options",
+    "fields": [
+        {
+            "key": "field_5eea31a07da46",
+            "label": "Type audio",
+            "name": "type_audio",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "brigtcove": "Brightcove",
+                "custom": "Custom"
+            },
+            "default_value": false,
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_5eea31d37da47",
+            "label": "Audio",
+            "name": "audio",
+            "type": "text",
+            "instructions": "Insert audio ID form Brigtcove",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5eea31a07da46",
+                        "operator": "==",
+                        "value": "brigtcove"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5eea32047da48",
+            "label": "MP3",
+            "name": "mp3",
+            "type": "file",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5eea31a07da46",
+                        "operator": "==",
+                        "value": "custom"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "url",
+            "library": "all",
+            "min_size": "",
+            "max_size": "",
+            "mime_types": "mp3"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "cn-glossary"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1592542747
+}

@@ -55,6 +55,9 @@ function conn_get_brightcove_source_code( $source_type, $user_id, $player_id, $s
 function conn_get_color_scheme( $echo = false ) {
 
     $colors = function_exists( 'cn_get_colors' ) ? cn_get_colors() : [];
+    $paragraph_colors = function_exists( 'cn_get_colors' ) ? cn_get_colors( 'p_main_color', 3 ) : [];
+
+    $colors = array_merge( $colors, $paragraph_colors );
 
     $output = '';
 
@@ -80,8 +83,7 @@ function conn_get_color_scheme( $echo = false ) {
  */
 function conn_bg_colors_css() {
     
-    // $colors = function_exists( 'cn_get_bg_vc_colors' ) ?  cn_get_bg_vc_colors() : [];
-    $colors = function_exists( 'cn_get_bg_vc_colors' ) ?  cn_get_colors( 'bg_main_color', 7 ) : [];
+    $colors = function_exists( 'cn_get_colors' ) ?  cn_get_colors( 'bg_main_color', 7 ) : [];
     $css = '';
 
     foreach ( $colors as $key => $color ) {
@@ -93,3 +95,20 @@ function conn_bg_colors_css() {
     return $css;
 }
 
+/**
+ * Generate CSS for background colors
+ * @return string
+ */
+function conn_text_colors_css() {
+    
+    $colors = function_exists( 'cn_get_colors' ) ?  cn_get_colors( 'h_main_color', 6 ) : [];
+    $css = '';
+
+    foreach ( $colors as $key => $color ) {
+        if ( $color ) {
+            $css .= sprintf( '.%s{ color: %s }', $key, $color );
+        }
+    }
+    
+    return $css;
+}

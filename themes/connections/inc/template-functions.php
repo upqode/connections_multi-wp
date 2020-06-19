@@ -11,7 +11,8 @@
  * @param array $classes Classes for the body element.
  * @return array
  */
-function connections_body_classes( $classes ) {
+function conn_body_classes( $classes ) {
+
 	// Adds a class of hfeed to non-singular pages.
 	if ( ! is_singular() ) {
 		$classes[] = 'hfeed';
@@ -24,17 +25,17 @@ function connections_body_classes( $classes ) {
 
 	return $classes;
 }
-add_filter( 'body_class', 'connections_body_classes' );
+add_filter( 'body_class', 'conn_body_classes' );
 
 /**
  * Add a pingback url auto-discovery header for single posts, pages, or attachments.
  */
-function connections_pingback_header() {
+function conn_pingback_header() {
 	if ( is_singular() && pings_open() ) {
 		printf( '<link rel="pingback" href="%s">', esc_url( get_bloginfo( 'pingback_url' ) ) );
 	}
 }
-add_action( 'wp_head', 'connections_pingback_header' );
+add_action( 'wp_head', 'conn_pingback_header' );
 
 /**
  * Add Options Page
@@ -77,3 +78,17 @@ function conn_main_link(){
 
     return main_site_link();
 }
+
+
+/**
+ * Added to extend allowed files types in Media upload
+ */
+function conn_upload_mimes ( $existing_mimes = array() ) {
+
+    // Add *.zip files to Media upload
+    $existing_mimes['zip'] = 'application/zip';
+
+    return $existing_mimes;
+}
+
+add_filter('upload_mimes', 'conn_upload_mimes');
