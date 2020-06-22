@@ -26,6 +26,7 @@ function connections_scripts() {
 	$custom_css = '';
 	$custom_css .= conn_bg_colors_css();
 	$custom_css .= conn_text_colors_css();
+	$custom_css .= conn_border_colors_css();
 
 	if ( $custom_css ) {
 		wp_add_inline_style( 'connections-style', $custom_css );

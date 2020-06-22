@@ -101,12 +101,21 @@
             <?php break;
         
         case 'html':
+
             $asset_zip_id = get_post_meta( $asset_id, 'asset_zip', true );
-            $asset_zip_url = wp_get_attachment_url( $asset_zip_id );
-            $path_upload_file = conn_path_uploads( 'basedir' ) . '/unip_files/zip_' . $asset_id . '_' . $asset_zip_id; ?>
+            // $asset_zip_url = wp_get_attachment_url( $asset_zip_id );
+            // $path_upload_file = conn_path_uploads( 'basedir' ) . '/unip_files/zip_' . $asset_id . '_' . $asset_zip_id; ?>
 
             <div class="cn-content-wrapp cn-content-wrapp--full">
-                <?php if ( ! empty( $asset_zip_url ) ) :
+                <?php 
+                $unique_id = "{$asset_id}_{$asset_zip_id}";
+                $src_html = conn_get_path_unzip_html( $unique_id, 'baseurl' ); ?>
+
+                <span class="js-iframe-html" data-src="<?php echo esc_attr( $src_html ); ?>"></span>
+
+                <?php
+                // TO DO DELETE
+                /* if ( ! empty( $asset_zip_url ) ) :
                     // check if the directory is already exists
                     if ( ! is_dir( $path_upload_file ) ) {
                         $unique_id = $asset_id . '_' . $asset_zip_id;    // nothing broken if user change .zip-file in settings
@@ -121,16 +130,19 @@
                         <!-- <iframe src="<?php echo esc_attr( $src_html[0] ); ?>"></iframe> -->
                         <span class="js-iframe-html" data-src="<?php echo esc_attr( $src_html[0] ); ?>"></span>
                     <?php endif;
-                endif; ?> 
+                endif; */
+                ?> 
             </div>
             <?php break;
         
         case 'iframe':
+
             $asset_iframe = get_field( 'asset_iframe', $asset_id ); 
             
-            if( ! empty( $asset_iframe ) ):
+            if ( ! empty( $asset_iframe ) ):
                 echo $asset_iframe;
             endif;
+
         break;
 
     endswitch; ?>        

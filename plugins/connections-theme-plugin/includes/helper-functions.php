@@ -122,6 +122,21 @@ function cn_get_heading_vc_colors( $return_value = 'color' ) {
 
 }
 
+
+/**
+ * Get border colors
+ * @param string $return_value value which will return in each item color value or color title
+ * @return array
+ */
+function cn_get_border_vc_colors( $return_value = 'color' ) {
+
+    $colors = cn_get_colors( 'primary_color', 6, $return_value );
+    $colors = ( $colors ) ? array_flip( $colors ) : $colors;
+
+    return $colors;
+
+}
+
 /**
  * Get assets
  * @param string $return_value value which will return in each item color value or color title

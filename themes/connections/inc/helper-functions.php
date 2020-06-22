@@ -116,6 +116,25 @@ function conn_text_colors_css() {
     return $css;
 }
 
+
+/**
+ * Generate CSS for border colors
+ * @return string
+ */
+function conn_border_colors_css() {
+    
+    $colors = function_exists( 'cn_get_colors' ) ?  cn_get_colors( 'primary_color', 6 ) : [];
+    $css = '';
+
+    foreach ( $colors as $key => $color ) {
+        if ( $color ) {
+            $css .= sprintf( '.border_%s{ border-color: %s }', $key, $color );
+        }
+    }
+    
+    return $css;
+}
+
 /*
  * Delete directory with files
  *  
@@ -142,29 +161,51 @@ function conn_delete_directory( $dirname ) {
     return true;
 }
 
-/*
+/**
  * Get path uploads
  *  
  * @param string $return_path
- * 
- * @return array by default or string if param $return_path == basedir
+ * @return array|string
  */
 
 function conn_path_uploads( $return_path = '' ) {
+    
     require_once ABSPATH . 'wp-admin/includes/file.php';
     WP_Filesystem();
+
     $destination = wp_upload_dir();
-    if ( empty( $destination ) ) {
-        return null;
+
+    if ( empty( $destination ) )
+        return;
+
+    if ( isset( $destination[ $return_path ] ) ) {
+        return $destination[ $return_path ];
+    } else {
+        return $destination;
     }
-    if ( $return_path == 'basedir' ) {
-        return $destination['basedir'];
-    }
-    return $destination;
+
 }
 
-
 /*
+ * Get path unzip HTML
+ */
+function conn_get_path_unzip_html( $unique_id, $path = 'basedir' ) {
+
+    $base_dir_upload = conn_path_uploads( $path );
+
+    // For Multisite
+    $subsite_folder = '';
+    if ( is_multisite() ) {
+        $current_blog_id = get_current_blog_id();
+	    $subsite_folder = "/subsite_{$current_blog_id}/";
+    }
+
+    // Path to unzip file
+    return "{$base_dir_upload}/unip_files{$subsite_folder}zip_{$unique_id}";
+
+}
+
+/**
  * Unzip files
  *  
  * @param string $file_uri full uri to zip archive
@@ -174,10 +215,20 @@ function conn_path_uploads( $return_path = '' ) {
  */
 
 function conn_unzip_file( $file_uri, $unique_id, $custom_folder = '' ) {
+
     $base_dir_upload = conn_path_uploads( 'basedir' );
-    $custom_folder = ( ! empty( $custom_folder ) ) ? '/' . $custom_folder : '';
+    // $custom_folder = ( ! empty( $custom_folder ) ) ? '/' . $custom_folder : '';
+
+    // For Multisite
+    $subsite_folder = '';
+    if ( is_multisite() ) {
+        $current_blog_id = get_current_blog_id();
+	    $subsite_folder = "/subsite_{$current_blog_id}/";
+    }
+
     // Path to unzip file
-    $destination_path_to = $base_dir_upload . '/unip_files' . $custom_folder . '/zip_' . $unique_id;
+    // $destination_path_to = $base_dir_upload . "/unip_files{$subsite_folder}/zip_{$unique_id}";
+    $destination_path_to = conn_get_path_unzip_html( $unique_id );
 
     if ( empty( $file_uri ) ) {
         conn_delete_directory( $destination_path_to );

@@ -61,6 +61,7 @@ class ConnectionsThemePlugin {
                 'table',
                 'video-multi',
                 'next-back-links',
+                'featured-links',
                 'content-block',
                 'asset-library',
             ];

@@ -265,6 +265,47 @@
         }
     });
 
+    /* ------------------------------------------- */
+    /* LAZY LOAD IFRAME */
+    /* ------------------------------------------- */
+    function lazyLoadIframe( $iframeLoader ) {
+
+        if ( ! $iframeLoader.hasClass('html-init') ) {
+            var $iframe = $('<iframe/>', {
+                src : $iframeLoader.attr('data-src'),
+            });
+            $iframeLoader.addClass( 'html-init' );
+        }
+        
+        if ( typeof $iframe !== typeof undefined ) {
+
+            $iframe.addClass( $iframeLoader.attr('data-class') );
+
+            if ( $iframeLoader.hasClass( 'wonderplugin-pdf-iframe' ) ) {
+                $iframe.addClass( 'wonderplugin-pdf-iframe' );
+            }
+
+            $iframeLoader.before( $iframe ).hide();
+
+        }
+        
+    }
+
+
+    /* ------------------------------------------- */
+    /* LOAD ASSETS IFRAME ON CLICK */
+    /* ------------------------------------------- */
+
+    $('.js-item-html').on('click', function() {
+
+        var $this       = $(this),
+            id          = $this.attr('href'),
+            $iframeData = $( id ).find('.js-iframe-html');
+
+        lazyLoadIframe( $iframeData );
+        
+    });
+
     // Load asset with page
     if ( $('.js-video-BC').length ) {
         BCenqueueScript();
