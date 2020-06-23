@@ -49,7 +49,7 @@
   -webkit-transform: translateX(120%);
   -ms-transform: translateX(120%);
   transform: translateX(120%);
-  background: var(--primary_color_2);
+  background: var(--primary_color_6);
   border-radius: 20px;
   -webkit-transition: -webkit-transform 0.3s ease;
   transition: -webkit-transform 0.3s ease;
@@ -262,6 +262,7 @@
   font-size: 22px;
   font-weight: 400;
   margin: 0 0 0 15px;
+  color: var(--primary_color_6);
 }
 
 @media screen and (max-width: 767px) {
@@ -287,7 +288,7 @@
   background-color: var(--primary_color_1);
 }
 
-.cn-header--fixed {
+.cn-header.fixed {
   position: fixed;
   top: 0;
   left: 0;
@@ -388,7 +389,7 @@
   -o-transition: transform 0.5s ease-out;
   transition: transform 0.5s ease-out;
   transition: transform 0.5s ease-out, -webkit-transform 0.5s ease-out;
-  background-color: var(--primary_color_3);
+  background-color: var(--primary_color_6);
   z-index: 2;
   min-height: 550px;
   overflow-x: hidden;
@@ -572,7 +573,6 @@
 .cn-header li.clone-menu-item span {
   display: inline-block;
   padding: 0 5px 0 15px;
-  color: #ffffff;
   font-size: 36px;
   cursor: pointer;
   vertical-align: middle;
@@ -594,10 +594,6 @@
   color: #ffffff;
 }
 
-.cn-header li.clone-menu-item span::before {
-  color: #ffffff;
-}
-
 .cn-header li.clone-menu-item .back-title {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -613,7 +609,6 @@
   z-index: 2;
   left: 0;
   top: 0;
-  color: #ffffff;
 }
 
 .cn-header li.clone-menu-item a {
