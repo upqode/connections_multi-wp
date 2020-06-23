@@ -19,7 +19,8 @@ $class .= " {$bg_color}";
 
 // Title
 $class_title = isset( $title_color ) ? ' ' . $title_color : '';
-$class_title .= ( $title_underline ) ? ' border_main_color_7' : '';
+$class_title .= ( $title_underline ) ? ' border_main_color_7 cn-table__title-underline ' : '';
+$class_title .=  ' cn-table__title ';
 
 // Link
 $link = vc_build_link( $link );
@@ -31,9 +32,6 @@ $nof_link    = ( ! empty( $link['rel'] ) ) ? 'rel="' . $link['rel'] .'"' : '';
 <div <?php echo $el_id; ?> class="cn-table <?php echo esc_attr( $class ); ?>">
 
     <div class="container">
-        
-        <div class="">
-
             <?php if ( ! empty( $title ) ) : ?>
                 <?php printf( '<%1$s class="cn-heading %2$s">%3$s</%1$s>', $title_tag, esc_attr( $class_title ), nl2br( wp_kses( $title, ['br'] ) ) ); ?>
             <?php endif; ?>
@@ -51,8 +49,6 @@ $nof_link    = ( ! empty( $link['rel'] ) ) ? 'rel="' . $link['rel'] .'"' : '';
                     </a>
                 </div>
             <?php endif; ?>
-            
-        </div>
     </div>
 
 </div>

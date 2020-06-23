@@ -23,6 +23,10 @@ function connections_scripts() {
 	wp_enqueue_style( 'bootstrap-grid', CN_THEME_URI . '/assets/css/bootstrap-grid.css', array(), _S_VERSION );
 	wp_enqueue_style( 'magnific-popup', CN_THEME_URI . '/assets/css/magnific-popup.css', array(), _S_VERSION );
 	wp_enqueue_style('connections-header', CN_THEME_URI . '/assets/css/header.css', array(),_S_VERSION);
+	wp_enqueue_style('connections-banner', CN_THEME_URI . '/assets/css/banner.css', array(),_S_VERSION);
+	wp_enqueue_style('connections-typography', CN_THEME_URI . '/assets/css/typography.css', array(),_S_VERSION);
+	wp_enqueue_style('connections-table', CN_THEME_URI . '/assets/css/table.css', array(),_S_VERSION);
+	wp_enqueue_style('connections-next_back_link', CN_THEME_URI . '/assets/css/next_back_link.css', array(),_S_VERSION);
 
 	$custom_css = '';
 	$custom_css .= conn_bg_colors_css();

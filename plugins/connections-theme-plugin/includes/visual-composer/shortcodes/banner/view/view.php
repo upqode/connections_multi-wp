@@ -10,7 +10,7 @@ $el_id = ( ! empty( $el_id ) ) ? 'id="' . esc_attr( $el_id ) . '"' : '';
 $class = ( ! empty( $el_class ) ) ? $el_class : '';
 $class .= vc_shortcode_custom_css_class( $class );
 $class .= ( $banner_height ) ? "cn-banner-height--{$banner_height}" : '';
-$class .= ( $bg_color ) ? " {$bg_color}" : '';
+$class .= ( $bg_type == 'color' && !empty($bg_color) )  ? " {$bg_color}" : '';
 
 /* Add responsive options to container */
 $responsive_classes = cn_create_responsive_classes( $atts );
@@ -19,7 +19,7 @@ if ( ! empty( $responsive_classes ) ) {
 }
 
 $style_wrap = '';
-$style_wrap .= ( $bg_img ) ? 'background-image: url(' . wp_get_attachment_image_url( $bg_img, 'full' ) . ');' : '';
+$style_wrap .= ( $bg_type == 'image' && !empty($bg_img) ) ? 'background-image: url(' . wp_get_attachment_image_url( $bg_img, 'full' ) . ');' : '';
 
 if ( $style_wrap ) {
     $style_wrap = 'style="' . $style_wrap . '"';
@@ -34,7 +34,7 @@ if ( $style_wrap ) {
     <?php endif; ?>
 
     <?php if ( $subtitle ) : ?>
-        <p class="cn-banner__subtitle <?php echo esc_attr( $subtitle_color ); ?>"><?php echo esc_html( $subtitle ); ?></p>
+        <h2 class="cn-banner__subtitle <?php echo esc_attr( $subtitle_color ); ?>"><?php echo esc_html( $subtitle ); ?></h2>
     <?php endif; ?>
 
     <?php if ( $overlay_img ) : 

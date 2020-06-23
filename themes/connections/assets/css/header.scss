@@ -150,7 +150,7 @@
   -webkit-transition: color 300ms;
   -o-transition: color 300ms;
   transition: color 300ms;
-  color: #ffffff;
+  color: var(--p_main_color_2);
 }
 
 .cn-menu-btn {
@@ -199,7 +199,7 @@
   -webkit-transition: background-color 0.3s ease-out;
   -o-transition: background-color 0.3s ease-out;
   transition: background-color 0.3s ease-out;
-  background-color: #ffffff;
+  background-color: var(--p_main_color_2);
 }
 
 .cn-menu-btn i:before, .cn-menu-btn i:after {
@@ -215,7 +215,7 @@
   -o-transition: top 0.3s ease-out, transform 0.3s ease-out;
   transition: top 0.3s ease-out, transform 0.3s ease-out;
   transition: top 0.3s ease-out, transform 0.3s ease-out, -webkit-transform 0.3s ease-out;
-  background-color: #ffffff;
+  background-color: var(--p_main_color_2);
   content: "";
 }
 
@@ -353,7 +353,7 @@
     outline: none;
   }
   i{
-    color: #ffffff
+    color: var(--p_main_color_2)
   }
 }
 .cn-header__help-btn .fa {
@@ -412,12 +412,12 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background-color: #ffffff;
+        background-color: var(--p_main_color_2);
         height: 1px;
       }
       &.current-menu-item, &:hover{
         background-color: var(--primary_color_2);
-        color: #ffffff;
+        color: var(--p_main_color_2);
       }
       a{
         font-size: inherit;
@@ -530,7 +530,7 @@
   font-size: 30px;
   overflow: visible;
   &:hover{
-    color: #ffffff;
+    color: var(--p_main_color_2);
   }
 }
 
@@ -592,7 +592,7 @@
   vertical-align: middle;
   overflow: visible;
   &:hover{
-    color: #ffffff;
+    color: var(--p_main_color_2);
   }
 }
 

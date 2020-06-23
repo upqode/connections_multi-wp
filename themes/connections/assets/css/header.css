@@ -155,7 +155,7 @@
   -webkit-transition: color 300ms;
   -o-transition: color 300ms;
   transition: color 300ms;
-  color: #ffffff;
+  color: var(--p_main_color_2);
 }
 
 .cn-menu-btn {
@@ -204,7 +204,7 @@
   -webkit-transition: background-color 0.3s ease-out;
   -o-transition: background-color 0.3s ease-out;
   transition: background-color 0.3s ease-out;
-  background-color: #ffffff;
+  background-color: var(--p_main_color_2);
 }
 
 .cn-menu-btn i:before, .cn-menu-btn i:after {
@@ -220,7 +220,7 @@
   -o-transition: top 0.3s ease-out, transform 0.3s ease-out;
   transition: top 0.3s ease-out, transform 0.3s ease-out;
   transition: top 0.3s ease-out, transform 0.3s ease-out, -webkit-transform 0.3s ease-out;
-  background-color: #ffffff;
+  background-color: var(--p_main_color_2);
   content: "";
 }
 
@@ -352,7 +352,7 @@
   outline: none;
 }
 .cn-header__help-btn i {
-  color: #ffffff;
+  color: var(--p_main_color_2);
 }
 
 .cn-header__help-btn .fa {
@@ -414,12 +414,12 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ffffff;
+  background-color: var(--p_main_color_2);
   height: 1px;
 }
 .cn-header__nav ul li.current-menu-item, .cn-header__nav ul li:hover {
   background-color: var(--primary_color_2);
-  color: #ffffff;
+  color: var(--p_main_color_2);
 }
 .cn-header__nav ul li a {
   font-size: inherit;
@@ -528,7 +528,7 @@
   overflow: visible;
 }
 .cn-header .menu .menu-item-has-children > a span:hover {
-  color: #ffffff;
+  color: var(--p_main_color_2);
 }
 
 .cn-header .sub-menu {
@@ -591,7 +591,7 @@
   overflow: visible;
 }
 .cn-header li.clone-menu-item span.fa:hover {
-  color: #ffffff;
+  color: var(--p_main_color_2);
 }
 
 .cn-header li.clone-menu-item .back-title {
