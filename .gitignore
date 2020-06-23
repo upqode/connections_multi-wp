@@ -20,3 +20,4 @@ themes/*
 # Ingnore all plugins except connections-theme-plugin
 plugins/*
 !plugins/connections-theme-plugin
+!plugins/easy-tables-connections

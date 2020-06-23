@@ -92,3 +92,47 @@ function conn_upload_mimes ( $existing_mimes = array() ) {
 }
 
 add_filter('upload_mimes', 'conn_upload_mimes');
+
+
+/**
+ * Add buttons for toolbar
+ */
+function conn_mce_buttons_2( $buttons ) {	
+	/**
+	 * Add in a core button that's disabled by default
+	 */
+	$buttons[] = 'superscript';
+	$buttons[] = 'subscript';
+
+	return $buttons;
+}
+
+add_filter( 'mce_buttons_2', 'conn_mce_buttons_2' );
+
+
+/**
+ * Unzip assets when asset created
+ */
+function conn_unzip_asset( $asset_id ) {
+
+	$asset_type = get_post_meta( $asset_id, 'asset_type', true );
+	$current_blog_id = get_current_blog_id();
+	$subsite_folder = "subsite_{$current_blog_id}";
+
+	if ( $asset_type == 'html' ) {
+
+		$asset_zip_id = get_post_meta( $asset_id, 'asset_zip', true );
+		$asset_zip_url = wp_get_attachment_url( $asset_zip_id );
+		// $path_upload_file = conn_path_uploads( 'basedir' ) . "/{$subsite_folder}/unip_files/zip_{$asset_id}_{$asset_zip_id}";
+
+		if ( ! empty( $asset_zip_url ) ) {
+
+			$unique_id = "{$asset_id}_{$asset_zip_id}"; // nothing broken if user change .zip-file in settings
+			$path_html = conn_unzip_file( $asset_zip_url, $unique_id );
+			
+		}
+	}
+
+}
+
+add_action( 'save_post_cn-asset', 'conn_unzip_asset' );
