@@ -27,7 +27,7 @@ class ConnectionsThemePlugin {
             $this->includes();
 
             add_action( 'vc_before_init', array( $this, 'custom_shortcodes' ) );
-            // add_action( 'vc_after_init', array( $this, 'vc_after_init_actions' ) );
+            add_action( 'vc_after_init', array( $this, 'vc_after_init_actions' ) );
         }
 
         /**
@@ -37,16 +37,16 @@ class ConnectionsThemePlugin {
 
             require_once CN_DIR_PATH . '/includes/post-types.php';
             require_once CN_DIR_PATH . '/includes/helper-functions.php';
-            require_once CN_DIR_PATH . '/includes/vc-functions.php';
+            require_once CN_DIR_PATH . '/includes/visual-composer/vc-functions.php';
             
         }
 
         /**
          * After vc init
          */
-        // public function vc_after_init_actions() {
-        //     require_once CN_DIR_PATH .'/includes/vc_init.php';
-        // }
+        public function vc_after_init_actions() {
+            require_once CN_DIR_PATH . '/includes/visual-composer/vc-extends/vc-init.php';
+        }
 
         /**
          * Before vc init
@@ -56,7 +56,9 @@ class ConnectionsThemePlugin {
             require_once CN_DIR_PATH . '/includes/visual-composer/base-shortcode.php';
 
             $shortcodes = [
+                'banner',
                 'content-block',
+                'asset-library',
             ];
 
             // Order shortcodes

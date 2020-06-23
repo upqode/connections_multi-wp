@@ -18,17 +18,17 @@ $glossary_posts = new WP_Query( $args );
 
 while ( $glossary_posts->have_posts() ) : $glossary_posts->the_post();
 
-    $audio = get_field( 'audio_id' );
+    $audio = get_field( 'audio' );
     $unique_id = 'player_' . get_the_ID() . '_' . rand(0, 99); ?>
-    <div class="lk-glossary-item">
-        <div class="lk-glossary-item__header">
+    <div class="cn-glossary-item">
+        <div class="cn-glossary-item__header">
 
-            <?php the_title('<h5 class="lk-glossary-item__title">', '</h5>'); ?>
+            <?php the_title('<h5 class="cn-glossary-item__title">', '</h5>'); ?>
 
             <?php if ( $audio ) : ?>
-                <div id="<?php echo $unique_id; ?>" class="lk-glossary-item__audio-box js-glossary-item audio">
+                <div id="<?php echo $unique_id; ?>" class="cn-glossary-item__audio-box js-glossary-item audio">
 
-                    <span data-href="#<?php echo $unique_id; ?>" class="lk-btn-icon lk-btn-play lk-btn-play--circle js-asset-play-btn js-item-BC">
+                    <span data-href="#<?php echo $unique_id; ?>" class="cn-btn-icon cn-btn-play cn-btn-play--circle js-asset-play-btn js-item-BC">
                         <i class="fa fa-play-circle" aria-hidden="true"></i>
                     </span>
 
@@ -41,7 +41,7 @@ while ( $glossary_posts->have_posts() ) : $glossary_posts->the_post();
         </div>
 
         <?php if ( get_the_content() ) : ?>
-            <div class="lk-glossary-item__desc">
+            <div class="cn-glossary-item__desc">
                 <?php the_content(); ?>
             </div>
         <?php endif; ?>
