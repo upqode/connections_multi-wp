@@ -15,6 +15,7 @@
 		
 	</footer>
 </div><!-- #page -->
+<?php connection_popup_guest_users(); ?>
 
 <?php wp_footer(); ?>
 

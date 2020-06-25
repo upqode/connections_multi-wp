@@ -237,19 +237,6 @@
 
             // window.scrollTop = window.scrollY;
             $('body, html').addClass('no-scroll');
-            // $('.lk-content-wrapp--full-height').closest('body').addClass('lk-full-height-popup');
-            // calculatePopupHeight();
-            // window.addEventListener('resize', calculatePopupHeight );
-
-            // if ( classes.indexOf('js-lazy-load-iframe') != -1 ) {
-            //   console.log( $.magnificPopup.instance );
-            //   lazyLoadIframe( $( $current.attr('href') ).find('.js-lazy-loader-iframe') );
-            // }
-
-            // if ( classes.indexOf('js-lazy-load-asset-pdf') != -1 ) {
-            //   lazyLoadIframe( $( $current.attr('href') ).find('.wonderplugin-pdf-iframe[data-src]') );
-            //   $( $current.attr('href') ).find('.wonderplugin-pdf-iframe[data-src]').addClass('wonderplugin-pdf-iframe');
-            // }
 
         },
         beforeClose: function() {
@@ -259,9 +246,7 @@
             }
         },
         close: function() {
-            $('body, html').removeClass('no-scroll').removeClass('lk-full-height-popup');
-            // window.removeEventListener('resize', calculatePopupHeight);
-            // $(window).scrollTop( window.scrollTop );
+            $('body, html').removeClass('no-scroll').removeClass('cn-full-height-popup');
             $('.js-popup').removeClass('active');
         }
         }
