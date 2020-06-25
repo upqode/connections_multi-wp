@@ -1,0 +1,39 @@
+.cn-table {
+  padding: 20px 0 55px ;
+}
+
+.cn-table__title {
+  margin: 0 0 40px;
+
+  &-underline {
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+  }
+}
+
+.cn-table__text {
+  position:relative;
+  .wpb_vc_table{
+    overflow:auto;
+  }
+  table {
+    margin: 0;
+    border-spacing: 0 2px;
+    overflow: auto;
+    width:100%;
+
+    tr {
+      background-color: var(--p_main_color_2);
+
+      td {
+        padding: 20px 10px;
+        border: none !important;
+        min-width: 100px;
+      }
+    }
+  }
+
+  .wpb_vc_table {
+    margin-bottom: 20px;
+  }
+}

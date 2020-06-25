@@ -6,7 +6,6 @@
 extract( $atts );
 
 $el_id = ( ! empty( $el_id ) ) ? 'id="' . esc_attr( $el_id ) . '"' : '';
-
 $class = ( ! empty( $el_class ) ) ? $el_class : '';
 $class .= vc_shortcode_custom_css_class( $class );
 

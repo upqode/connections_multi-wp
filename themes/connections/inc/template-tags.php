@@ -163,3 +163,23 @@ if ( ! function_exists( 'wp_body_open' ) ) :
 		do_action( 'wp_body_open' );
 	}
 endif;
+
+
+/**
+ * Display popup only user guest
+ */
+if ( ! function_exists( 'connection_popup_guest_users' ) ) :
+	function connection_popup_guest_users() {
+		$src_page_popup = get_field('fu_popup_page_url', 'option'); ?>
+		<a href="#page-popup" class="js-user-guest-popup"></a>
+
+		<div id="page-popup" class="white-popup-block mfp-hide lk-user-guest-popup">
+
+			<div class="cn-content-wrapp cn-content-wrapp--full">
+				<iframe src="<?php echo esc_url( $src_page_popup ); ?>?cn_popup_iframe=1" frameborder="0"></iframe>
+			</div>
+
+		</div>
+		<?php
+	}
+endif;

@@ -26,14 +26,14 @@ if ( $style_wrap ) {
 
 ?>
 
-<div class="cn-next-back-links <?php echo esc_attr( $class ); ?>" <?php echo $el_id; ?> <?php echo $style_wrap; ?>>
+<div class="cn-next-back-links text-center <?php echo esc_attr( $class ); ?>" <?php echo $el_id; ?> <?php echo $style_wrap; ?>>
 
     <?php if ( $prev_link ) :
         $prev_link = vc_build_link( $prev_link );
         $target_link = ( ! empty( $prev_link['target'] ) ) ? 'target="' . $prev_link['target'] .'"' : '';
         $nof_link = ( ! empty( $prev_link['rel'] ) ) ? 'rel="' . $prev_link['rel'] .'"' : ''; ?>
         <?php if ( $prev_link['title'] ) : ?>
-            <a href="<?php echo esc_url( $prev_link['url'] ); ?>" <?php echo $target_link; ?> <?php echo $nof_link; ?>>
+            <a href="<?php echo esc_url( $prev_link['url'] ); ?>" class="cn-next-back-links--prev" <?php echo $target_link; ?> <?php echo $nof_link; ?>>
                 <div class="cn-next-back-links__link-wrap">
                     <h3 class="title <?php echo esc_attr( $title_color ); ?>"><?php echo esc_html( $prev_link['title'] ); ?></h3>
                     <p class="subtitle <?php echo esc_attr( $subtitle_color ); ?>">
@@ -49,7 +49,7 @@ if ( $style_wrap ) {
         $target_link = ( ! empty( $next_link['target'] ) ) ? 'target="' . $next_link['target'] .'"' : '';
         $nof_link = ( ! empty( $next_link['rel'] ) ) ? 'rel="' . $next_link['rel'] .'"' : ''; ?>
         <?php if ( $next_link['title'] ) : ?>
-            <a href="<?php echo esc_url( $next_link['url'] ); ?>" <?php echo $target_link; ?> <?php echo $nof_link; ?>>
+            <a href="<?php echo esc_url( $next_link['url'] ); ?>" class="cn-next-back-links--next" <?php echo $target_link; ?> <?php echo $nof_link; ?>>
                 <div class="cn-next-back-links__link-wrap">
                     <h3 class="title <?php echo esc_attr( $title_color ); ?>"><?php echo esc_html( $next_link['title'] ); ?></h3>
                     <p class="subtitle <?php echo esc_attr( $subtitle_color ); ?>">
