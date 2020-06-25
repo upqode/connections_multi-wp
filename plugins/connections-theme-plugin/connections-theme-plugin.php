@@ -56,6 +56,7 @@ class ConnectionsThemePlugin {
             require_once CN_DIR_PATH . '/includes/visual-composer/base-shortcode.php';
 
             $shortcodes = [
+                'accordion',
                 'banner',
                 'sheet',
                 'table',

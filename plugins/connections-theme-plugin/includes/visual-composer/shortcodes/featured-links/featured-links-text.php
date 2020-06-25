@@ -13,7 +13,7 @@ class CN_Featured_Links_Text extends CN_Base_Shortcode {
         $this->description     = esc_html__( 'Create Featured Links Text.', 'connections' );
         $this->content_element = true;
         $this->show_settings_on_create = true;
-        $this->as_child        = array( 'only' => 'creon_featured_links' );
+        $this->as_child        = array( 'only' => 'cn_featured_links' );
 
         parent::__construct();
     }
@@ -34,7 +34,7 @@ class CN_Featured_Links_Text extends CN_Base_Shortcode {
 
     public function render( $atts, $content = '' ) {
 
-        global $creon_items;
+        global $cn_items;
 
         $atts = vc_map_get_attributes( $this->slug, $atts );
         $atts = $this->before_output( $atts, $content );
@@ -44,7 +44,7 @@ class CN_Featured_Links_Text extends CN_Base_Shortcode {
 		// option for define different between two subshortcodes
         $atts['item_text'] = true;
 
-        $creon_items[]  = $atts;
+        $cn_items[]  = $atts;
     }
 
 }

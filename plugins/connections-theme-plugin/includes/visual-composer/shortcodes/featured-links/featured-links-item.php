@@ -34,10 +34,6 @@ class CN_Featured_Links_Item extends CN_Base_Shortcode {
 		        'type'        => 'dropdown',
 		        'param_name'  => 'border_color',
                 'value'       => cn_get_border_vc_colors( 'title' ),
-                'dependency'  => array( 
-                    'element'   => 'underline_title', 
-                    'value'     => 'true', 
-                ),
             ),
 
             array(
