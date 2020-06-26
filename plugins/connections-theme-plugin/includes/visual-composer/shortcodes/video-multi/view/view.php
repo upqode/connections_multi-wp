@@ -23,8 +23,8 @@ $videos = (array) vc_param_group_parse_atts( $videos );
 $title_class = '';
 $title_class .= " $title_color";
 
-if ( $underline_title ) {
-    $title_class .= ' border_main_color_7';
+if ( $underline_title && $underline_color ) {
+    $title_class .= " border_{$underline_color}";
 }
 
 ?>  
@@ -66,7 +66,7 @@ if ( $underline_title ) {
         
         <?php if ( ! empty( $title ) ) : ?>
             <h2 class="cn-video-tabs__title <?php echo esc_attr( $title_class ); ?>">
-                <?php echo wp_kses_post( $title ); ?>
+                <?php echo esc_html( $title ); ?>
             </h2>
         <?php endif; ?>
 
