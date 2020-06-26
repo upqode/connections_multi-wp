@@ -42,9 +42,13 @@ if ( $style_wrap ) {
         $style_overlay_wrap .= 'background-image: url(' . wp_get_attachment_image_url( $overlay_img, 'full' ) . ');';
         $overlay_opacity = ( $overlay_opacity ) ? (int) $overlay_opacity : 0;
         $style_overlay_wrap .= ( $overlay_opacity && $overlay_opacity <= 100 ) ? 'opacity: ' . $overlay_opacity / 100 . ';' : '';
+
+        if ( $style_overlay_wrap ) {
+            $style_overlay_wrap = 'style="' . $style_overlay_wrap . '"';
+        }
         ?>
 
-        <div class="cn-callout__overlay_img" style="<?php echo $style_overlay_wrap; ?>"></div>
+        <div class="cn-callout__overlay_img" <?php echo $style_overlay_wrap; ?>></div>
 
     <?php endif; ?>
 

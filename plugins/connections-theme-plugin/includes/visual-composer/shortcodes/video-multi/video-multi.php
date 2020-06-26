@@ -25,17 +25,6 @@ class CN_Video_Multi extends CN_Base_Shortcode {
                 'value'       => cn_get_bg_vc_colors( 'title' ),
             ),
 
-            array(
-                'heading'     => esc_html__( 'Video alignment', 'connections' ),
-                'type'        => 'dropdown',
-                'param_name'  => 'video_align',
-                'value'       => array(
-                    esc_html__( 'Left', 'connections' )      => 'left',
-                    esc_html__( 'Right', 'connections' )     => 'right',
-                    esc_html__( 'Center', 'connections' )    => 'center',
-                ),
-            ),
-
 			array(
                 'type'        => 'textfield',
                 'heading'     => esc_html__( 'Title', 'js_composer' ),
@@ -65,12 +54,6 @@ class CN_Video_Multi extends CN_Base_Shortcode {
                     'value'     => 'true', 
                 ),
             ),
-            
-            array(
-                'heading'     => esc_html__( 'Body Copy', 'connections' ),
-                'type'        => 'textarea_html',
-                'param_name'  => 'content',
-			),
 			
 			array(
                 'type' 			=> 'param_group',
@@ -93,6 +76,18 @@ class CN_Video_Multi extends CN_Base_Shortcode {
 		                ),
 		            ),
                 ),
+            ),
+
+            array(
+                'heading'     => esc_html__( 'Body Copy', 'connections' ),
+                'type'        => 'textarea_html',
+                'param_name'  => 'content',
+            ),
+
+            array(
+                'heading'     => esc_html__( 'Button', 'connections' ),
+                'type'        => 'vc_link',
+                'param_name'  => 'link',
             ),
         );
         
