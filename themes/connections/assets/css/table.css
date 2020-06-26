@@ -8,6 +8,7 @@
 .cn-table__title-underline {
   border-bottom-style: solid;
   border-bottom-width: 2px;
+  line-height: 1.5em;
 }
 
 .cn-table__text {
@@ -29,6 +30,11 @@
   padding: 20px 10px;
   border: none !important;
   min-width: 100px;
+  color: #666666;
+  font-family: "Montserrat", sans-serif;
+}
+.cn-table__text table tr td:last-child {
+  border-left: 2px solid #e5ebf1 !important;
 }
 .cn-table__text .wpb_vc_table {
   margin-bottom: 20px;
