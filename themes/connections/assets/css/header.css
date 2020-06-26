@@ -13,7 +13,6 @@
 .cn-header__wrapp {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 15px;
   display: flex;
   justify-content: space-between;
 }
@@ -259,6 +258,7 @@
 }
 
 .cn-breadcrumbs {
+  font-family: "Lato", sans-serif;
   font-size: 22px;
   font-weight: 400;
   margin: 0 0 0 15px;
@@ -378,7 +378,7 @@
 .cn-header__nav {
   position: absolute;
   top: calc(100% + 0px);
-  left: 15px;
+  left: 0;
   width: 390px;
   max-width: 100%;
   -webkit-transform: translateX(-300%);
@@ -406,6 +406,7 @@
   font-weight: 400;
   font-style: normal;
   font-size: 18px;
+  font-family: "Lato", sans-serif;
   color: var(--primary_color_1);
 }
 .cn-header__nav ul li::after {
@@ -447,7 +448,7 @@
 .cn-header__sidebar {
   position: absolute;
   top: calc(100% + 0px);
-  right: 15px;
+  right: 0;
   width: 320px;
   max-width: 100%;
   height: 100vh;
