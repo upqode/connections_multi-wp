@@ -98,7 +98,6 @@ $nof_link    = ( ! empty( $link['rel'] ) ) ? 'rel="' . $link['rel'] .'"' : '';
         }
                     
         ?>
-        
     
     </div>
 

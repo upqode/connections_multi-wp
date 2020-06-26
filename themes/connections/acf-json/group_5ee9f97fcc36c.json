@@ -51,6 +51,25 @@
             "default_value": ""
         },
         {
+            "key": "field_5ef5c688659ad",
+            "label": "Color Title 1",
+            "name": "primary_color_title_1",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
             "key": "field_5eea243412e1e",
             "label": "Color 2",
             "name": "primary_color_2",
@@ -64,6 +83,25 @@
                 "id": ""
             },
             "default_value": ""
+        },
+        {
+            "key": "field_5ef5c6ae659ae",
+            "label": "Color Title 2",
+            "name": "primary_color_title_2",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
         },
         {
             "key": "field_5eea243e12e1f",
@@ -81,6 +119,25 @@
             "default_value": ""
         },
         {
+            "key": "field_5ef5c6c0659af",
+            "label": "Color Title 3",
+            "name": "primary_color_title_3",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
             "key": "field_5eea245012e20",
             "label": "Color 4",
             "name": "primary_color_4",
@@ -94,6 +151,25 @@
                 "id": ""
             },
             "default_value": ""
+        },
+        {
+            "key": "field_5ef5c6c3659b0",
+            "label": "Color Title 4",
+            "name": "primary_color_title_4",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
         },
         {
             "key": "field_5eea246d12e21",
@@ -111,6 +187,25 @@
             "default_value": ""
         },
         {
+            "key": "field_5ef5c6cf659b1",
+            "label": "Color Title 5",
+            "name": "primary_color_title_5",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
             "key": "field_5eecc400275eb",
             "label": "Color 6",
             "name": "primary_color_6",
@@ -124,6 +219,25 @@
                 "id": ""
             },
             "default_value": ""
+        },
+        {
+            "key": "field_5ef5c6d6659b2",
+            "label": "Color Title 6",
+            "name": "primary_color_title_6",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
         },
         {
             "key": "field_5eea24b012e23",
@@ -602,6 +716,40 @@
             "maxlength": ""
         },
         {
+            "key": "field_5ef5c8d0a4acd",
+            "label": "Color 7",
+            "name": "h_main_color_7",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": ""
+        },
+        {
+            "key": "field_5ef5c8eaa4ace",
+            "label": "Color title 7",
+            "name": "h_main_color_title_7",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
             "key": "field_5eebfe1866b7a",
             "label": "Paragraph colors",
             "name": "",
@@ -681,5 +829,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1592575174
+    "modified": 1593166116
 }

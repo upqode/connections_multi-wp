@@ -55,7 +55,7 @@ function conn_get_brightcove_source_code( $source_type, $user_id, $player_id, $s
 function conn_get_color_scheme( $echo = false ) {
 
     $colors = function_exists( 'cn_get_colors' ) ? cn_get_colors() : [];
-    $paragraph_colors = function_exists( 'cn_get_colors' ) ? cn_get_colors( 'p_main_color', 3 ) : [];
+    $paragraph_colors = function_exists( 'cn_get_colors' ) ? cn_get_colors( 'p_main_color', CN_P_COLORS ) : [];
 
     $colors = array_merge( $colors, $paragraph_colors );
 
@@ -83,7 +83,7 @@ function conn_get_color_scheme( $echo = false ) {
  */
 function conn_bg_colors_css() {
     
-    $colors = function_exists( 'cn_get_colors' ) ?  cn_get_colors( 'bg_main_color', 7 ) : [];
+    $colors = function_exists( 'cn_get_colors' ) ?  cn_get_colors( 'bg_main_color', CN_BG_COLORS ) : [];
     $css = '';
     $counter = 1;
 
@@ -104,7 +104,7 @@ function conn_bg_colors_css() {
  */
 function conn_text_colors_css() {
     
-    $colors = function_exists( 'cn_get_colors' ) ?  cn_get_colors( 'h_main_color', 6 ) : [];
+    $colors = function_exists( 'cn_get_colors' ) ?  cn_get_colors( 'h_main_color', CN_H_COLORS ) : [];
     $css = '';
 
     foreach ( $colors as $key => $color ) {
@@ -123,7 +123,7 @@ function conn_text_colors_css() {
  */
 function conn_border_colors_css() {
     
-    $colors = function_exists( 'cn_get_colors' ) ?  cn_get_colors( 'primary_color', 6 ) : [];
+    $colors = function_exists( 'cn_get_colors' ) ?  cn_get_colors( 'primary_color', CN_PRIMARY_COLORS ) : [];
     $css = '';
 
     foreach ( $colors as $key => $color ) {
