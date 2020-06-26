@@ -60,6 +60,7 @@ class ConnectionsThemePlugin {
                 'banner',
                 'sheet',
                 'table',
+                'callout',
                 'video-multi',
                 'next-back-links',
                 'featured-links',

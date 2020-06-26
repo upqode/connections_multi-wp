@@ -99,7 +99,6 @@ class CN_Content_Block extends CN_Base_Shortcode {
                 'value'       => array(
                     esc_html__( 'Left',  'connections' )    => 'left',
                     esc_html__( 'Right', 'connections' )    => 'right',
-                    esc_html__( 'Full', 'connections' )     => 'full',
                 ),
                 'dependency' => array(
                     'element'               => 'content_layout_width',
