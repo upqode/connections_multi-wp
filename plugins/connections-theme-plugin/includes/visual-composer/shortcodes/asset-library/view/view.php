@@ -43,7 +43,7 @@ $terms = get_terms( $args );
 
                         if ( ! empty( $term->name ) ) : ?>
                             <li class="cn-asset-library__nav-item">
-                                <a href="#<?php echo esc_html( $term->term_id ); ?>" class="ch-btn js-scroll-anchor <?php echo esc_attr( $active ); ?>">
+                                <a href="#term_<?php echo esc_html( $term->term_id ); ?>" class="ch-btn js-scroll-anchor <?php echo esc_attr( $active ); ?>">
                                     <?php echo esc_html( $term->name ); ?>
                                 </a>
                             </li>
@@ -59,7 +59,7 @@ $terms = get_terms( $args );
             <div class="cn-asset-library__col cn-asset-library__col--right">
 
                 <?php foreach ( $terms as $key => $term ) : ?>
-                    <div id="<?php echo esc_html( $term->term_id ); ?>" class="cn-asset-library__item cn-asset-block js-asset-block">
+                    <div id="term_<?php echo esc_html( $term->term_id ); ?>" class="cn-asset-library__item">
                         
                         <?php if ( ! empty( $term->name ) ) :
                             printf( '<%1$s class="ch-asset__title ' . esc_attr( $title_color ) . '">%2$s</%1$s>', $title_tag, $term->name );

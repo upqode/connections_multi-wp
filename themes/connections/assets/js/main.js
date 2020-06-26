@@ -16,6 +16,29 @@
     let connectionsData = ( typeof connections_data == 'object' ) ? connections_data : {};
 
     /* ------------------------------------------- */
+    /* LAZY LOAD IFRAME */
+    /* ------------------------------------------- */
+    function lazyLoadIframe( $asset ) {
+
+        if ( ! $asset.hasClass('html-init') ) {
+            var $iframe = $('<iframe/>', {
+                src : $asset.attr('data-src'),
+            });
+            $asset.addClass( 'html-init' );
+        }
+        
+        if ( typeof $iframe !== typeof undefined ) {
+            $iframe.addClass( $asset.attr('data-class') );
+
+            if ( $asset.hasClass( 'wonderplugin-pdf-iframe' ) ) {
+                $iframe.addClass( 'wonderplugin-pdf-iframe' );
+            }
+
+            $asset.before( $iframe ).hide();
+        }
+    }
+
+    /* ------------------------------------------- */
     /* Load mp3 */
     /* ------------------------------------------- */
 

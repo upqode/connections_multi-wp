@@ -3,38 +3,48 @@
  * Template part for asset block
  */
 
-    global $brightcove_user_id, $brightcove_player_id;
+if ( ! function_exists( 'get_field' ) )
+    return;
 
-    $asset_item_wrap_class = '';
-    $asset_id           = isset( $asset_id ) ? $asset_id : get_the_ID();
-    $asset_type         = get_post_meta( $asset_id, 'asset_type', true );
-    $unique_section_id  = $asset_id . '-' . rand( 0, 999 );
-    $alt_title          = get_post_meta( $asset_id, 'asset_alt_title', true ) ?: get_the_title();
+global $brightcove_user_id, $brightcove_player_id;
 
-    $asset_icon_id      = get_post_meta( $asset_id, 'asset_icon', true );
-    $asset_icon_url     = ( ! empty( $asset_icon_id ) ) ? wp_get_attachment_image_url( $asset_icon_id, 'full' ) : '';
+$asset_item_wrap_class = '';
+$asset_id           = isset( $asset_id ) ? $asset_id : get_the_ID();
+$asset_type         = get_post_meta( $asset_id, 'asset_type', true );
+$unique_section_id  = $asset_id . '-' . rand( 0, 999 );
+$alt_title          = get_post_meta( $asset_id, 'asset_alt_title', true ) ?: get_the_title();
+$asset_icons        = get_field( 'asset_icons', 'option' );
 
-    $asset_item_class   = '';
+$asset_icon_url     = isset( $asset_icons[ $asset_type ] ) ? $asset_icons[ $asset_type ] : '';
 
-    if ( $asset_type != 'audio' ) {
-        $asset_item_class   .= ' js-popup';
-    }
+$asset_icon_id      = get_post_meta( $asset_id, 'asset_icon', true );
 
-    if ( $asset_type == 'audio' || $asset_type == 'video' ) {
-        $asset_item_class   .= ' js-item-BC';
-    }
+if ( $asset_icon_id ) {
+    $asset_icon_url =  wp_get_attachment_image_url( $asset_icon_id, 'full' );
+}
 
-    if ( $asset_type == 'html' ) {
-        $asset_item_class   .= ' js-item-html';
-    }
+$asset_item_class   = '';
 
-    $asset_fa_icon  = get_post_meta( $asset_id, 'asset_fa_icon', true );
+if ( $asset_type != 'audio' ) {
+    $asset_item_class   .= ' js-popup';
+}
 
-    $asset_item_wrap_class .= ( $asset_type == 'audio' ) ? ' js-audio-asset' : '';
+if ( $asset_type == 'audio' || $asset_type == 'video' ) {
+    $asset_item_class   .= ' js-item-BC';
+}
 
-    if ( ! empty( $title_color_item ) ) {
-        $asset_item_wrap_class .= " $title_color_item";
-    }
+if ( $asset_type == 'html' ) {
+    $asset_item_class   .= ' js-item-html';
+}
+
+// TO DO DELETE
+// $asset_fa_icon  = get_post_meta( $asset_id, 'asset_fa_icon', true );
+
+$asset_item_wrap_class .= ( $asset_type == 'audio' ) ? ' js-audio-asset' : '';
+
+if ( ! empty( $title_color_item ) ) {
+    $asset_item_wrap_class .= " $title_color_item";
+}
 ?>
 
 <div class="cn-asset__item js-glossary-item--icon <?php echo $asset_item_wrap_class; ?>">
@@ -43,14 +53,21 @@
     
     <div class="cn-asset-item">
         <div class="cn-asset-item__image">
-            <?php if ( ! empty( $asset_fa_icon ) ) : ?>
+            <?php
+            /*
+            TO DO DELETE
+            if ( ! empty( $asset_fa_icon ) ) : ?>
                <i class="fa <?php echo $asset_fa_icon;  ?>"></i>
-             <?php elseif ( ! empty( $asset_icon_url ) ) : ?>
+             <?php */
+             if ( ! empty( $asset_icon_url ) ) : ?>
                 <img src="<?php echo $asset_icon_url; ?>" alt="icon">
             <?php endif;
+            
+            /* 
+            TO DO DELETE
             if ( $asset_type == 'audio' ) : ?>
-                <!-- <i class="fa fa-play cn-asset-item__icon-state" aria-hidden="true"></i> -->
-            <?php endif; ?>
+                <i class="fa fa-play cn-asset-item__icon-state" aria-hidden="true"></i>
+            <?php endif; */ ?>
         </div>
 
         <?php if ( $alt_title ) : ?>
