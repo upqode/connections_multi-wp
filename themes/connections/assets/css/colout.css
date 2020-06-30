@@ -1,0 +1,48 @@
+.cn-callout {
+  background-size: cover;
+  background-position: center;
+  padding: 100px 15px;
+  position: relative;
+}
+
+@media screen and (max-width: 767px) {
+  .cn-callout {
+    padding: 50px 15px;
+  }
+}
+.cn-callout__overlay_img {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  height: 100%;
+  background-repeat: round no-repeat;
+  background-size: contain;
+  background-position: bottom left;
+  z-index: 1;
+}
+
+@media screen and (max-width: 767px) {
+  .cn-callout__overlay_img {
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}
+.cn-callout__title {
+  position: relative;
+  font-family: "Lato", sans-serif;
+  font-weight: 200;
+  font-style: italic;
+  text-align: center;
+  margin: 0;
+  z-index: 2;
+}
+
+.cn-callout__subtitle {
+  position: relative;
+  margin: 10px 0 0;
+  text-align: center;
+  z-index: 2;
+}
+
+/*# sourceMappingURL=colout.css.map */
