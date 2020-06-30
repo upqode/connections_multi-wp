@@ -28,7 +28,7 @@ if ( $style_wrap ) {
 
 // Title
 $class_title = isset( $title_color ) ? " $title_color" : '';
-$class_title .= ( $underline_title && $underline_color ) ? " border_{$underline_color}" : '';
+$class_title .= ( $underline_title && $underline_color ) ? " border_{$underline_color} cn-featured-links__title-underline" : '';
 
 $col_classes = [
     1 => ' col-12',
@@ -105,13 +105,13 @@ $col_classes = [
                     <?php endif; ?>
 
                     <?php if ( ! empty( $item['content'] ) ) : ?>
-                        <div class="text <?php echo esc_attr( $content_class ); ?>">
+                        <p class="text <?php echo esc_attr( $content_class ); ?>">
                             <?php echo wp_kses_post( $item['content'] ); ?>
-                        </div>
+                        </p>
                     <?php endif; ?>
                     
                     <?php if ( $item['type_link'] == 'asset_library' && ! empty( $asset_id ) ) : ?>
-                        <a href="#<?php echo $unique_id; ?>" class="<?php echo esc_attr( $asset_link_class ); ?>">
+                        <a href="#<?php echo $unique_id; ?>" class="<?php echo esc_attr( $btn_class ); ?> <?php echo esc_attr( $asset_link_class ); ?>">
                             <?php echo ( $item['title_link'] ) ? $item['title_link'] : __( 'Open Asset', 'connections' ); ?>
                         </a>
                     <?php else :

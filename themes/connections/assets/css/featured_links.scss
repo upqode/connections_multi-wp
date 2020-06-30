@@ -1,0 +1,130 @@
+.cn-featured-links{
+  padding: 15px;
+  background-size: cover;
+}
+.cn-featured-links__title{
+  margin: 0;
+  line-height: 1.5em;
+  &-underline{
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+  }
+}
+.cn-featured-links__subtitle{
+  margin: 15px 0 0;
+  font-weight: 400;
+  font-family: 'Lato', sans-serif;
+}
+.cn-featured-links__text{
+  font-family:  'Montserrat', sans-serif;
+  font-weight: 200;
+
+}
+
+.cn-featured-links__items{
+  display: flex;
+  flex-wrap: wrap;
+  .col-12 {
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin: 0 0 20px;
+  }
+  .col-6 {
+    -ms-flex: 0 0 48%;
+    flex: 0 0 48%;
+    max-width: 48%;
+    margin: 0 1% 20px;
+  }
+  .col-4 {
+    -ms-flex: 0 0 31%;
+    flex: 0 0 31%;
+    max-width: 31%;
+    margin: 0 1.1% 20px;
+  }
+  .col-3 {
+    -ms-flex: 0 0 23%;
+    flex: 0 0 23%;
+    max-width: 23%;
+    margin: 0 1% 20px;
+  }
+}
+.cn-featured-links__items__item {
+  box-sizing: border-box;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 15px;
+  padding: 30px 15px;
+  .title{
+    margin: 0;
+    font-size: 28px;
+    text-align: center;
+  }
+  .text{
+    margin: 20px 0 0;
+  }
+  a{
+    font-family:  'Montserrat', sans-serif;
+    font-weight: 200;
+    font-style: normal;
+    font-size: 20px;
+    text-align: center;
+    padding: 10px 40px;
+    display: table;
+    margin: 20px auto 0;
+    text-decoration: none;
+    transition: 0.5s;
+    &:visited{
+      color: var(--primary_color_6);
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .cn-featured-links__items{
+    .col-6 {
+      -ms-flex: 0 0 100%;
+      flex: 0 0 100%;
+      max-width: 100%;
+      margin: 0 0 20px;
+    }
+    .col-4 {
+      -ms-flex: 0 0 48%;
+      flex: 0 0 48%;
+      max-width: 48%;
+      margin: 0 1% 20px;
+    }
+    .col-3 {
+      -ms-flex: 0 0 31%;
+      flex: 0 0 31%;
+      max-width: 31%;
+      margin: 0 1.1% 20px;
+    }
+  }
+}
+@media screen and (max-width: 991px) {
+  .cn-featured-links__items{
+    .col-4 {
+      -ms-flex: 0 0 100%;
+      flex: 0 0 100%;
+      max-width: 100%;
+      margin: 0 0 20px;
+    }
+    .col-3 {
+      -ms-flex: 0 0 48%;
+      flex: 0 0 48%;
+      max-width: 48%;
+      margin: 0 1% 20px;
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .cn-featured-links__items{
+    .col-3 {
+      -ms-flex: 0 0 100%;
+      flex: 0 0 100%;
+      max-width: 100%;
+      margin: 0 0 20px;
+    }
+  }
+}
