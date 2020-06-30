@@ -426,6 +426,7 @@ i.fa.fa-book {
       font-weight: 400;
       font-style: normal;
       font-size: 18px;
+      list-style: none;
       font-family: 'Lato', sans-serif;
       color: var(--primary_color_1);
 
@@ -598,6 +599,7 @@ i.fa.fa-book {
   position: relative;
   padding-top: 10px;
   padding-bottom: 10px;
+  min-height: 50px;
 }
 
 .cn-header li.clone-menu-item span {
