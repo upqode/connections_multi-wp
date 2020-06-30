@@ -31,6 +31,7 @@
   font-weight: 400;
   text-transform: uppercase;
   background-color: #FF0000;
+  color: #333333;
 }
 
 .cn-sheet__header {
@@ -125,6 +126,7 @@
 
 .cn-sheet__content p {
   color: #333333;
+  font-family: "ArialMT", sans-serif;
 }
 
 .cn-sheet__content h1, .cn-sheet__content h2, .cn-sheet__content h3, .cn-sheet__content h4, .cn-sheet__content h5, .cn-sheet__content h6 {

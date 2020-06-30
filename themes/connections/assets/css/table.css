@@ -9,6 +9,7 @@
   border-bottom-style: solid;
   border-bottom-width: 2px;
   line-height: 1.5em;
+  border-color: var(--primary_color_5);
 }
 
 .cn-table__text {
