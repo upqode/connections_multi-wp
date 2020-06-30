@@ -663,6 +663,9 @@ i.fa.fa-book.fa-close {
   -ms-flex-negative: 0;
   flex-shrink: 0;
 }
+.cn-glossary-item__audio-box span {
+  display: flex;
+}
 
 .cn-glossary-item__title {
   margin-bottom: 0;
@@ -707,6 +710,18 @@ i.fa.fa-book.fa-close {
   font-size: 28px;
 }
 
+.cn-glossary-item .cn-btn-icon.player-init audio {
+  width: 0;
+}
+
+.cn-glossary-item .cn-btn-icon.player-init .fa {
+  font-size: 28px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .cn-glossary-item .cn-btn-icon.player-init .fa:before {
   content: "";
   vertical-align: middle;
