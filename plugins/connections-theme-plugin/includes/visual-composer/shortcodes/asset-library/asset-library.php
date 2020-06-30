@@ -31,11 +31,27 @@ class CN_Asset_Library extends CN_Base_Shortcode {
                     esc_html__( 'H6', 'connections' ) => 'h6',
                 )
             ),
+			array(
+                'heading' 	  => esc_html__( 'Columns', 'connections' ),
+                'type' 		  => 'dropdown',
+                'param_name'  => 'columns',
+                'value' 	  => array(
+                    esc_html__( 'Column 2', 'connections' ) => 'cn-asset__row-2',
+                    esc_html__( 'Column 3', 'connections' ) => 'cn-asset__row-3',
+                    esc_html__( 'Column 4', 'connections' ) => 'cn-asset__row-4',
+                )
+            ),
 	        array(
 		        'heading'     => esc_html__( 'Title Color', 'connections' ),
 		        'type'        => 'dropdown',
 		        'param_name'  => 'title_color',
 		        'value'       => cn_get_heading_vc_colors( 'title' ),
+            ),
+	        array(
+		        'heading'     => esc_html__( 'Background Color', 'connections' ),
+		        'type'        => 'dropdown',
+		        'param_name'  => 'bg_color',
+		        'value'       => cn_get_bg_vc_colors( 'title' ),
             ),
 
             array(
@@ -103,6 +119,16 @@ class CN_Asset_Library extends CN_Base_Shortcode {
                 'type'        => 'checkbox',
                 'param_name'  => 'fixed_nav',
             ),
+
+			array(
+				'heading' 	  => esc_html__( 'Button', 'connections' ),
+				'type' 		  => 'vc_link',
+				'param_name'  => 'link',
+				'dependency' => array(
+					'element'   => 'type_link',
+					'value'     => 'custom',
+				),
+			),
         );
 
         $this->add_extras();

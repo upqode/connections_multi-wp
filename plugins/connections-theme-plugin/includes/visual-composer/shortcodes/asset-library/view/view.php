@@ -8,7 +8,7 @@ extract( $atts );
 
 $class = ! empty( $el_class ) ? $el_class : '';
 $class .= vc_shortcode_custom_css_class( $class );
-$class .= ( ! empty( $fixed_nav ) ) ? ' js-sidebar-wrapp' : '';
+$class .= ( ! empty( $fixed_nav ) ) ? ' js-sidebar-wrapp cn-asset-library__nav-col ' : '';
 
 $el_id = ( ! empty( $el_id ) ) ? 'id="' . esc_attr( $el_id ) . '"' : '';
 
@@ -17,11 +17,13 @@ $responsive_classes = cn_create_responsive_classes( $atts );
 if ( ! empty( $responsive_classes ) ) {
     $class .= $responsive_classes;
 }
-
+$class .= " {$bg_color}";
 // Title class
 $title_class  = '';
+$row_class  = '';
 $title_class .= ( $title_color ) ? " {$title_color}" : '';
-$title_class .= ( $underline_title && $underline_color ) ? " border_{$underline_color}" : '';
+$title_class .= ( $underline_title && $underline_color ) ? " border_{$underline_color}  cn-table__title-underline" : '';
+$row_class .= ( $columns && $columns ) ? " {$columns}" : '';
 
 // Select CPT Items
 $taxonomy = 'cn-asset-category';
@@ -95,7 +97,7 @@ $terms = get_terms( $args );
 
                         if ( $assets->have_posts() ) : ?>
 
-                            <div class="cn-asset__row">
+                            <div class="cn-asset__row <?php echo esc_attr($row_class);?>">
 
                                 <?php while ( $assets->have_posts() ) : $assets->the_post(); 
 
@@ -116,8 +118,15 @@ $terms = get_terms( $args );
 
                     </div>
 
-                <?php endforeach; ?>
-
+                <?php endforeach;
+				$link = vc_build_link( $link );
+				if ( ! empty( $link['title'] ) && ! empty( $link['url'] ) ) :
+				$link_target = ( ! empty( $link['target'] ) ) ? 'target="' . $link['target'] . '"' : '';
+				$nof_link = ( ! empty( $link['rel'] ) ) ? 'rel="' . $link['rel'] .'"' : ''; ?>
+				<a href="<?php echo $link['url']; ?>" class="cn-asset__link" <?php echo $link_target, $nof_link; ?>>
+					<?php echo esc_html( $link['title'] ); ?>
+				</a>
+				<?php endif;?>
             </div>
 
         </div>

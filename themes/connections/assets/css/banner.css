@@ -16,10 +16,16 @@
   height: 33vh;
   padding: 30px 15px;
 }
+.cn-banner-height--33 .cn-banner__overlay_img {
+  background-size: cover;
+}
 
 .cn-banner-height--25 {
   height: 25vh;
   padding: 20px 15px;
+}
+.cn-banner-height--25 .cn-banner__overlay_img {
+  background-size: cover;
 }
 
 @media screen and (max-width: 767px) {

@@ -19,7 +19,7 @@ $class .= " {$bg_color}";
 
 // Title
 $class_title = isset( $title_color ) ? ' ' . $title_color : '';
-$class_title .= ( $title_underline ) ? ' border_main_color_7 cn-table__title-underline ' : '';
+$class_title .= ( $title_underline && $underline_color ) ? " border_{$underline_color} cn-table__title-underline" : '';
 $class_title .=  ' cn-table__title ';
 
 // Link

@@ -58,7 +58,16 @@ class CN_Table extends CN_Base_Shortcode {
                 'type'        => 'checkbox',
                 'param_name'  => 'title_underline',
             ),
-
+			array(
+				'heading'     => esc_html__( 'Underline Color', 'connections' ),
+				'type'        => 'dropdown',
+				'param_name'  => 'underline_color',
+				'value'       => cn_get_border_vc_colors( 'title' ),
+				'dependency'  => array(
+					'element'   => 'underline_title',
+					'value'     => 'true',
+				),
+			),
             array(
                 'heading' 	  => esc_html__( 'Link', 'connections' ),
                 'type' 		  => 'vc_link',

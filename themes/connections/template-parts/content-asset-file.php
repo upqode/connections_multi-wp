@@ -43,7 +43,7 @@ $asset_item_wrap_class .= ( $asset_type == 'audio' ) ? ' js-audio-asset' : '';
 
 <div class="cn-asset__item <?php echo $asset_item_wrap_class; ?>">
     
-    <a href="#library-<?php echo esc_attr( $unique_section_id ); ?>" class="cn-asset-item__link <?php echo esc_attr( $asset_item_class); ?>">test text</a>
+    <a href="#library-<?php echo esc_attr( $unique_section_id ); ?>" class="cn-asset-item__link <?php echo esc_attr( $asset_item_class); ?>"></a>
     
     <div class="cn-asset-item">
         <div class="cn-asset-item__image">
@@ -59,7 +59,7 @@ $asset_item_wrap_class .= ( $asset_type == 'audio' ) ? ' js-audio-asset' : '';
         </div>
 
         <?php if ( $alt_title ) : ?>
-            <div class="cn-asset-item__bottom cn-txt-center">
+            <div class="cn-asset-item__bottom text-center">
                 <h5 class="cn-asset-item__title"><?php echo esc_html( $alt_title ); ?></h5>
             </div>
         <?php endif; ?>
