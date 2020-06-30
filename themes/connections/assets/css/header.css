@@ -706,9 +706,6 @@ i.fa.fa-book.fa-close {
   font-size: 40px;
   color: var(--primary_color_2);
 }
-.cn-glossary-item .cn-btn-icon .fa.fa-spin {
-  font-size: 28px;
-}
 
 .cn-glossary-item .cn-btn-icon.player-init audio {
   width: 0;
