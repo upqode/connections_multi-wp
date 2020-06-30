@@ -10,7 +10,7 @@
  defined( 'CN_THEME_PATH' ) or define( 'CN_THEME_PATH', get_template_directory() );
  defined( 'CN_THEME_URI' ) or define( 'CN_THEME_URI', get_template_directory_uri() );
  defined( 'CN_PRIMARY_COLORS' ) or define( 'CN_PRIMARY_COLORS', 6 );
- defined( 'CN_BG_COLORS' ) or define( 'CN_BG_COLORS', 7 );
+ defined( 'CN_BG_COLORS' ) or define( 'CN_BG_COLORS', 2 );
  defined( 'CN_H_COLORS' ) or define( 'CN_H_COLORS', 7 );
  defined( 'CN_P_COLORS' ) or define( 'CN_P_COLORS', 3 );
 

@@ -58,6 +58,12 @@ $col_classes = [
     <?php if ( ! empty( $items ) ) : ?>
         <div class="cn-featured-links__items">
             <?php foreach ( $items as $item ) :
+
+                $asset_id = isset( $item['asset'] ) ? $item['asset'] : 0;
+                $unique_id  = "asset_{$asset_id}_" . rand( 0, 99 );
+                $asset_type = get_field( 'asset_type', $asset_id );
+
+                // Item ID
                 $el_item_id = ( ! empty( $item['el_id'] ) ) ? 'id="' . esc_attr( $item['el_id'] ) . '"' : '';
                 
                 // Item Class
@@ -77,8 +83,14 @@ $col_classes = [
                 
                 // Button class
                 $btn_class = '';
-                $btn_class .= isset( $item['btn_bg_color'] ) ? " {$item['btn_bg_color']}" : '';
-                $btn_class .= isset( $item['btn_text_color'] ) ? " {$item['btn_text_color']}" : '';
+                $btn_class .= ( ! empty( $item['btn_bg_color'] ) ) ? " {$item['btn_bg_color']}" : '';
+                $btn_class .= ( ! empty( $item['btn_text_color'] ) ) ? " {$item['btn_text_color']}" : '';
+
+                // Asset link class
+                $asset_link_class = '';
+                $asset_link_class .= ( $asset_type == 'audio' ) ? 'js-item-BC' : 'js-popup';
+                $asset_link_class .= ( $asset_type == 'video' ) ? ' js-item-BC' : '';
+                $asset_link_class .= ( $asset_type == 'html' ) ? ' js-item-html' : '';
 
                 $link = isset( $item['link'] ) ? vc_build_link( $item['link'] ) : [];
                 $link_target = ( ! empty( $link['target'] ) ) ? 'target="' . $link['target'] . '"' : '';
@@ -98,11 +110,21 @@ $col_classes = [
                         </div>
                     <?php endif; ?>
                     
-                    <?php if ( ! empty( $link['title'] ) && ! empty( $link['url'] ) ) : ?>
-                        <a href="<?php echo $link['url']; ?>" class="<?php echo esc_attr( $btn_class ); ?>">
-                            <?php echo esc_html( $link['title'] ); ?>
+                    <?php if ( $item['type_link'] == 'asset_library' && ! empty( $asset_id ) ) : ?>
+                        <a href="#<?php echo $unique_id; ?>" class="<?php echo esc_attr( $asset_link_class ); ?>">
+                            <?php echo ( $item['title_link'] ) ? $item['title_link'] : __( 'Open Asset', 'connections' ); ?>
                         </a>
-                    <?php endif; ?>
+                    <?php else :
+                        if ( ! empty( $link['title'] ) && ! empty( $link['url'] ) ) :
+                            $link_target = ( ! empty( $link['target'] ) ) ? 'target="' . $link['target'] . '"' : '';
+                            $nof_link = ( ! empty( $link['rel'] ) ) ? 'rel="' . $link['rel'] .'"' : ''; ?>
+                            <a href="<?php echo $link['url']; ?>" class="<?php echo esc_attr( $btn_class ); ?>" <?php echo $link_target, $nof_link; ?>>
+                                <?php echo esc_html( $link['title'] ); ?>
+                            </a>
+                    <?php endif;
+                    endif; ?>
+
+                    <?php conn_asset_popup( $asset_id, $unique_id ); ?>
 
                 </div>
             <?php endforeach; ?>

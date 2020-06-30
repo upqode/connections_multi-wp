@@ -82,15 +82,24 @@ function conn_get_color_scheme( $echo = false ) {
  * @return string
  */
 function conn_bg_colors_css() {
+
+    if ( ! function_exists( 'cn_get_colors' ) )
+        return '';
     
-    $colors = function_exists( 'cn_get_colors' ) ?  cn_get_colors( 'bg_main_color', CN_BG_COLORS ) : [];
+    $primary_colors = cn_get_colors( 'primary_color', CN_PRIMARY_COLORS ) ?: [];
+    $colors = cn_get_colors( 'bg_main_color', CN_BG_COLORS ) ?: [];
+    $colors = array_merge( $primary_colors, $colors );
+
     $css = '';
     $counter = 1;
 
     foreach ( $colors as $key => $color ) {
+
         if ( $color ) {
-            $css .= sprintf( '.%s{ background-color: %s }', $key, $color );
-            $css .= sprintf( '.border_main_color_%s{ border-color: %s }', $counter, $color );
+            $key_color = "bg_main_color_{$counter}";
+            $css .= sprintf( '.%s{ background-color: %s }', $key_color, $color );
+            // TO DO DELETE
+            // $css .= sprintf( '.border_main_color_%s{ border-color: %s }', $counter, $color );
             $counter++;
         }
     }
@@ -104,7 +113,9 @@ function conn_bg_colors_css() {
  */
 function conn_text_colors_css() {
     
-    $colors = function_exists( 'cn_get_colors' ) ?  cn_get_colors( 'h_main_color', CN_H_COLORS ) : [];
+    // TO DO DELETE
+    // $colors = function_exists( 'cn_get_colors' ) ?  cn_get_colors( 'h_main_color', CN_H_COLORS ) : [];
+    $colors = function_exists( 'cn_get_colors' ) ?  cn_get_colors( 'primary_color', CN_PRIMARY_COLORS ) : [];
     $css = '';
 
     foreach ( $colors as $key => $color ) {
@@ -278,4 +289,36 @@ function conn_get_unzip_files( $path, $expansion_file = 'html', $file_name = '*'
         $files[] = $uri_path_file . '/'. basename( $file );
     }
     return $files;
+}
+
+/**
+ * Asset popup
+ *  
+ * @param int|string $asset_id
+ * @param string $popup_id
+ * 
+ * @return null
+ */
+function conn_asset_popup( $asset_id, $popup_id ) {
+
+    global $brightcove_user_id, $brightcove_player_id;
+
+    if ( $asset_id ) :
+
+        $asset_type = get_field( 'asset_type', $asset_id );
+                        
+        // $asset_key  = ( $asset_type == 'html' ) ? 'asset_zip' : "asset_{$asset_type}";
+        $asset_data = get_field( "asset_{$asset_type}", $asset_id );
+        
+        $popup_class = '';
+        $popup_class .= "asset-{$asset_type}";
+        $popup_class .= " asset-{$asset_id}";
+        ?>
+
+        <div id="<?php echo $popup_id; ?>" class="white-popup-block mfp-hide <?php echo esc_attr( $popup_class ); ?>">
+            <?php include locate_template( 'template-parts/content-asset-popup.php' ); ?>
+        </div>
+
+    <?php endif;
+
 }

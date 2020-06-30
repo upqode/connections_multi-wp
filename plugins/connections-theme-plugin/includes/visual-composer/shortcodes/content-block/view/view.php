@@ -2,6 +2,10 @@
 /**
  * Return html shortcode.
  */
+global $brightcove_user_id, $brightcove_player_id;
+
+if ( ! function_exists( 'get_field' ) )
+    return;
 
 extract( $atts );
 
@@ -18,7 +22,7 @@ if ( ! empty( $responsive_classes ) ) {
 }
 
 $title_class = " $title_color";
-$title_class .= ( $underline_title ) ? " border_{$underline_color}" : '';
+$title_class .= ( $underline_title && $underline_color ) ? " border_{$underline_color}" : '';
 
 $layout_classes = [
     'content' => [
@@ -27,7 +31,7 @@ $layout_classes = [
         '75'  => 'col-9',
         '25'  => 'col-3',
     ],
-    'image'   => [
+    'media'   => [
         '100' => 'col-12',
         '50'  => 'col-6',
         '75'  => 'col-3',
@@ -36,8 +40,9 @@ $layout_classes = [
 ];
 
 $content_class = isset( $layout_classes['content'][ $content_layout_width ] ) ? $layout_classes['content'][ $content_layout_width ] : '';
-$img_class = isset( $layout_classes['image'][ $content_layout_width ] ) ? " {$layout_classes['image'][ $content_layout_width ]}" : '';
-$img_class .= " {$type_image}";
+
+$media_wrap_class = isset( $layout_classes['media'][ $content_layout_width ] ) ? " {$layout_classes['media'][ $content_layout_width ]}" : '';
+$media_wrap_class .= " {$type_image}";
 
 $link = vc_build_link( $btn_link );
 $link_target = ( ! empty( $link['target'] ) ) ? 'target="' . $link['target'] . '"' : '';
@@ -57,12 +62,22 @@ $nof_link    = ( ! empty( $link['rel'] ) ) ? 'rel="' . $link['rel'] .'"' : '';
     
         <?php 
         ob_start();
-        if ( $image ) : ?>
-            <div class="img-block <?php echo esc_attr( $img_class ); ?>">
-                <img src="<?php echo wp_get_attachment_image_url( $image ); ?>" alt="content-block-image">
-            </div>    
-        <?php endif;
-        $img_block = ob_get_clean(); ?>
+        if ( $media_type == 'video_type' ) :
+            $video_id = ( $media_type == 'video_type' ) ? get_field( 'asset_video', $asset_video_id ) : 0;
+            $aspect_ratio = get_field( 'aspect_ratio', $asset_video_id );
+            if ( $video_id ) : ?>
+                <div class="media-block <?php echo esc_attr( $media_wrap_class ); ?>">
+                    <?php conn_get_brightcove_source_code( 'video', $brightcove_user_id, $brightcove_player_id, $video_id, 'library-' . get_the_ID(), '', $aspect_ratio, false ); ?>
+                </div>    
+            <?php endif;
+        else :
+            if ( $image ) : ?>
+                <div class="media-block <?php echo esc_attr( $media_wrap_class ); ?>">
+                    <img src="<?php echo wp_get_attachment_image_url( $image ); ?>" alt="content-block-image">
+                </div>    
+            <?php endif;
+        endif;
+        $media_block = ob_get_clean(); ?>
 
         <?php ob_start(); ?>
 
@@ -88,12 +103,12 @@ $nof_link    = ( ! empty( $link['rel'] ) ) ? 'rel="' . $link['rel'] .'"' : '';
         <?php
 
         if ( $content_layout_width == '100' ) {
-            echo $img_block, $content_block;
+            echo $media_block, $content_block;
         } else {
-            if ( $align_img == 'right' ) {
-                echo $content_block, $img_block;
+            if ( $media_align == 'right' ) {
+                echo $content_block, $media_block;
             } else {
-                echo $img_block, $content_block;
+                echo $media_block, $content_block;
             }
         }
                     

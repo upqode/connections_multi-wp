@@ -136,3 +136,29 @@ function conn_unzip_asset( $asset_id ) {
 }
 
 add_action( 'save_post_cn-asset', 'conn_unzip_asset' );
+
+
+/**
+ * Add iFrame to allowed wp_kses_post tags
+ *
+ * @param array  $tags Allowed tags, attributes, and/or entities.
+ * @param string $context Context to judge allowed tags by. Allowed values are 'post'.
+ *
+ * @return array
+ */
+function conn_wpkses_post_tags( $tags, $context ) {
+
+	if ( 'post' === $context ) {
+		$tags['iframe'] = array(
+			'src'             => true,
+			'height'          => true,
+			'width'           => true,
+			'frameborder'     => true,
+			'allowfullscreen' => true,
+		);
+	}
+
+	return $tags;
+}
+
+add_filter( 'wp_kses_allowed_html', 'conn_wpkses_post_tags', 10, 2 );

@@ -77,11 +77,27 @@ class CN_Content_Block extends CN_Base_Shortcode {
                 'type'        => 'textarea_html',
                 'param_name'  => 'content',
             ),
+
+            array(
+                'heading'     => esc_html__( 'Media Type', 'creon' ),
+                'type'        => 'dropdown',
+                'param_name'  => 'media_type',
+                'value'       => array(
+                    esc_html__( 'Image',  'creon' )   => 'image_type',
+                    esc_html__( 'Video',  'creon' )   => 'video_type',
+                ),
+            ),
+
             array(
                 'heading'     => esc_html__( 'Image', 'connections' ),
                 'type'        => 'attach_image',
                 'param_name'  => 'image',
+                'dependency' => array(
+                    'element'  => 'media_type',
+                    'value'    => 'image_type',
+                ),
             ),
+
             array(
                 'heading'     => esc_html__( 'Type Image', 'creon' ),
                 'type'        => 'dropdown',
@@ -90,12 +106,27 @@ class CN_Content_Block extends CN_Base_Shortcode {
                     esc_html__( 'Default', 'creon' )       => '',
                     esc_html__( 'Round',  'creon' )        => 'img-round',
                 ),
+                'dependency' => array(
+                    'element'  => 'media_type',
+                    'value'    => 'image_type',
+                ),
             ),
 
             array(
-                'heading'     => esc_html__( 'Image align block', 'connections' ),
+                'heading'     => esc_html__( 'Asset Video Lists', 'creon' ),
                 'type'        => 'dropdown',
-                'param_name'  => 'align_img',
+                'param_name'  => 'asset_video_id',
+                'value'       => cn_get_asset_posts( true, 'video' ),
+                'dependency'  => array(
+                    'element'   => 'media_type',
+                    'value'     => 'video_type',
+                ),
+            ),
+
+            array(
+                'heading'     => esc_html__( 'Media align block', 'connections' ),
+                'type'        => 'dropdown',
+                'param_name'  => 'media_align',
                 'value'       => array(
                     esc_html__( 'Left',  'connections' )    => 'left',
                     esc_html__( 'Right', 'connections' )    => 'right',
