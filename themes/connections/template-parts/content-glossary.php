@@ -19,16 +19,18 @@ $glossary_posts = new WP_Query( $args );
 while ( $glossary_posts->have_posts() ) : $glossary_posts->the_post();
 
     $audio = get_field( 'audio' );
+    $glossary_type_audio = get_field( 'type_audio' );
+    $audioMP3 = get_field( 'mp3' );
     $unique_id = 'player_' . get_the_ID() . '_' . rand(0, 99); ?>
     <div class="cn-glossary-item">
         <div class="cn-glossary-item__header">
 
             <?php the_title('<h5 class="cn-glossary-item__title">', '</h5>'); ?>
 
-            <?php if ( $audio ) : ?>
-                <div id="<?php echo $unique_id; ?>" class="cn-glossary-item__audio-box js-glossary-item audio">
+            <?php if ( $audio || $audioMP3 ) : ?>
+                <div id="<?php echo $unique_id; ?>" class="cn-glossary-item__audio-box audio">
 
-                    <span data-href="#<?php echo $unique_id; ?>" class="cn-btn-icon js-asset-play-btn js-item-BC">
+                    <span data-href="#<?php echo $unique_id; ?>" class="cn-btn-icon js-item-BC" data-type-audio="<?php echo esc_attr( $glossary_type_audio ); ?>" data-custom-audio-src="<?php echo esc_attr( $audioMP3 ); ?>">
                         <i class="fa fa-play-circle" aria-hidden="true"></i>
                     </span>
 

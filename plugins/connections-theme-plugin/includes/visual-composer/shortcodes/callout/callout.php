@@ -1,14 +1,14 @@
 <?php 
 /*
-* Element Description: Banner
+* Element Description: Connection Callout
 */
 
-class CN_Banner extends CN_Base_Shortcode {
+class CN_Callout extends CN_Base_Shortcode {
 
     public function __construct() {
-        $this->slug        = 'cn-banner';
-        $this->title       = esc_html__( 'Banner', 'connections' );
-        $this->description = esc_html__( 'Banner block', 'connections' );
+        $this->slug        = 'cn-callout';
+        $this->title       = esc_html__( 'Callout', 'connections' );
+        $this->description = esc_html__( 'Callout content', 'connections' );
 
         parent::__construct();
     }
@@ -22,8 +22,8 @@ class CN_Banner extends CN_Base_Shortcode {
                 'type' 		  => 'dropdown',
                 'param_name'  => 'bg_type',
                 'value' 	  => array(
-                    esc_html__( 'Image', 'connections' ) => 'image',
                     esc_html__( 'Color', 'connections' ) => 'color',
+                    esc_html__( 'Image', 'connections' ) => 'image',
                 )
             ),
 
@@ -46,30 +46,6 @@ class CN_Banner extends CN_Base_Shortcode {
                     'element'   => 'bg_type',
                     'value'     => 'color',
                 ),
-            ),
-
-            array(
-                'heading' 	  => esc_html__( 'Height banner', 'connections' ),
-                'type' 		  => 'dropdown',
-                'param_name'  => 'banner_height',
-                'value' 	  => array(
-                    esc_html__( '100%', 'connections' ) => '',
-                    esc_html__( '50%', 'connections' ) => '50',
-                    esc_html__( '33%', 'connections' ) => '33',
-                    esc_html__( '25%', 'connections' ) => '25',
-                )
-            ),
-
-            array(
-                'heading'     => esc_html__( 'Overlay Image', 'connections' ),
-                'type'        => 'attach_image',
-                'param_name'  => 'overlay_img',
-            ),
-
-            array(
-                'heading'     => esc_html__( 'Overlay opcaity', 'connections' ),
-                'type'        => 'textfield',
-                'param_name'  => 'overlay_opacity',
             ),
 
             array(
@@ -98,6 +74,23 @@ class CN_Banner extends CN_Base_Shortcode {
                 'value'       => cn_get_heading_vc_colors( 'title' ),
             ),
 
+            array(
+                'heading'     => esc_html__( 'Overlay Image', 'connections' ),
+                'type'        => 'attach_image',
+                'param_name'  => 'overlay_img',
+            ),
+
+            array(
+                'heading'     => esc_html__( 'Overlay opcaity', 'connections' ),
+                'type'        => 'textfield',
+                'param_name'  => 'overlay_opacity',
+                'dependency'  => array(
+                    'element'       => 'overlay_img',
+                    'not_empty'     => true,
+                ),
+            ),
+
+
         );
 
         $this->add_extras();
@@ -112,4 +105,4 @@ class CN_Banner extends CN_Base_Shortcode {
     }
 }
 
-new CN_Banner();
+new CN_Callout();

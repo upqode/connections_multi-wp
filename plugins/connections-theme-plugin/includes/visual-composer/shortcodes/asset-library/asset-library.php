@@ -36,7 +36,25 @@ class CN_Asset_Library extends CN_Base_Shortcode {
 		        'type'        => 'dropdown',
 		        'param_name'  => 'title_color',
 		        'value'       => cn_get_heading_vc_colors( 'title' ),
-	        ),
+            ),
+
+            array(
+                'type'        => 'checkbox',
+                'heading'     => esc_html__( 'Underline title', 'js_composer' ),
+                'param_name'  => 'underline_title',
+            ),
+            
+            array(
+		        'heading'     => esc_html__( 'Underline Color', 'connections' ),
+		        'type'        => 'dropdown',
+		        'param_name'  => 'underline_color',
+                'value'       => cn_get_border_vc_colors( 'title' ),
+                'dependency'  => array( 
+                    'element'   => 'underline_title', 
+                    'value'     => 'true', 
+                ),
+            ),
+
             array(
                 'heading'     => esc_html__( 'Posts Per Page', 'connections' ),
                 'type'        => 'textfield',
@@ -51,32 +69,35 @@ class CN_Asset_Library extends CN_Base_Shortcode {
                 'placeholder' => 'Choose category (optional)',
                 'admin_label' => true,
             ),
-            array(
-                'heading'     => esc_html__( 'Order by', 'americold' ),
-                'type'        => 'dropdown',
-                'param_name'  => 'orderby',
-                'value'       => array(
-                    esc_html__( 'Date', 'js_composer' ) => 'date',
-                    esc_html__( 'ID', 'js_composer' ) => 'ID',
-                    esc_html__( 'Author', 'js_composer' ) => 'author',
-                    esc_html__( 'Title', 'js_composer' ) => 'title',
-                    esc_html__( 'Modified', 'js_composer' ) => 'modified',
-                    esc_html__( 'Random', 'js_composer' ) => 'rand',
-                    esc_html__( 'Comment count', 'js_composer' ) => 'comment_count',
-                    esc_html__( 'Menu order', 'js_composer' ) => 'menu_order',
-                ),
-                'description' => sprintf( __( 'Select how to sort retrieved posts. More at %s.', 'js_composer' ), '<a href="http://codex.wordpress.org/Class_Reference/WP_Query#Order_.26_Orderby_Parameters" target="_blank">WordPress codex page</a>' ),
-            ),
-            array(
-                'heading'     => esc_html__( 'Sort order', 'americold' ),
-                'type'        => 'dropdown',
-                'param_name'  => 'order',
-                'value'       => array(
-                    esc_html__( 'Descending', 'js_composer' ) => 'DESC',
-                    esc_html__( 'Ascending', 'js_composer' ) => 'ASC',
-                ),
-                'description' => sprintf( __( 'Select ascending or descending order. More at %s.', 'js_composer' ), '<a href="http://codex.wordpress.org/Class_Reference/WP_Query#Order_.26_Orderby_Parameters" target="_blank">WordPress codex page</a>' ),
-            ),
+
+            // TO DO DELETE
+            // array(
+            //     'heading'     => esc_html__( 'Order by', 'americold' ),
+            //     'type'        => 'dropdown',
+            //     'param_name'  => 'orderby',
+            //     'value'       => array(
+            //         esc_html__( 'Date', 'js_composer' ) => 'date',
+            //         esc_html__( 'ID', 'js_composer' ) => 'ID',
+            //         esc_html__( 'Author', 'js_composer' ) => 'author',
+            //         esc_html__( 'Title', 'js_composer' ) => 'title',
+            //         esc_html__( 'Modified', 'js_composer' ) => 'modified',
+            //         esc_html__( 'Random', 'js_composer' ) => 'rand',
+            //         esc_html__( 'Comment count', 'js_composer' ) => 'comment_count',
+            //         esc_html__( 'Menu order', 'js_composer' ) => 'menu_order',
+            //     ),
+            //     'description' => sprintf( __( 'Select how to sort retrieved posts. More at %s.', 'js_composer' ), '<a href="http://codex.wordpress.org/Class_Reference/WP_Query#Order_.26_Orderby_Parameters" target="_blank">WordPress codex page</a>' ),
+            // ),
+            // array(
+            //     'heading'     => esc_html__( 'Sort order', 'americold' ),
+            //     'type'        => 'dropdown',
+            //     'param_name'  => 'order',
+            //     'value'       => array(
+            //         esc_html__( 'Descending', 'js_composer' ) => 'DESC',
+            //         esc_html__( 'Ascending', 'js_composer' ) => 'ASC',
+            //     ),
+            //     'description' => sprintf( __( 'Select ascending or descending order. More at %s.', 'js_composer' ), '<a href="http://codex.wordpress.org/Class_Reference/WP_Query#Order_.26_Orderby_Parameters" target="_blank">WordPress codex page</a>' ),
+            // ),
+
             array(
                 'heading'     => esc_html__( 'Fixed Left Navigation', 'connections' ),
                 'type'        => 'checkbox',

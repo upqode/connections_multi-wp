@@ -47,7 +47,7 @@ function connections_scripts() {
 	wp_enqueue_script( 'connections-user-quest', CN_THEME_URI . '/assets/js/user-quest.js', array('jquery'), time(), true );
 
 	// Localize
-	wp_localize_script('theme-scripts', 'connections_data',
+	wp_localize_script('connections-main', 'connections_data',
 		array(
 			'brigtcovePlayerData' => [
 				'accountId' => $brightcove_user_id,

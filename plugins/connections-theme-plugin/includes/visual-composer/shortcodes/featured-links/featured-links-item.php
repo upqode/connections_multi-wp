@@ -3,7 +3,6 @@
  * Element Description: Connection Featured Links Item.
  */
 
-
 class CN_Featured_Links_Item extends CN_Base_Shortcode {
 
     public function __construct() {
@@ -34,10 +33,6 @@ class CN_Featured_Links_Item extends CN_Base_Shortcode {
 		        'type'        => 'dropdown',
 		        'param_name'  => 'border_color',
                 'value'       => cn_get_border_vc_colors( 'title' ),
-                'dependency'  => array( 
-                    'element'   => 'underline_title', 
-                    'value'     => 'true', 
-                ),
             ),
 
             array(
@@ -78,10 +73,19 @@ class CN_Featured_Links_Item extends CN_Base_Shortcode {
                 'std'         => 'custom',
             ),
             array (
-                'heading'     => esc_html__( 'Asset Lists', 'connections' ),
+                'heading'     => esc_html__( 'Asset List', 'connections' ),
                 'type'        => 'dropdown',
-                'param_name'  => 'asset_lists',
+                'param_name'  => 'asset',
                 'value'       => cn_get_asset_posts( true ),
+                'dependency' => array(
+                    'element'   => 'type_link',
+                    'value'     => 'asset_library',
+                ),
+            ),
+            array(
+                'heading'     => esc_html__( 'Title Link', 'connections' ),
+                'type'        => 'textfield',
+                'param_name'  => 'title_link',
                 'dependency' => array(
                     'element'   => 'type_link',
                     'value'     => 'asset_library',

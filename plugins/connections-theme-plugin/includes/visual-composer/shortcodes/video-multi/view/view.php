@@ -23,9 +23,13 @@ $videos = (array) vc_param_group_parse_atts( $videos );
 $title_class = '';
 $title_class .= " $title_color";
 
-if ( $underline_title ) {
-    $title_class .= ' border_main_color_7';
+if ( $underline_title && $underline_color ) {
+    $title_class .= " border_{$underline_color}";
 }
+
+$link = vc_build_link( $link );
+$link_target = ( ! empty( $link['target'] ) ) ? 'target="' . $link['target'] . '"' : '';
+$nof_link    = ( ! empty( $link['rel'] ) ) ? 'rel="' . $link['rel'] .'"' : '';
 
 ?>  
 
@@ -36,9 +40,12 @@ if ( $underline_title ) {
         <?php 
             $output_tablist = '';
             $output_content = '';
-            $item_counter = 0;           
+            $item_counter = 1;           
 
             foreach ( $videos as $key => $video ) :
+
+                if ( $item_counter > 5 ) 
+                    break;
                 
                 $active_item = ( $key == 0 ) ? 'active' : '';
                 $tab_id = $key .'__'. rand( 0, 999 );
@@ -62,11 +69,12 @@ if ( $underline_title ) {
 
                 $output_content .= '</div>';
 
+                $item_counter++;
             endforeach; ?>
         
         <?php if ( ! empty( $title ) ) : ?>
             <h2 class="cn-video-tabs__title <?php echo esc_attr( $title_class ); ?>">
-                <?php echo wp_kses_post( $title ); ?>
+                <?php echo esc_html( $title ); ?>
             </h2>
         <?php endif; ?>
 
@@ -83,6 +91,19 @@ if ( $underline_title ) {
             </div>
             
         </div>
+
+        <?php if ( $content ) : ?>
+            <div class="cn-tabs__content">
+                <?php echo wp_kses_post( $content ); ?>
+            </div>
+        <?php endif; ?>
+
+        <?php if ( ! empty( $link['url'] ) && ! empty( $link['title'] ) ) : ?>
+            <a href="<?php echo esc_url( $link['url'] ); ?>" class="cn-btn" <?php echo $link_target, $nof_link; ?>>
+                <?php echo esc_html( $link['title'] ); ?>
+            </a>
+        <?php endif; ?>
+
     </div>
 </div>
 

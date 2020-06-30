@@ -274,32 +274,6 @@
             "max_height": "",
             "max_size": "",
             "mime_types": ""
-        },
-        {
-            "key": "field_5db6acf06be0d",
-            "label": "Asset Font-Awesome Icon",
-            "name": "asset_fa_icon",
-            "type": "font-awesome",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "icon_sets": [
-                "far"
-            ],
-            "custom_icon_set": "",
-            "default_label": "",
-            "default_value": "",
-            "save_format": "element",
-            "allow_null": 0,
-            "show_preview": 1,
-            "enqueue_fa": 0,
-            "fa_live_preview": "",
-            "choices": []
         }
     ],
     "location": [
@@ -319,5 +293,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1592542741
+    "modified": 1593182025
 }

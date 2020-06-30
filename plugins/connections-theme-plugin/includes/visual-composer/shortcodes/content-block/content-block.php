@@ -20,40 +20,8 @@ class CN_Content_Block extends CN_Base_Shortcode {
             array(
                 'heading'     => esc_html__( 'Background color', 'connections' ),
                 'type'        => 'dropdown',
-                'param_name'  => 'bg_text_color',
+                'param_name'  => 'bg_color',
                 'value'       => cn_get_bg_vc_colors( 'title' ),
-            ),
-
-            array(
-                'heading'     => esc_html__( 'Title', 'connections' ),
-                'type'        => 'textfield',
-                'param_name'  => 'title',
-            ),
-            array(
-                'heading'     => esc_html__( 'Text', 'connections' ),
-                'type'        => 'textarea',
-                'param_name'  => 'text',
-            ),
-            array(
-                'heading'     => esc_html__( 'Image', 'connections' ),
-                'type'        => 'attach_image',
-                'param_name'  => 'image',
-            ),
-            array(
-                'heading'     => esc_html__( 'Button', 'connections' ),
-                'type'        => 'vc_link',
-                'param_name'  => 'btn_link',
-            ),
-            
-            array(
-                'heading'     => esc_html__( 'Image align block', 'connections' ),
-                'type'        => 'dropdown',
-                'param_name'  => 'align_img',
-                'value'       => array(
-                    esc_html__( 'Left',  'connections' )    => 'left',
-                    esc_html__( 'Center', 'connections' )   => 'center',
-                    esc_html__( 'Right', 'connections' )    => 'right',
-                )
             ),
             array(
                 'heading'     => esc_html__( 'Content Layout Width', 'connections' ),
@@ -67,6 +35,113 @@ class CN_Content_Block extends CN_Base_Shortcode {
                 )
             ),
 
+            array(
+                'heading'     => esc_html__( 'Title', 'connections' ),
+                'type'        => 'textfield',
+                'param_name'  => 'title',
+            ),
+
+            array(
+                'heading'     => esc_html__( 'Title color', 'connections' ),
+                'type'        => 'dropdown',
+                'param_name'  => 'title_color',
+                'value'       => cn_get_heading_vc_colors( 'title' ),
+                'dependency'  => array( 
+                    'element'       => 'title', 
+                    'not_empty'     => true,
+                ),
+            ),
+
+            array(
+                'type'        => 'checkbox',
+                'heading'     => esc_html__( 'Underline title', 'js_composer' ),
+                'param_name'  => 'underline_title',
+                'dependency'  => array( 
+                    'element'   => 'title', 
+                    'not_empty'     => true,
+                ),
+            ),
+            array(
+		        'heading'     => esc_html__( 'Underline Color', 'connections' ),
+		        'type'        => 'dropdown',
+		        'param_name'  => 'underline_color',
+                'value'       => cn_get_border_vc_colors( 'title' ),
+                'dependency'  => array( 
+                    'element'   => 'underline_title', 
+                    'value'     => 'true', 
+                ),
+            ),
+
+            array(
+                'heading'     => esc_html__( 'Body Copy', 'connections' ),
+                'type'        => 'textarea_html',
+                'param_name'  => 'content',
+            ),
+
+            array(
+                'heading'     => esc_html__( 'Media Type', 'creon' ),
+                'type'        => 'dropdown',
+                'param_name'  => 'media_type',
+                'value'       => array(
+                    esc_html__( 'Image',  'creon' )   => 'image_type',
+                    esc_html__( 'Video',  'creon' )   => 'video_type',
+                ),
+            ),
+
+            array(
+                'heading'     => esc_html__( 'Image', 'connections' ),
+                'type'        => 'attach_image',
+                'param_name'  => 'image',
+                'dependency' => array(
+                    'element'  => 'media_type',
+                    'value'    => 'image_type',
+                ),
+            ),
+
+            array(
+                'heading'     => esc_html__( 'Type Image', 'creon' ),
+                'type'        => 'dropdown',
+                'param_name'  => 'type_image',
+                'value'       => array(
+                    esc_html__( 'Default', 'creon' )       => '',
+                    esc_html__( 'Round',  'creon' )        => 'img-round',
+                ),
+                'dependency' => array(
+                    'element'  => 'media_type',
+                    'value'    => 'image_type',
+                ),
+            ),
+
+            array(
+                'heading'     => esc_html__( 'Asset Video Lists', 'creon' ),
+                'type'        => 'dropdown',
+                'param_name'  => 'asset_video_id',
+                'value'       => cn_get_asset_posts( true, 'video' ),
+                'dependency'  => array(
+                    'element'   => 'media_type',
+                    'value'     => 'video_type',
+                ),
+            ),
+
+            array(
+                'heading'     => esc_html__( 'Media align block', 'connections' ),
+                'type'        => 'dropdown',
+                'param_name'  => 'media_align',
+                'value'       => array(
+                    esc_html__( 'Left',  'connections' )    => 'left',
+                    esc_html__( 'Right', 'connections' )    => 'right',
+                ),
+                'dependency' => array(
+                    'element'               => 'content_layout_width',
+                    'value_not_equal_to'    => '100',
+                ),
+            ),
+
+            array(
+                'heading'     => esc_html__( 'Button', 'connections' ),
+                'type'        => 'vc_link',
+                'param_name'  => 'btn_link',
+            ),
 
         );
 

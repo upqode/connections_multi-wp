@@ -18,6 +18,11 @@ if ( ! empty( $responsive_classes ) ) {
     $class .= $responsive_classes;
 }
 
+// Title class
+$title_class  = '';
+$title_class .= ( $title_color ) ? " {$title_color}" : '';
+$title_class .= ( $underline_title && $underline_color ) ? " border_{$underline_color}" : '';
+
 // Select CPT Items
 $taxonomy = 'cn-asset-category';
 $args = array(
@@ -43,7 +48,7 @@ $terms = get_terms( $args );
 
                         if ( ! empty( $term->name ) ) : ?>
                             <li class="cn-asset-library__nav-item">
-                                <a href="#<?php echo esc_html( $term->term_id ); ?>" class="ch-btn js-scroll-anchor <?php echo esc_attr( $active ); ?>">
+                                <a href="#term_<?php echo esc_html( $term->term_id ); ?>" class="ch-btn js-scroll-anchor <?php echo esc_attr( $active ); ?>">
                                     <?php echo esc_html( $term->name ); ?>
                                 </a>
                             </li>
@@ -58,35 +63,41 @@ $terms = get_terms( $args );
 
             <div class="cn-asset-library__col cn-asset-library__col--right">
 
-                <?php foreach ( $terms as $key => $term ) : ?>
-                    <div id="<?php echo esc_html( $term->term_id ); ?>" class="cn-asset-library__item cn-asset-block js-asset-block">
+                <?php 
+                
+                $args = array(
+                    'post_type'         => 'cn-asset',
+                    // 'orderby'           => $orderby,
+                    // 'order'             => $order,
+                    'posts_per_page'    => ( $posts_per_page ) ? $posts_per_page : 6,
+                );
+                
+                foreach ( $terms as $key => $term ) :
+                
+                    if ( $term ) :
+                        $args['tax_query'] = [
+                            [
+                                'taxonomy' => $taxonomy,
+                                'field'    => 'slug',
+                                'terms'    => $term,
+                            ]
+                        ];
+                    endif; ?>
+
+                    <div id="term_<?php echo esc_html( $term->term_id ); ?>" class="cn-asset-library__item">
                         
                         <?php if ( ! empty( $term->name ) ) :
-                            printf( '<%1$s class="ch-asset__title ' . esc_attr( $title_color ) . '">%2$s</%1$s>', $title_tag, $term->name );
+                            printf( '<%1$s class="cn-asset__title %3$s">%2$s</%1$s>', $title_tag, $term->name, $title_class );
                         endif;
 
-                        $args = array(
-                            'post_type'         => 'cn-asset',
-                            'orderby'           => $orderby,
-                            'order'             => $order,
-                            'posts_per_page'    => ( $posts_per_page ) ? $posts_per_page : 6,
-                            'tax_query'         => array(
-                                array(
-                                    'taxonomy' => $taxonomy,
-                                    'field'    => 'slug',
-                                    'terms'    => $term,
-                                )
-                            ),
-                        );
+                        
                         $assets = new WP_Query( $args );
 
                         if ( $assets->have_posts() ) : ?>
 
-                            <div class="ch-asset__row">
+                            <div class="cn-asset__row">
 
                                 <?php while ( $assets->have_posts() ) : $assets->the_post(); 
-
-                                    global $content_block_args;
 
                                     $content_block_args = array(
                                         'item_post_type'        => 'cn-case',

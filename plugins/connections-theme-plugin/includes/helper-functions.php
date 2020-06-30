@@ -50,7 +50,7 @@ function cn_get_terms_field( $taxonomy, $field, $output_key = '', $return_wp_err
  * @param string $return_value value which will return in each item color value or color title
  * @return array
  */
-function cn_get_colors( $key_color = 'primary_color', $count_colors = 6, $return_value = 'color' ) {
+function cn_get_colors( $key_color = 'primary_color', $count_colors = CN_PRIMARY_COLORS, $return_value = 'color' ) {
 
     if ( ! function_exists( 'get_field' ) )
         return [];        
@@ -101,8 +101,24 @@ function cn_get_colors( $key_color = 'primary_color', $count_colors = 6, $return
 function cn_get_bg_vc_colors( $return_value = 'color' ) {
 
     $colors[] = 'TRANSPARENT';
-    $colors = array_merge( $colors, cn_get_colors( 'bg_main_color', 7, $return_value ) );
+    $primary_colors = cn_get_colors( 'primary_color', CN_PRIMARY_COLORS, $return_value );
+    $colors = array_merge( $colors, $primary_colors );
+    $colors = array_merge( $colors, cn_get_colors( 'bg_main_color', CN_BG_COLORS, $return_value ) );
     $colors = ( $colors ) ? array_flip( $colors ) : $colors;
+
+    $counter = 1;
+    foreach ( $colors as $key => &$color ) {
+
+        if ( 'transparent' == strtolower( $key ) ) {
+            $color = '';
+        } else {
+            $color = "bg_main_color_{$counter}";
+            $counter++;
+        }
+        
+    }
+
+    unset( $color );
 
     return $colors;
 
@@ -115,13 +131,14 @@ function cn_get_bg_vc_colors( $return_value = 'color' ) {
  */
 function cn_get_heading_vc_colors( $return_value = 'color' ) {
 
-    $colors = cn_get_colors( 'h_main_color', 6, $return_value );
+    // TO DO DELETE
+    // $colors = cn_get_colors( 'h_main_color', CN_H_COLORS, $return_value );
+    $colors = cn_get_colors( 'primary_color', CN_PRIMARY_COLORS, $return_value );
     $colors = ( $colors ) ? array_flip( $colors ) : $colors;
 
     return $colors;
 
 }
-
 
 /**
  * Get border colors
@@ -130,7 +147,7 @@ function cn_get_heading_vc_colors( $return_value = 'color' ) {
  */
 function cn_get_border_vc_colors( $return_value = 'color' ) {
 
-    $colors = cn_get_colors( 'primary_color', 6, $return_value );
+    $colors = cn_get_colors( 'primary_color', CN_PRIMARY_COLORS, $return_value );
     $colors = ( $colors ) ? array_flip( $colors ) : $colors;
 
     return $colors;

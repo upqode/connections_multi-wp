@@ -15,13 +15,62 @@
 
     let connectionsData = ( typeof connections_data == 'object' ) ? connections_data : {};
 
+    /* ------------------------------------------- */
+    /* LAZY LOAD IFRAME */
+    /* ------------------------------------------- */
+    function lazyLoadIframe( $asset ) {
+
+        if ( ! $asset.hasClass('html-init') ) {
+            var $iframe = $('<iframe/>', {
+                src : $asset.attr('data-src'),
+            });
+            $asset.addClass( 'html-init' );
+        }
+        
+        if ( typeof $iframe !== typeof undefined ) {
+            $iframe.addClass( $asset.attr('data-class') );
+
+            if ( $asset.hasClass( 'wonderplugin-pdf-iframe' ) ) {
+                $iframe.addClass( 'wonderplugin-pdf-iframe' );
+            }
+
+            $asset.before( $iframe ).hide();
+        }
+    }
+
+    /* ------------------------------------------- */
+    /* Load mp3 */
+    /* ------------------------------------------- */
+
+    function loadMP3( src ) {
+        var sound      = document.createElement('audio');
+        sound.id       = 'audio-player';
+        sound.controls = 'controls';
+        sound.src      = src;
+        sound.type     = 'audio/mpeg';
+        sound.classList.add('hidden');
+        return sound;
+    }
+
+
+    function controlMP3( $player, audio ) {
+        
+        $(audio).on('play', function() {
+            $player.addClass('player-init');
+        });
+
+        $(audio).on('ended', function() {
+            $player.removeClass('player-init').removeClass('active');
+        });
+
+    }
 
     /* ------------------------------------------- */
     /* LOAD BRIGTCOVE PLAYER DUNAMICALLY */
     /* ------------------------------------------- */
 
     var
-        // playerData        = ( typeof liquiData.brigtcovePlayerData == 'object' ) ? liquiData.brigtcovePlayerData : {},
+        playerData        = ( typeof connectionsData.brigtcovePlayerData == 'object' ) ? connectionsData.brigtcovePlayerData : {},
         currentPlayerID   = '',
         autoplay          = false,
         iconClass         = '',
@@ -61,14 +110,12 @@
             $audio[0].play();
 
             if ( $this.hasClass('player-init') ) {
-            $this.find('audio')[0].pause();
-            $this.removeClass('player-init');
+                $this.find('audio')[0].pause();
+                $this.removeClass('player-init');
             } else {
-            $this.addClass('player-init');
-            controlMP3( $this, $audio[0] );
+                $this.addClass('player-init');
+                controlMP3( $this, $audio[0] );
             }
-
-            console.log( $this.attr('class') );
 
         }
         
@@ -76,15 +123,15 @@
         }
 
 
+        // TO DO DELETE
         // Brigtcove
-        if ( $this.hasClass('player-init') ) {
-            videojs( currentPlayerID ).pause();
-            $itemBC.removeClass('player-init');
-        } else if ( autoplay ) {
-            videojs( currentPlayerID ).play();
-            $itemBC.addClass('player-init');
-        }
-
+        // if ( $this.hasClass('player-init') ) {
+        //     videojs( currentPlayerID ).pause();
+        //     $itemBC.removeClass('player-init');
+        // } else if ( autoplay ) {
+        //     videojs( currentPlayerID ).play();
+        //     $itemBC.addClass('player-init');
+        // }
 
         var 
             id            = ( $this.attr('data-href') ) ? $this.attr('data-href') : $this.attr('href'),
