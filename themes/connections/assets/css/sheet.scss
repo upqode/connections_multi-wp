@@ -131,6 +131,11 @@
 .cn-sheet__content p {
   color: #333333;
 }
+.cn-sheet__content  {
+  h1, h2, h3, h4, h5, h6{
+    font-family: "ArialMT", sans-serif;
+  }
+}
 
 .cn-sheet__content strong {
   font-family: "ArialMT", sans-serif;
@@ -152,7 +157,6 @@
 .cn-sheet__content h1, .cn-sheet__content h2, .cn-sheet__content h3, .cn-sheet__content h4, .cn-sheet__content h5, .cn-sheet__content h6 {
   margin-bottom: 0;
   font-weight: 700;
-  font-family: "Lato", sans-serif;
 }
 
 .cn-sheet__content h3 {
@@ -377,7 +381,7 @@
 .mfp-close,
 .mfp-close-btn-in .mfp-close {
   position: absolute;
-  top: 60px;
+  top: 9px;
   right: 30px;
   width: 30px;
   height: 30px;
@@ -415,12 +419,8 @@
 div.pdfemb-viewer{ touch-action: none; } canvas.pdfemb-the-canvas { touch-action: none; }
 @media only screen and (min-width:375px) and (max-width: 768px){ .pdfemb-pagescontainer{ overflow: scroll !important; } }
 
-/* Tearing of content on scrolling load */
-.pdfemb-inner-div { background-color: white !important; }
-iframe{
-  width: 100vw;
-  height: 100vh;
-}
+
 #page-popup{
  position: relative;
+  background: var(--p_main_color_2);
 }

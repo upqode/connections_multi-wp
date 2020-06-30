@@ -170,14 +170,22 @@ endif;
  */
 if ( ! function_exists( 'connection_popup_guest_users' ) ) :
 	function connection_popup_guest_users() {
-		$src_page_popup = get_field('fu_popup_page_url', 'option'); ?>
+		$url_page_popup = get_field('fu_popup_page_url', 'option');
+		$page_popup_id = url_to_postid( $url_page_popup );
+		$content_popup = get_the_content( null, false, $page_popup_id ); ?>
 		<a href="#page-popup" class="js-user-guest-popup"></a>
 
 		<div id="page-popup" class="white-popup-block mfp-hide lk-user-guest-popup">
 
 			<div class="cn-content-wrapp cn-content-wrapp--full">
-				<iframe src="<?php echo esc_url( $src_page_popup ); ?>?cn_popup_iframe=1" frameborder="0"></iframe>
-			</div>
+				<?php
+				if ( strpos( $url_page_popup, site_url() ) !== false ) :
+					echo do_shortcode( $content_popup );
+				else : ?>
+					<span class="js-user-guest-popup-src" data-src="<?php echo esc_url( $url_page_popup ); ?>?lk_popup_iframe=1"></span>
+				<?php endif;
+
+				?>			</div>
 
 		</div>
 		<?php
