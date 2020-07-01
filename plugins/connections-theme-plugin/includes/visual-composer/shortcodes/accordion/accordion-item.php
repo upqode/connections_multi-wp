@@ -13,7 +13,7 @@ class CN_Accordion_Item extends CN_Base_Shortcode {
         $this->content_element = true;
         $this->show_settings_on_create = false;
         $this->as_child = array( 'only' => 'cn_accordion' );
-        $this->as_parent = array( 'only' => 'cn_table, cn-case-file-slider, cn-video-multi, cn-content-block' );
+        $this->as_parent = array( 'only' => 'cn_table, cn-video-multi, cn-content-block' );
 
         parent::__construct();
     }

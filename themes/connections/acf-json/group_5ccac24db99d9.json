@@ -252,13 +252,46 @@
             "new_lines": ""
         },
         {
+            "key": "field_5efc8cf283966",
+            "label": "Asset icon type",
+            "name": "asset_icon_type",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "font": "Font",
+                "icon": "Icon"
+            },
+            "default_value": false,
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
             "key": "field_5ccae846702f3",
             "label": "Asset Icon",
             "name": "asset_icon",
             "type": "image",
             "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5efc8cf283966",
+                        "operator": "==",
+                        "value": "icon"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -274,6 +307,40 @@
             "max_height": "",
             "max_size": "",
             "mime_types": ""
+        },
+        {
+            "key": "field_5efc8d3f83967",
+            "label": "Asset Font Icon",
+            "name": "asset_font_icon",
+            "type": "font-awesome",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5efc8cf283966",
+                        "operator": "==",
+                        "value": "font"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "icon_sets": [
+                "far"
+            ],
+            "custom_icon_set": "",
+            "default_label": "",
+            "default_value": "",
+            "save_format": "class",
+            "allow_null": 0,
+            "show_preview": 1,
+            "enqueue_fa": 0,
+            "fa_live_preview": "",
+            "choices": []
         }
     ],
     "location": [
@@ -293,5 +360,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1593182025
+    "modified": 1593615896
 }

@@ -32,36 +32,18 @@ $args = array(
     'slug'       => explode( ',', $categories ),
 );
 $terms = get_terms( $args );
+
 ?>
 
 <?php if ( ! empty( $terms ) ) : ?>
     
     <div <?php echo $el_id; ?> class="cn-asset-library <?php echo esc_attr( $class ); ?>">
+
+        <?php if ( ! empty( $title ) ) :
+            printf( '<h2 class="cn-asset__title %2$s">%1$s</h2>', $title, $title_class );
+        endif; ?>
+
         <div class="cn-asset-library__row">
-
-            <div class="cn-asset-library__col cn-asset-library__col--left">
-                <ul class="cn-asset-library__nav js-sidebar">
-                    <?php
-
-                    $count = 1;
-
-                    foreach ( $terms as $term ) : 
-                        $active = $count === 1 ? 'active' : '';
-
-                        if ( ! empty( $term->name ) ) : ?>
-                            <li class="cn-asset-library__nav-item">
-                                <a href="#term_<?php echo esc_html( $term->term_id ); ?>" class="ch-btn js-scroll-anchor <?php echo esc_attr( $active ); ?>">
-                                    <?php echo esc_html( $term->name ); ?>
-                                </a>
-                            </li>
-                        <?php endif;
-
-                        $count++;
-
-                    endforeach; ?>
-
-                </ul>
-            </div>
 
             <div class="cn-asset-library__col cn-asset-library__col--right">
 
@@ -88,20 +70,18 @@ $terms = get_terms( $args );
 
                     <div id="term_<?php echo esc_html( $term->term_id ); ?>" class="cn-asset-library__item">
                         
-                        <?php if ( ! empty( $term->name ) ) :
-                            printf( '<%1$s class="cn-asset__title %3$s">%2$s</%1$s>', $title_tag, $term->name, $title_class );
-                        endif;
-
-                        
+                        <?php
                         $assets = new WP_Query( $args );
 
                         if ( $assets->have_posts() ) : ?>
 
                             <div class="cn-asset__row <?php echo esc_attr($row_class);?>">
 
-                                <?php while ( $assets->have_posts() ) : $assets->the_post(); 
+                                <?php while ( $assets->have_posts() ) : $assets->the_post();
+                                
+                                    $asset_id = get_the_ID();
 
-                                    get_template_part( 'template-parts/content-asset-file' ); ?>
+                                    include locate_template( 'template-parts/content-asset-file.php' ); ?>
 
                                 <?php endwhile;
                                 wp_reset_postdata(); ?>
@@ -113,11 +93,9 @@ $terms = get_terms( $args );
                     </div>
 
                 <?php endforeach;
-                                
-                /* TO DO DELETE
-
+                
                 $link = vc_build_link( $link );
-
+                
                 if ( ! empty( $link['title'] ) && ! empty( $link['url'] ) ) :
                     
                     $link_target = ( ! empty( $link['target'] ) ) ? 'target="' . $link['target'] . '"' : '';
@@ -127,10 +105,7 @@ $terms = get_terms( $args );
                         <?php echo esc_html( $link['title'] ); ?>
                     </a>
                 
-                <?php endif;?>
-                */
-                ?>
-
+				<?php endif;?>
             </div>
 
         </div>

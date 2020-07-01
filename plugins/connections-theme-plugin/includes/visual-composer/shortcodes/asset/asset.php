@@ -3,12 +3,12 @@
 * Element Description: Connection Asset Library
 */
 
-class CN_Asset_Library extends CN_Base_Shortcode {
+class CN_Asset_Block extends CN_Base_Shortcode {
 
     public function __construct() {
-        $this->slug        = 'cn-asset-library';
-        $this->title       = esc_html__( 'Asset Library', 'connections' );
-        $this->description = esc_html__( 'Asset Library content', 'connections' );
+        $this->slug        = 'cn-block';
+        $this->title       = esc_html__( 'Asset Block', 'connections' );
+        $this->description = esc_html__( 'Asset Block content', 'connections' );
 
         parent::__construct();
     }
@@ -18,8 +18,15 @@ class CN_Asset_Library extends CN_Base_Shortcode {
         $assets_cats = cn_get_terms_field( 'cn-asset-category', 'slug', 'name' );
 
         $this->params = array(
-            
-			array(
+
+            array(
+		        'heading'     => esc_html__( 'Background Color', 'connections' ),
+		        'type'        => 'dropdown',
+		        'param_name'  => 'bg_color',
+		        'value'       => cn_get_bg_vc_colors( 'title' ),
+            ),
+
+            array(
                 'heading' 	  => esc_html__( 'Columns', 'connections' ),
                 'type' 		  => 'dropdown',
                 'param_name'  => 'columns',
@@ -29,29 +36,14 @@ class CN_Asset_Library extends CN_Base_Shortcode {
                     esc_html__( 'Column 4', 'connections' ) => 'cn-asset__row-4',
                 )
             ),
+
+            array(
+		        'heading'     => esc_html__( 'Title', 'connections' ),
+		        'type'        => 'textfield',
+		        'param_name'  => 'title',
+            ),
             
 	        array(
-		        'heading'     => esc_html__( 'Background Color', 'connections' ),
-		        'type'        => 'dropdown',
-		        'param_name'  => 'bg_color',
-		        'value'       => cn_get_bg_vc_colors( 'title' ),
-            ),
-
-            array(
-                'heading' 	  => esc_html__( 'Title Tag', 'connections' ),
-                'type' 		  => 'dropdown',
-                'param_name'  => 'title_tag',
-                'value' 	  => array(
-                    esc_html__( 'H1', 'connections' ) => 'h1',
-                    esc_html__( 'H2', 'connections' ) => 'h2',
-                    esc_html__( 'H3', 'connections' ) => 'h3',
-                    esc_html__( 'H4', 'connections' ) => 'h4',
-                    esc_html__( 'H5', 'connections' ) => 'h5',
-                    esc_html__( 'H6', 'connections' ) => 'h6',
-                )
-            ),
-
-            array(
 		        'heading'     => esc_html__( 'Title Color', 'connections' ),
 		        'type'        => 'dropdown',
 		        'param_name'  => 'title_color',
@@ -73,6 +65,21 @@ class CN_Asset_Library extends CN_Base_Shortcode {
                     'element'   => 'underline_title', 
                     'value'     => 'true', 
                 ),
+            ),
+
+            array(
+		        'heading'     => esc_html__( 'Background Color Icon', 'connections' ),
+		        'type'        => 'dropdown',
+		        'param_name'  => 'bg_color_icon',
+		        'value'       => cn_get_bg_vc_colors( 'title' ),
+            ),
+
+            array(
+		        'heading'     => esc_html__( 'Color Icon', 'connections' ),
+		        'type'        => 'dropdown',
+		        'param_name'  => 'color_icon',
+		        'value'       => cn_get_heading_vc_colors( 'title' ),
+		        'description' => __( 'Type icon should be font in the asset', 'connections' ),
             ),
 
             array(
@@ -116,24 +123,17 @@ class CN_Asset_Library extends CN_Base_Shortcode {
             //         esc_html__( 'Ascending', 'js_composer' ) => 'ASC',
             //     ),
             //     'description' => sprintf( __( 'Select ascending or descending order. More at %s.', 'js_composer' ), '<a href="http://codex.wordpress.org/Class_Reference/WP_Query#Order_.26_Orderby_Parameters" target="_blank">WordPress codex page</a>' ),
-            // ),
+            // )
 
-            array(
-                'heading'     => esc_html__( 'Fixed Left Navigation', 'connections' ),
-                'type'        => 'checkbox',
-                'param_name'  => 'fixed_nav',
-            ),
-
-            // TO DO DELETE
-			// array(
-			// 	'heading' 	  => esc_html__( 'Button', 'connections' ),
-			// 	'type' 		  => 'vc_link',
-			// 	'param_name'  => 'link',
-			// 	'dependency' => array(
-			// 		'element'   => 'type_link',
-			// 		'value'     => 'custom',
-			// 	),
-			// ),
+			array(
+				'heading' 	  => esc_html__( 'Button', 'connections' ),
+				'type' 		  => 'vc_link',
+				'param_name'  => 'link',
+				'dependency' => array(
+					'element'   => 'type_link',
+					'value'     => 'custom',
+				),
+			),
         );
 
         $this->add_extras();
@@ -148,4 +148,4 @@ class CN_Asset_Library extends CN_Base_Shortcode {
     }
 }
 
-new CN_Asset_Library();
+new CN_Asset_Block();
