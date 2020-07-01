@@ -973,3 +973,13 @@ textarea {
     width: 100px;
     height: 100px;
 }
+
+
+/* Footer */
+
+.cn-footer {
+	background-color: #e5ebf1;
+	color: var(--p_main_color_1);
+    padding: 15px;
+    text-align: center;
+}

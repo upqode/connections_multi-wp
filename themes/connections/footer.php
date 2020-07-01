@@ -8,12 +8,18 @@
  *
  * @package connections
  */
+if ( ! function_exists('get_field') ) {
+	return;
+}
 
+$copyright = get_field( 'footer_copyright', 'option' );
 ?>
+	<?php if ( $copyright ) : ?>
+		<footer class="cn-footer">
+			<?php echo wp_kses( nl2br( $copyright ), ['br'] ); ?>
+		</footer>
+	<?php endif; ?>
 
-	<footer class="cn-footer">
-		
-	</footer>
 </div><!-- #page -->
 <?php connection_popup_guest_users(); ?>
 
