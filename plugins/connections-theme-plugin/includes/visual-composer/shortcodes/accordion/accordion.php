@@ -27,19 +27,12 @@ class CN_Accordion extends CN_Base_Shortcode {
                 'value'       => cn_get_bg_vc_colors( 'title' ),
             ),
             array(
-                'heading' 	  => esc_html__( 'Drawer Background title color', 'connections' ),
+                'heading' 	  => esc_html__( 'Drawer Background color', 'connections' ),
                 'type' 		  => 'dropdown',
-                'param_name'  => 'bg_title_color',
+                'param_name'  => 'bg_drawer_color',
                 'value'       => cn_get_bg_vc_colors( 'title' ),
             ),
 
-            // TO DO DELETE
-            // array(
-            //     'heading' 	  => esc_html__( 'Border color', 'connections' ),
-            //     'type' 		  => 'dropdown',
-            //     'param_name'  => 'border_color',
-            //     'value'       => cn_get_bg_vc_colors( 'title' ),
-            // )
         );
 
         /* Add responsive options to shortcode */
