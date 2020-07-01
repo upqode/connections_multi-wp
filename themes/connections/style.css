@@ -981,5 +981,6 @@ textarea {
 	background-color: #e5ebf1;
 	color: var(--p_main_color_1);
     padding: 15px;
-    text-align: center;
+	text-align: center;
+	font-family: "Montserrat", sans-serif;
 }
