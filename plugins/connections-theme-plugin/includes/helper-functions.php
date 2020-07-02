@@ -141,10 +141,12 @@ function cn_get_heading_vc_colors( $return_value = 'color' ) {
     $colors = cn_get_colors( 'primary_color', CN_PRIMARY_COLORS, $return_value );
     $theme_options_colors = get_field( 'h_main_color', 'option' );
 
-    $counter = count( $colors ) + 1;
-    foreach ( $theme_options_colors as $theme_color ) {
-        $value = ( $return_value == 'title' && isset( $theme_color['title_color'] ) ) ? $theme_color['title_color'] : $theme_color['color'];
-        $colors["primary_color_{$counter}"] = $value;
+    if ( $theme_options_colors ) {
+        $counter = count( $colors ) + 1;
+        foreach ( $theme_options_colors as $theme_color ) {
+            $value = ( $return_value == 'title' && isset( $theme_color['title_color'] ) ) ? $theme_color['title_color'] : $theme_color['color'];
+            $colors["primary_color_{$counter}"] = $value;
+        }
     }
 
     $colors = ( $colors ) ? array_flip( $colors ) : $colors;
