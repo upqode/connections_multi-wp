@@ -148,6 +148,9 @@
 .cn-asset-item__icon-state {
   display: none;
 }
+.active .cn-asset-item__icon {
+  display: none;
+}
 .cn-asset-item__title{
   font-family: 'Montserrat', sans-serif;
   font-weight: 200;
