@@ -603,4 +603,27 @@
             }
         });
     }
+    /* ------------------------------------------- */
+    /* TABS */
+    /* ------------------------------------------- */
+    var tablinks = document.getElementsByClassName('js-tablinks');
+    for (var i = 0; i < tablinks.length; i++) {
+        tablinks[i].addEventListener('click', openPanel);
+    }
+
+    function openPanel() {
+        for (var i = 0; i < tablinks.length; i++) {
+            tablinks[i].parentElement.classList.remove('active');
+        }
+
+        var tabpanel = document.getElementsByClassName('js-tabpanel');
+        for (i = 0; i < tabpanel.length; i++) {
+            tabpanel[i].classList.remove('active');
+        }
+
+        this.parentElement.classList.add('active');
+        var currentId = this.getAttribute('href');
+        document.getElementById(currentId).classList.add('active');
+    }
+
 })(jQuery, window, document);

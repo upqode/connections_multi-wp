@@ -47,7 +47,7 @@ if ( ! empty( $responsive_classes ) ) {
                     $output_tab_list .= '</li>';
 
                     if ( ! empty( $item['content'] ) ) :
-                        $output_content .= '<div id="cn-tab-' . esc_attr( $item_counter ) . '" class="cn-tabs__tabpanel-item js-tabpanel ' . esc_attr( $active_item ) . '">';
+                        $output_content .= '<div id="#cn-tab-' . esc_attr( $item_counter ) . '" class="cn-tabs__tabpanel-item js-tabpanel ' . esc_attr( $active_item ) . '">';
                         $output_content .= do_shortcode( $item['content'] );
                         $output_content .= '</div>';
                     endif;
