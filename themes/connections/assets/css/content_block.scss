@@ -132,6 +132,7 @@
   background-position: center;
   border-radius: 50%;
   padding-bottom: 50%;
+  height: 0;
   &.col-3{
     padding-bottom: 25%;
   }
@@ -155,7 +156,7 @@
   font-style: normal;
   font-size: 20px;
   text-align: center;
-  padding: 10px 50px;
+  padding: 10px 30px;
   text-decoration: none;
   transition: 0.5s;
   margin-top: 50px;
@@ -170,5 +171,47 @@
   &.center{
     margin-right: auto;
     margin-left: auto;
+  }
+}
+@media screen and (max-width: 991px) {
+  .btn{
+    padding: 10px 15px;
+    margin-top: 30px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .col-3{
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin: 10px 0;
+  }
+  .col-6{
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin: 10px 0;
+  }
+  .col-12{
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin: 10px 0;
+  }
+  .col-9{
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin: 10px 0;
+  }
+  .img-round{
+    &.col-3{
+      padding-bottom: 100%;
+    }
+    &.col-6{
+      padding-bottom: 100%;
+    }
+    &.col-12{
+      padding-bottom: 100%;
+    }
+    &.col-9{
+      padding-bottom: 100%;
+    }
   }
 }
