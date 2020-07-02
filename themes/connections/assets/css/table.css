@@ -33,9 +33,6 @@
   color: #666666;
   font-family: "Montserrat", sans-serif;
 }
-.cn-table__text table tr td:last-child {
-  border-left: 2px solid #e5ebf1 !important;
-}
 .cn-table__text .wpb_vc_table {
   margin-bottom: 20px;
 }
