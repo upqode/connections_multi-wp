@@ -293,6 +293,61 @@
             ]
         },
         {
+            "key": "field_5efd8e72549c3",
+            "label": "Heading colors",
+            "name": "h_main_color",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "",
+            "sub_fields": [
+                {
+                    "key": "field_5efd8e97549c4",
+                    "label": "Color",
+                    "name": "color",
+                    "type": "color_picker",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": ""
+                },
+                {
+                    "key": "field_5efd8eb6549c5",
+                    "label": "Title color",
+                    "name": "title_color",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                }
+            ]
+        },
+        {
             "key": "field_5eebe6abb4ada",
             "label": "Footer",
             "name": "",
@@ -736,5 +791,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1593619939
+    "modified": 1593675456
 }
