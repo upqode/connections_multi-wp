@@ -22,7 +22,7 @@ if ( ! empty( $responsive_classes ) ) {
 }
 
 $title_class = " $title_color";
-$title_class .= ( $underline_title && $underline_color ) ? " border_{$underline_color}" : '';
+$title_class .= ( $underline_title && $underline_color ) ? " title-underline border_{$underline_color}" : '';
 
 $layout_classes = [
     'content' => [
@@ -48,6 +48,17 @@ $link = vc_build_link( $btn_link );
 $link_target = ( ! empty( $link['target'] ) ) ? 'target="' . $link['target'] . '"' : '';
 $nof_link    = ( ! empty( $link['rel'] ) ) ? 'rel="' . $link['rel'] .'"' : '';
 
+$style_wrap = '';
+$style_wrap .= ( $media_type == 'image_type' && ! empty( $media_type ) ) ? ' background-image: url(' . wp_get_attachment_image_url( $image, 'full' ) . ');' : ' ';
+
+
+// Button class
+$btn_class = '';
+$btn_class .= ( ! empty( $btn_bg_color ) ) ? " {$btn_bg_color}" : '';
+$btn_class .= ( ! empty( $btn_b_color ) ) ? " {$btn_b_color}" : '';
+$btn_class .= ( ! empty( $btn_text_color ) ) ? " {$btn_text_color}" : '';
+$btn_class .= ( ! empty( $btn_align ) ) ? " {$btn_align}" : '';
+
 ?>
 
 <div class="cn-content-block <?php echo esc_attr( $class ); ?>" <?php echo $el_id; ?>>
@@ -58,7 +69,7 @@ $nof_link    = ( ! empty( $link['rel'] ) ) ? 'rel="' . $link['rel'] .'"' : '';
         </h2>
     <?php endif; ?>
 
-    <div>
+    <div class="cn-content-block__row ">
     
         <?php 
         ob_start();
@@ -71,11 +82,16 @@ $nof_link    = ( ! empty( $link['rel'] ) ) ? 'rel="' . $link['rel'] .'"' : '';
                 </div>    
             <?php endif;
         else :
-            if ( $image ) : ?>
+            if ( $image ) :
+            if ( $type_image == 'img-round' ) : ?>
+				<div class="media-block <?php echo esc_attr( $media_wrap_class ); ?>" style="<?php echo esc_attr($style_wrap);?>">
+				</div>
+			<?php else:?>
                 <div class="media-block <?php echo esc_attr( $media_wrap_class ); ?>">
-                    <img src="<?php echo wp_get_attachment_image_url( $image ); ?>" alt="content-block-image">
+                    <img src="<?php echo wp_get_attachment_image_url( $image,  'full' ); ?>" alt="content-block-image">
                 </div>    
             <?php endif;
+             endif;
         endif;
         $media_block = ob_get_clean(); ?>
 
@@ -91,7 +107,7 @@ $nof_link    = ( ! empty( $link['rel'] ) ) ? 'rel="' . $link['rel'] .'"' : '';
                 <?php endif;
 
                 if ( ! empty( $link['url'] ) && ! empty( $link['title'] ) ) : ?>
-                    <a href="<?php echo esc_url( $link['url'] ); ?>" class="cn-btn" <?php echo $link_target, $nof_link; ?>>
+                    <a href="<?php echo esc_url( $link['url'] ); ?>" class="btn <?php echo esc_attr( $btn_class ); ?>" <?php echo $link_target, $nof_link; ?>>
                         <?php echo esc_html( $link['title'] ); ?>
                     </a>
                 <?php endif; ?>

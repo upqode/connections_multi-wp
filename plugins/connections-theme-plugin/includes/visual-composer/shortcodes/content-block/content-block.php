@@ -142,7 +142,34 @@ class CN_Content_Block extends CN_Base_Shortcode {
                 'type'        => 'vc_link',
                 'param_name'  => 'btn_link',
             ),
-
+			array(
+				'heading'     => esc_html__( 'Button background color', 'connections' ),
+				'type'        => 'dropdown',
+				'param_name'  => 'btn_bg_color',
+				'value'       => cn_get_bg_vc_colors( 'title' ),
+			),
+			array(
+				'heading'     => esc_html__( 'Button border color', 'connections' ),
+				'type'        => 'dropdown',
+				'param_name'  => 'btn_b_color',
+				'value'       => cn_get_border_vc_colors( 'title' ),
+			),
+			array(
+				'heading'     => esc_html__( 'Button text color', 'connections' ),
+				'type'        => 'dropdown',
+				'param_name'  => 'btn_text_color',
+				'value'       => cn_get_heading_vc_colors( 'title' ),
+			),
+			array(
+				'heading'     => esc_html__( 'Media align block', 'connections' ),
+				'type'        => 'dropdown',
+				'param_name'  => 'btn_align',
+				'value'       => array(
+					esc_html__( 'Left',  'connections' )    => 'left',
+					esc_html__( 'Right', 'connections' )    => 'right',
+					esc_html__( 'Center', 'connections' )    => 'center',
+				),
+			),
         );
 
         $this->add_extras();
