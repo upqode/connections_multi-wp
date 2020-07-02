@@ -27,6 +27,7 @@ function connections_scripts() {
 	wp_enqueue_style('connections-typography', CN_THEME_URI . '/assets/css/typography.css', array(),_S_VERSION);
 	wp_enqueue_style('connections-table', CN_THEME_URI . '/assets/css/table.css', array(),_S_VERSION);
 	wp_enqueue_style('connections-sheet', CN_THEME_URI . '/assets/css/sheet.css', array(),_S_VERSION);
+	wp_enqueue_style('connections-accordion', CN_THEME_URI . '/assets/css/accordion.css', array(),_S_VERSION);
 	wp_enqueue_style('connections-colout', CN_THEME_URI . '/assets/css/colout.css', array(),_S_VERSION);
 	wp_enqueue_style('connections-content_block', CN_THEME_URI . '/assets/css/content_block.css', array(),_S_VERSION);
 	wp_enqueue_style('connections-featured_links', CN_THEME_URI . '/assets/css/featured_links.css', array(),_S_VERSION);

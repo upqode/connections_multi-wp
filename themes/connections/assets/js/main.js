@@ -586,4 +586,21 @@
         }
       }
     });
+
+    /* ------------------------------------------- */
+    /* ACCORDION */
+    /* ------------------------------------------- */
+    var accordion = document.getElementsByClassName('js-accordion-title');
+    for (var i = 0; i < accordion.length; i++) {
+        accordion[i].addEventListener('click', function () {
+            this.classList.toggle('cn-accordion-item__title--active');
+            this.getElementsByTagName('span')[0].classList.toggle('fa-chevron-up');
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+        });
+    }
 })(jQuery, window, document);

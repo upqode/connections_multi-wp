@@ -339,6 +339,13 @@
 .cn-content-wrapp--btn .mfp-close, .mfp-close-btn-in .mfp-close .cn-content-wrapp--btn {
   top: 15px;
 }
+.asset-video {
+  min-width: 900px;
+}
+.asset-video .cn-content-wrapp {
+  padding-top: 0;
+}
+
 /* ------------------------------------------- */
 /* POPUP */
 /* ------------------------------------------- */

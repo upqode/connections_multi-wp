@@ -31,9 +31,9 @@ if ( ! empty( $responsive_classes ) ) {
             
             <?php if ( ! empty( $item['title'] ) ) : ?>
 
-                <div class="cn-accordion-item__title-wrap">
-                    <h5 class="cn-accordion-item__title"><?php echo nl2br( wp_kses( $item['title'], ['br', 'b', 'i'] ) ); ?></h5>
-                    <span class="lk-accordion-item__icon fa fa-plus <?php echo esc_attr( $bg_drawer_color ); ?>"></span>
+                <div class="cn-accordion-item__title-wrap js-accordion-title <?php echo esc_attr( $bg_drawer_title_color ); ?>">
+                    <h5 class="cn-accordion-item__title "><?php echo nl2br( wp_kses( $item['title'], ['br', 'b', 'i'] ) ); ?></h5>
+                    <span class="cn-accordion-item__icon fa fa-chevron-down <?php echo esc_attr( $bg_drawer_color ); ?>"></span>
                 </div>
 
                 <?php if ( ! empty( $item['content'] ) ) : ?>

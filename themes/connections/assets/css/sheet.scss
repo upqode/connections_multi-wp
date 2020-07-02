@@ -5,6 +5,7 @@
 .post, .page {
   margin: 0;
 }
+
 .cn-sheet {
   height: 100vh;
   display: -webkit-box;
@@ -133,8 +134,9 @@
   color: #333333;
   font-family: "ArialMT", sans-serif;
 }
-.cn-sheet__content  {
-  h1, h2, h3, h4, h5, h6{
+
+.cn-sheet__content {
+  h1, h2, h3, h4, h5, h6 {
     font-family: "ArialMT", sans-serif;
   }
 }
@@ -143,6 +145,7 @@
   font-family: "ArialMT", sans-serif;
   font-size: 16px;
   font-weight: 900;
+
   & * {
     font-weight: inherit;
     font-size: inherit;
@@ -319,44 +322,59 @@
 }
 
 
-
 .touch .cn-content-wrapp {
   overflow-y: auto;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
 }
+
 .cn-content-wrapp {
   $b: &;
   position: relative;
   padding-top: 56.25%;
+
   &--img {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
   }
+
   &--height-auto {
     padding-top: 0;
   }
+
   &--width {
     width: 80vw;
   }
+
   &--full-height {
     height: 100vh !important;
   }
+
   &--full {
     width: 100vw;
     height: 100vh;
     padding-top: 0;
   }
+
   &--btn {
     .mfp-close, .mfp-close-btn-in .mfp-close & {
       top: 15px;
     }
   }
+
   iframe,
   object,
   .video-js {
 
+  }
+}
+
+.asset-video {
+  min-width: 900px;
+
+  .cn-content-wrapp {
+    padding-top: 0;
   }
 }
 
@@ -367,9 +385,11 @@
   // transform: translate3d(0, 0, 0);
   opacity: 1;
 }
+
 .mfp-wrap {
   // transform: translate3d(0, 0, 0);
 }
+
 .mfp-content {
   position: absolute;
   top: 0;
@@ -380,6 +400,7 @@
   justify-content: center;
   align-items: center;
 }
+
 .mfp-close,
 .mfp-close-btn-in .mfp-close {
   position: absolute;
@@ -392,6 +413,7 @@
   border-radius: 0;
   line-height: 32px;
   background-color: var(--p_main_color_2);
+
   &--black {
 
   }
@@ -418,11 +440,22 @@
 }
 
 /* Fix for bouncing behaviour when scrolling on mobile devices */
-div.pdfemb-viewer{ touch-action: none; } canvas.pdfemb-the-canvas { touch-action: none; }
-@media only screen and (min-width:375px) and (max-width: 768px){ .pdfemb-pagescontainer{ overflow: scroll !important; } }
+div.pdfemb-viewer {
+  touch-action: none;
+}
+
+canvas.pdfemb-the-canvas {
+  touch-action: none;
+}
+
+@media only screen and (min-width: 375px) and (max-width: 768px) {
+  .pdfemb-pagescontainer {
+    overflow: scroll !important;
+  }
+}
 
 
-#page-popup{
- position: relative;
+#page-popup {
+  position: relative;
   background: var(--p_main_color_2);
 }
