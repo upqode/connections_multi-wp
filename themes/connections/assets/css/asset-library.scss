@@ -148,6 +148,10 @@
 .cn-asset-item__icon-state {
   display: none;
 }
+.player-init .cn-asset-item__icon-state {
+  display: inline-block;
+}
+.player-freezed span,
 .player-freezed .cn-asset-item__icon {
   display: none;
 }
