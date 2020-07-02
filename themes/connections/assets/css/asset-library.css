@@ -153,7 +153,8 @@
 }
 
 .player-init span,
-.player-init .cn-asset-item__icon .player-freezed span,
+.player-init .cn-asset-item__icon,
+.player-freezed span,
 .player-freezed .cn-asset-item__icon {
   display: none;
 }
