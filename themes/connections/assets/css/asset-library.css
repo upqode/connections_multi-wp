@@ -3,11 +3,8 @@
   flex-wrap: wrap;
 }
 
-.cn-asset-library {
-  padding: 15px;
-}
 .cn-asset-library h2 {
-  margin-top: 0;
+  margin: 15px;
 }
 
 .sidebar-fixed-bottom {
@@ -135,6 +132,7 @@
   justify-content: center;
   margin: 0 auto;
   background-color: var(--primary_color_2);
+  color: var(--p_main_color_2);
 }
 .cn-asset-item__image img {
   max-width: 40px;
@@ -161,12 +159,12 @@
 }
 
 .cn-asset-item__link {
-  position: absolute;
-  width: 100px;
-  height: 100px;
-  left: calc(50% - 50px);
-  top: 0;
-  outline: none;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: auto;
+  height: auto;
 }
 .cn-asset-item__link:focus {
   outline: none;

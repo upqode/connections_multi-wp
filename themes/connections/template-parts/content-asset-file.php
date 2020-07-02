@@ -65,7 +65,7 @@ $icon_classes .= ( ! empty( $asset_icon ) ) ? " {$asset_icon}" : '';
 
 <div class="cn-asset__item <?php echo $asset_item_wrap_class; ?>">
     
-    <a href="#library-<?php echo esc_attr( $unique_section_id ); ?>" class="cn-asset-item__link <?php echo esc_attr( $asset_item_class); ?>"></a>
+    <a href="#library-<?php echo esc_attr( $unique_section_id ); ?>" class="cn-asset-item__link <?php echo esc_attr( $asset_item_class); ?>">
     
     <div class="cn-asset-item">
         <div class="cn-asset-item__image <?php echo esc_attr( $icon_wrap_classes ); ?>">
@@ -93,6 +93,7 @@ $icon_classes .= ( ! empty( $asset_icon ) ) ? " {$asset_icon}" : '';
         <?php endif; ?>
 
     </div>
+	</a>
 </div>
 
 
