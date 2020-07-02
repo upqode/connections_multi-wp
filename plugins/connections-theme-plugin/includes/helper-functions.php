@@ -72,6 +72,11 @@ function cn_get_colors( $key_color = 'primary_color', $count_colors = CN_PRIMARY
         }
     }
 
+    // echo '111111';
+    // var_dump( $key_color );
+    // echo '--------';
+    // var_dump( $theme_options_colors );
+    // echo '--------';
     // Theme options colors
     foreach ( $theme_options_colors as $theme_color ) {
 
@@ -134,6 +139,16 @@ function cn_get_heading_vc_colors( $return_value = 'color' ) {
     // TO DO DELETE
     // $colors = cn_get_colors( 'h_main_color', CN_H_COLORS, $return_value );
     $colors = cn_get_colors( 'primary_color', CN_PRIMARY_COLORS, $return_value );
+    $theme_options_colors = get_field( 'h_main_color', 'option' );
+
+    if ( $theme_options_colors ) {
+        $counter = count( $colors ) + 1;
+        foreach ( $theme_options_colors as $theme_color ) {
+            $value = ( $return_value == 'title' && isset( $theme_color['title_color'] ) ) ? $theme_color['title_color'] : $theme_color['color'];
+            $colors["primary_color_{$counter}"] = $value;
+        }
+    }
+
     $colors = ( $colors ) ? array_flip( $colors ) : $colors;
 
     return $colors;

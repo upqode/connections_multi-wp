@@ -121,6 +121,14 @@ function conn_text_colors_css() {
     // TO DO DELETE
     // $colors = function_exists( 'cn_get_colors' ) ?  cn_get_colors( 'h_main_color', CN_H_COLORS ) : [];
     $colors = function_exists( 'cn_get_colors' ) ?  cn_get_colors( 'primary_color', CN_PRIMARY_COLORS ) : [];
+    
+    // Theme options color
+    $theme_options_colors = get_field( 'h_main_color', 'option' );
+    $counter = count( $colors ) + 1;
+    foreach ( $theme_options_colors as $theme_color ) {
+        $colors["primary_color_{$counter}"] = $theme_color['color'];
+    }
+        
     $css = '';
 
     foreach ( $colors as $key => $color ) {
