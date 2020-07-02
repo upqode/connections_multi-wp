@@ -144,6 +144,10 @@
   font-size: 40px;
 }
 
+.cn-asset-item__icon-state {
+  display: none;
+}
+
 .cn-asset-item__title {
   font-family: "Montserrat", sans-serif;
   font-weight: 200;
