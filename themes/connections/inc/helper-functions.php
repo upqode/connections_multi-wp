@@ -54,9 +54,14 @@ function conn_get_brightcove_source_code( $source_type, $user_id, $player_id, $s
  */
 function conn_get_color_scheme( $echo = false ) {
 
-    $colors = function_exists( 'cn_get_colors' ) ? cn_get_colors() : [];
-    $paragraph_colors = function_exists( 'cn_get_colors' ) ? cn_get_colors( 'p_main_color', CN_P_COLORS ) : [];
+    if ( ! function_exists('cn_get_colors') )
+        return '';
 
+    $colors = cn_get_colors() ?: [];
+    $bg_colors = cn_get_colors( 'bg_main_color', CN_BG_COLORS ) ?: [];
+    $paragraph_colors = cn_get_colors( 'p_main_color', CN_P_COLORS ) ?: [];
+
+    $colors = array_merge( $colors, $bg_colors );
     $colors = array_merge( $colors, $paragraph_colors );
 
     $output = '';
@@ -208,7 +213,13 @@ function conn_get_path_unzip_html( $unique_id, $path = 'basedir' ) {
     $subsite_folder = '';
     if ( is_multisite() ) {
         $current_blog_id = get_current_blog_id();
-	    $subsite_folder = "/subsite_{$current_blog_id}/";
+        $subsite_folder = "/subsite_{$current_blog_id}/";
+    }
+
+    $subsite_str = ( is_multisite() && ! is_main_site() ) ? "/sites/{$current_blog_id}" : '';
+    
+    if ( $subsite_str ) {
+        $base_dir_upload = str_replace( $subsite_str, '', $base_dir_upload );
     }
 
     // Path to unzip file
@@ -249,7 +260,8 @@ function conn_unzip_file( $file_uri, $unique_id, $custom_folder = '' ) {
     //     return $destination_path_to;
     // }
 
-    $file_path = explode( '/uploads', $file_uri );
+    $subsite_str = ( is_multisite() && ! is_main_site() ) ? "/sites/{$current_blog_id}" : '';
+    $file_path = explode( "/uploads{$subsite_str}", $file_uri );
 
     $file_path = isset( $file_path[1] ) ? $file_path[1] : '';
 
@@ -320,5 +332,23 @@ function conn_asset_popup( $asset_id, $popup_id ) {
         </div>
 
     <?php endif;
+
+}
+
+/**
+ * Clean unzip HTML files
+ *  
+ * @param int|string $asset_id
+ * 
+ * @return null
+ */
+function conn_clean_unzip_assets( $asset_id ) {
+
+    $src_html = conn_get_path_unzip_html( $asset_id );
+    $dirs = glob( "{$src_html}*", GLOB_ONLYDIR );
+
+    foreach ( $dirs as $dir ) {
+        conn_delete_directory( $dir );
+    }
 
 }

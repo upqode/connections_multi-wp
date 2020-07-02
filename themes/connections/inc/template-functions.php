@@ -58,7 +58,7 @@ if ( function_exists('acf_add_options_page') ) {
 	    'menu_title' 	=> 'Network Options'
 	]);
 
-    /**
+    /* TO DO DELETE
      * template for options subpage
 	 acf_add_options_sub_page(array(
 		'page_title' 	=> 'Theme Header Settings',
@@ -118,12 +118,14 @@ function conn_unzip_asset( $asset_id ) {
 	$asset_type = get_post_meta( $asset_id, 'asset_type', true );
 	$current_blog_id = get_current_blog_id();
 	$subsite_folder = "subsite_{$current_blog_id}";
+	$action = isset( $_POST['action'] ) ? $_POST['action'] : '';
 
 	if ( $asset_type == 'html' ) {
 
-		$asset_zip_id = get_post_meta( $asset_id, 'asset_zip', true );
+		$new_zip_id = isset( $_POST['acf']['field_5ccac4bb70090'] ) ? $_POST['acf']['field_5ccac4bb70090'] : '';
+		$asset_zip_id = ( $new_zip_id ) ? $new_zip_id : get_post_meta( $asset_id, 'asset_zip', true );
+
 		$asset_zip_url = wp_get_attachment_url( $asset_zip_id );
-		// $path_upload_file = conn_path_uploads( 'basedir' ) . "/{$subsite_folder}/unip_files/zip_{$asset_id}_{$asset_zip_id}";
 
 		if ( ! empty( $asset_zip_url ) ) {
 
@@ -131,12 +133,32 @@ function conn_unzip_asset( $asset_id ) {
 			$path_html = conn_unzip_file( $asset_zip_url, $unique_id );
 			
 		}
+
+		// Clean unzip folder
+		if ( empty( $new_zip_id ) && $action == 'editpost' ) {
+			conn_clean_unzip_assets( $asset_id );
+		}
+
 	}
 
 }
 
 add_action( 'save_post_cn-asset', 'conn_unzip_asset' );
 
+/**
+ * Remove unnecessary files when asset delete
+ */
+function conn_remove_unzip_files_trash_asset( $id ) {
+
+	if ( get_post_type( $id ) == 'cn-asset' ) {
+		
+		conn_clean_unzip_assets( $id );
+
+	}
+
+}
+
+add_action('delete_post', 'conn_remove_unzip_files_trash_asset');
 
 /**
  * Add iFrame to allowed wp_kses_post tags

@@ -185,7 +185,8 @@ if ( ! function_exists( 'connection_popup_guest_users' ) ) :
 					<span class="js-user-guest-popup-src" data-src="<?php echo esc_url( $url_page_popup ); ?>?lk_popup_iframe=1"></span>
 				<?php endif;
 
-				?>			</div>
+				?>			
+			</div>
 
 		</div>
 		<?php
