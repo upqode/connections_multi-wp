@@ -612,8 +612,13 @@
     }
 
     function openPanel() {
+        var activeClass = $('.cn-tabs__tablist').attr('data-active-tab-class');
+        var allClass = $('.cn-tabs__tablist').attr('data-all-tab-class');
+
         for (var i = 0; i < tablinks.length; i++) {
             tablinks[i].parentElement.classList.remove('active');
+            tablinks[i].parentElement.classList.add(allClass);
+            tablinks[i].parentElement.classList.remove(activeClass);
         }
 
         var tabpanel = document.getElementsByClassName('js-tabpanel');
@@ -622,6 +627,8 @@
         }
 
         this.parentElement.classList.add('active');
+        this.parentElement.classList.add(activeClass);
+        this.parentElement.classList.remove(allClass);
         var currentId = this.getAttribute('href');
         document.getElementById(currentId).classList.add('active');
     }

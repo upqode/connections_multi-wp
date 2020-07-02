@@ -57,7 +57,7 @@ if ( ! empty( $responsive_classes ) ) {
 
             endforeach; ?>
 
-            <ul class="cn-tabs__tablist" data-active-tab-class="<?php echo esc_attr( $bg_color_tab_active ); ?>">
+            <ul class="cn-tabs__tablist" data-active-tab-class="<?php echo esc_attr( $bg_color_tab_active ); ?>"  data-all-tab-class="<?php echo esc_attr( $bg_color_tab ); ?>">
                 <?php echo $output_tab_list; ?>
             </ul>
 

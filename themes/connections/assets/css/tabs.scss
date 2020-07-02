@@ -8,7 +8,8 @@
   display: -ms-flexbox;
   display: flex;
   padding-left: 10px;
-  padding-right: 10px;
+  padding-right: 20px;
+  margin: 0;
 }
 
 .cn-tabs__tablist:before {
@@ -17,7 +18,6 @@
   left: 0;
   width: 100%;
   height: 1px;
-  background-color: #F2F2F2;
   content: "";
 }
 
@@ -27,34 +27,63 @@
   flex: 0 0 20%;
   max-width: 20%;
   text-align: center;
+  list-style: none;
+  margin: 0 1px;
+  -webkit-transition: color 0.3s ease-out, background-color 0.3s ease-out, border 0.3s ease-out;
+  -o-transition: color 0.3s ease-out, background-color 0.3s ease-out, border 0.3s ease-out;
+  transition: color 0.3s ease-out, background-color 0.3s ease-out, border 0.3s ease-out;
+  &.active{
+    a{
+      color: var(--primary_color_1);
+    }
+  }
 }
+@media screen and (max-width: 767px) {
+  .cn-tabs__tablist {
+    flex-wrap: wrap;
+  }
+  .cn-tabs__tablist {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .cn-tabs__tablist-item {
+    border: 1px solid var(--p_main_color_2);
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+    margin: 0;
 
+  }
+}
 .cn-tabs__tablist-item a {
   position: relative;
   display: block;
   height: 100%;
-  padding: 5px;
   border: 1px solid transparent;
   border-bottom: none;
   -webkit-transition: color 0.3s ease-out, background-color 0.3s ease-out, border 0.3s ease-out;
   -o-transition: color 0.3s ease-out, background-color 0.3s ease-out, border 0.3s ease-out;
   transition: color 0.3s ease-out, background-color 0.3s ease-out, border 0.3s ease-out;
-  color: #4b4f56;
-  background-color: #F2F2F2;
-  font-family: "Trebuchet MS", sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 700;
+  font-size: 22px;
   text-decoration: none;
+  padding: 3px;
+  color: var(--primary_color_6);
 }
 
-.cn-tabs__tablist-item a:hover {
-  color: #000000;
+.cn-tabs__tablist-item:hover  {
+  background-color: var(--primary_color_6);
+}
+.cn-tabs__tablist-item:hover a {
+  color: var(--primary_color_1);
+}
+.cn-tabs__tablist-item a:focus {
+  outline: none;
 }
 
 .cn-tabs__tablist-item.active a {
-  background-color: #ffffff;
-  border: 1px solid #F2F2F2;
   border-bottom: 0;
-  color: #4b4f56;
 }
 
 .cn-tabs__tabpanel {
