@@ -1,5 +1,9 @@
 .cn-next-back-links {
   padding: 30px 20px;
+}
+.cn-next-back-links .cn-next-back-links-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
 }
 .cn-next-back-links a {

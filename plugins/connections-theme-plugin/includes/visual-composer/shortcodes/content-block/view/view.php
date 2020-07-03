@@ -62,6 +62,7 @@ $btn_class .= ( ! empty( $btn_align ) ) ? " {$btn_align}" : '';
 ?>
 
 <div class="cn-content-block <?php echo esc_attr( $class ); ?>" <?php echo $el_id; ?>>
+<div class="cn-content-block-wrap" >
 
     <?php if ( $title ) : ?>
         <h2 class="title <?php echo esc_attr( $title_class ); ?>">
@@ -134,6 +135,7 @@ $btn_class .= ( ! empty( $btn_align ) ) ? " {$btn_align}" : '';
                     
         ?>
     
+    </div>
     </div>
 
 </div>

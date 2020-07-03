@@ -40,6 +40,7 @@ $col_classes = [
 ?>
 
 <div class="cn-featured-links <?php echo esc_attr( $class ); ?>" <?php echo $el_id; ?> <?php echo $style_wrap; ?>>
+<div class="cn-featured-links-wrap">
 
     <?php if ( $title ) : ?>
         <h2 class="cn-featured-links__title <?php echo esc_attr( $class_title ); ?>"><?php echo esc_html( $title ); ?></h2>
@@ -131,4 +132,5 @@ $col_classes = [
         </div>
     <?php endif; ?>
 
+</div>
 </div>

@@ -27,6 +27,7 @@ if ( $style_wrap ) {
 ?>
 
 <div class="cn-next-back-links text-center <?php echo esc_attr( $class ); ?>" <?php echo $el_id; ?> <?php echo $style_wrap; ?>>
+<div class="cn-next-back-links-wrap" >
 
     <?php if ( $prev_link ) :
         $prev_link = vc_build_link( $prev_link );
@@ -60,4 +61,5 @@ if ( $style_wrap ) {
         <?php endif; ?>
     <?php endif; ?>
 
+</div>
 </div>

@@ -27,6 +27,7 @@ if ( $style_wrap ) {
 ?>
 
 <div class="cn-callout <?php echo esc_attr( $class ); ?>" <?php echo $el_id; ?> <?php echo $style_wrap; ?>>
+<div class="cn-callout-wrap" >
 
 <?php if ( $title ) : ?>
         <h2 class="cn-callout__title <?php echo esc_attr( $title_color ); ?>"><?php echo nl2br( wp_kses( $title, ['br'] ) ); ?></h2>
@@ -52,4 +53,5 @@ if ( $style_wrap ) {
 
     <?php endif; ?>
 
+</div>
 </div>

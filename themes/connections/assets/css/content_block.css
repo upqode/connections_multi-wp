@@ -1,6 +1,10 @@
 .cn-content-block {
   padding: 15px;
 }
+.cn-content-block .cn-content-block-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+}
 .cn-content-block .title {
   font-family: "Montserrat", sans-serif;
   font-weight: 200;

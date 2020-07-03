@@ -4,6 +4,10 @@
   padding: 100px 15px;
   position: relative;
 }
+.cn-callout-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+}
 @media screen and (max-width: 767px) {
   .cn-callout {
     padding: 50px 15px;
