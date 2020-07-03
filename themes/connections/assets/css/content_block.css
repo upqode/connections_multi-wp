@@ -12,6 +12,9 @@
   border-bottom-width: 2px;
   line-height: 1.5em;
 }
+.cn-content-block .content-block .title {
+  display: none;
+}
 .cn-content-block .text p {
   margin: 0;
 }
@@ -19,6 +22,19 @@
 @media screen and (max-width: 767px) {
   .cn-content-block {
     padding: 25px 10px;
+  }
+  .cn-content-block .title {
+    font-size: 36px;
+    display: none;
+  }
+  .cn-content-block .content-block {
+    order: 2;
+  }
+  .cn-content-block .content-block .title {
+    display: block;
+  }
+  .cn-content-block .media-block {
+    order: 1;
   }
 }
 .cn-content-block__row {
@@ -175,7 +191,7 @@
     margin-top: 30px;
   }
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .col-3 {
     flex: 0 0 100%;
     max-width: 100%;

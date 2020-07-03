@@ -1,5 +1,6 @@
-.cn-content-block{
+.cn-content-block {
   padding: 15px;
+
   .title {
     font-family: 'Montserrat', sans-serif;
     font-weight: 200;
@@ -12,7 +13,12 @@
       line-height: 1.5em;
     }
   }
-  .text p{
+  .content-block{
+    .title{
+      display: none;
+    }
+  }
+  .text p {
     margin: 0;
   }
 
@@ -21,6 +27,20 @@
 @media screen and (max-width: 767px) {
   .cn-content-block {
     padding: 25px 10px;
+
+    .title {
+      font-size: 36px;
+      display: none;
+    }
+    .content-block{
+      order: 2;
+      .title{
+        display: block;
+      }
+    }
+    .media-block{
+      order: 1;
+    }
   }
 }
 
@@ -127,26 +147,32 @@
 .cn-content-block__video-brightcove .bcg-play-btn.player-init {
   display: none;
 }
-.img-round{
+
+.img-round {
   background-size: cover;
   background-position: center;
   border-radius: 50%;
   padding-bottom: 50%;
   height: 0;
-  &.col-3{
+
+  &.col-3 {
     padding-bottom: 25%;
   }
-  &.col-6{
+
+  &.col-6 {
     padding-bottom: 50%;
   }
-  &.col-12{
+
+  &.col-12 {
     padding-bottom: 100%;
   }
-  &.col-9{
+
+  &.col-9 {
     padding-bottom: 75%;
   }
 }
-.btn{
+
+.btn {
   display: table;
   box-sizing: border-box;
   border-width: 2px;
@@ -160,57 +186,65 @@
   text-decoration: none;
   transition: 0.5s;
   margin-top: 50px;
-  &.left{
+
+  &.left {
     margin-right: auto;
     margin-left: 0;
   }
-  &.right{
+
+  &.right {
     margin-right: 0;
     margin-left: auto;
   }
-  &.center{
+
+  &.center {
     margin-right: auto;
     margin-left: auto;
   }
 }
+
 @media screen and (max-width: 991px) {
-  .btn{
+  .btn {
     padding: 10px 10px;
     margin-top: 30px;
   }
 }
-@media screen and (max-width: 768px) {
-  .col-3{
+
+@media screen and (max-width: 767px) {
+  .col-3 {
     flex: 0 0 100%;
     max-width: 100%;
     margin: 10px 0;
   }
-  .col-6{
+  .col-6 {
     flex: 0 0 100%;
     max-width: 100%;
     margin: 10px 0;
   }
-  .col-12{
+  .col-12 {
     flex: 0 0 100%;
     max-width: 100%;
     margin: 10px 0;
   }
-  .col-9{
+  .col-9 {
     flex: 0 0 100%;
     max-width: 100%;
     margin: 10px 0;
   }
-  .img-round{
-    &.col-3{
+  .img-round {
+    &.col-3 {
       padding-bottom: 100%;
     }
-    &.col-6{
+
+    &.col-6 {
       padding-bottom: 100%;
     }
-    &.col-12{
+
+    &.col-12 {
       padding-bottom: 100%;
     }
-    &.col-9{
+
+    &.col-9 {
       padding-bottom: 100%;
     }
   }

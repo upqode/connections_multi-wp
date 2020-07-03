@@ -98,7 +98,11 @@ $btn_class .= ( ! empty( $btn_align ) ) ? " {$btn_align}" : '';
         <?php ob_start(); ?>
 
             <div class="content-block <?php echo esc_attr( $content_class ); ?>">
-
+				<?php if ( $title ) : ?>
+					<h2 class="title <?php echo esc_attr( $title_class ); ?>">
+						<?php echo esc_html( $title ); ?>
+					</h2>
+				<?php endif; ?>
                 <?php 
                 if ( $content ) : ?>
                     <div class="text">
