@@ -3,7 +3,18 @@
   flex-wrap: wrap;
 }
 
+.cn-asset-library-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 .cn-asset-library__row {
+}
+
+.cn-asset-library__col {
+  .cn-asset-library-wrap {
+    margin-left: 0;
+  }
 }
 
 .cn-asset-library {

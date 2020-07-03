@@ -66,17 +66,17 @@ function cn_get_taxonomies() {
 		],
 		'cn-asset-category' 		=> [
 			'post_types' 				=> 'cn-asset',
-			'singular_name' 			=> 'Season',
-			'plural_name' 				=> 'Seasons',
+			'singular_name' 			=> 'Category',
+			'plural_name' 				=> 'Categories',
 		],
-		'cn-asset-tag' 				=> [
-			'post_types' 				=> 'cn-asset',
-			'singular_name' 			=> 'Episode',
-			'plural_name' 				=> 'Episodes',
-			'rewrite_args' 				=>  [
-				'hierarchical'        		=> false,
-			],
-		],
+//		'cn-asset-tag' 				=> [
+//			'post_types' 				=> 'cn-asset',
+//			'singular_name' 			=> 'Episode',
+//			'plural_name' 				=> 'Episodes',
+//			'rewrite_args' 				=>  [
+//				'hierarchical'        		=> false,
+//			],
+//		],
 		'cn-contributor-category' 	=> [
 			'post_types' 				=> 'cn-contributor',
 			'singular_name' 			=> 'Category',
@@ -93,7 +93,7 @@ function cn_get_taxonomies() {
 			'plural_name' 				=> 'Folders',
 		],
 		'cn-site-tag' 				=> [
-			'post_types' 				=> ['cn-asset', 'cn-case', 'page', 'cn-glossary', 'cn-contributor'],
+			'post_types' 				=> [ 'cn-case', 'page', 'cn-glossary', 'cn-contributor'],
 			'singular_name' 			=> 'Site tag',
 			'plural_name' 				=> 'Site tags',
 			'rewrite_args' 				=>  [
