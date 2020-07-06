@@ -27,13 +27,13 @@ class CN_Accordion extends CN_Base_Shortcode {
                 'value'       => cn_get_bg_vc_colors( 'title' ),
             ),
             array(
-                'heading' 	  => esc_html__( 'Drawer Background color', 'connections' ),
+                'heading' 	  => esc_html__( 'Drawer Button', 'connections' ),
                 'type' 		  => 'dropdown',
                 'param_name'  => 'bg_drawer_color',
                 'value'       => cn_get_bg_vc_colors( 'title' ),
             ),
             array(
-                'heading' 	  => esc_html__( 'Drawer Background tite color', 'connections' ),
+                'heading' 	  => esc_html__( 'Drawer Title Bar', 'connections' ),
                 'type' 		  => 'dropdown',
                 'param_name'  => 'bg_drawer_title_color',
                 'value'       => cn_get_bg_vc_colors( 'title' ),

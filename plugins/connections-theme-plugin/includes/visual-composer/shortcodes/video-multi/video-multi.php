@@ -78,11 +78,12 @@ class CN_Video_Multi extends CN_Base_Shortcode {
                 ),
             ),
 
-            array(
-                'heading'     => esc_html__( 'Body Copy', 'connections' ),
-                'type'        => 'textarea_html',
-                'param_name'  => 'content',
-            ),
+            // TO DO DELETE
+            // array(
+            //     'heading'     => esc_html__( 'Body Copy', 'connections' ),
+            //     'type'        => 'textarea_html',
+            //     'param_name'  => 'content',
+            // ),
 
             array(
                 'heading'     => esc_html__( 'Button', 'connections' ),

@@ -92,11 +92,12 @@ $nof_link    = ( ! empty( $link['rel'] ) ) ? 'rel="' . $link['rel'] .'"' : '';
             
         </div>
 
-        <?php if ( $content ) : ?>
+        <?php /* TO DO DELETE
+        if ( $content ) : ?>
             <div class="cn-tabs__content">
                 <?php echo wp_kses_post( $content ); ?>
             </div>
-        <?php endif; ?>
+        <?php endif;*/ ?>
 
         <?php if ( ! empty( $link['url'] ) && ! empty( $link['title'] ) ) : ?>
             <a href="<?php echo esc_url( $link['url'] ); ?>" class="cn-btn" <?php echo $link_target, $nof_link; ?>>
