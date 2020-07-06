@@ -50,6 +50,10 @@ if ( $asset_type == 'html' ) {
     $asset_item_class   .= ' js-item-html';
 }
 
+if ( $asset_type == 'pdf' ) {
+    $asset_item_class   .= ' js-lazy-load-asset-pdf';
+}
+
 // Item wrap class
 $asset_item_wrap_class  = '';
 $asset_item_wrap_class .= ( $asset_type == 'audio' ) ? ' js-audio-asset' : '';

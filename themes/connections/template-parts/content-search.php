@@ -6,30 +6,34 @@
  *
  * @package connections
  */
+$post_type = get_post_type( $post );
+$article_link_class = '';
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
+<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-		<?php if ( 'post' === get_post_type() ) : ?>
-		<div class="entry-meta">
-			<?php
-			connections_posted_on();
-			connections_posted_by();
-			?>
-		</div><!-- .entry-meta -->
-		<?php endif; ?>
-	</header><!-- .entry-header -->
 
-	<?php connections_post_thumbnail(); ?>
+	<?php
+	if ( $post_type == 'cn-asset' ) {
 
-	<div class="entry-summary">
-		<?php the_excerpt(); ?>
-	</div><!-- .entry-summary -->
+		include locate_template( "template-parts/search/content-asset.php" );
+		
+	} else {
 
-	<footer class="entry-footer">
-		<?php connections_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
-</article><!-- #post-<?php the_ID(); ?> -->
+		
+		$taxonomies = [
+			'cn-case'  			=> 'cn-case-category',
+			'cn-asset'			=> 'cn-asset-category',
+			'cn-contributor'	=> 'cn-contributor-category',
+			'cn-glossary'		=> 'cn-glossary-category',
+		];
+
+		$cat_slug = isset( $taxonomies[ $post_type ] ) ? $taxonomies[ $post_type ] : '';
+		$tag_slug = ( $post_type == 'post' ) ? 'post_tag' : '';
+
+		include locate_template( "template-parts/search/content-default.php" );
+	}
+    ?>
+
+</div>

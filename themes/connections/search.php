@@ -10,7 +10,7 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main">
+	<main class="container">
 
 		<?php if ( have_posts() ) : ?>
 
@@ -35,11 +35,13 @@ get_header();
 				 */
 				get_template_part( 'template-parts/content', 'search' );
 
-			endwhile;
+			endwhile; ?>
 
-			the_posts_navigation();
+			<div class="cn-pagination">
+				<?php echo paginate_links(); ?>
+			</div>
 
-		else :
+		<?php else :
 
 			get_template_part( 'template-parts/content', 'none' );
 
@@ -49,5 +51,4 @@ get_header();
 	</main><!-- #main -->
 
 <?php
-get_sidebar();
 get_footer();

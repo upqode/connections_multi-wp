@@ -36,7 +36,11 @@ switch ( $asset_type ) :
         if ( $asset_data ) :
 
             if ( class_exists( 'WonderPlugin_PDF_Plugin' ) ) :
-                echo do_shortcode( '[wonderplugin_pdf src="' . esc_url( $asset_data ) . '" ]' );
+                $iframe = do_shortcode( '[wonderplugin_pdf src="' . esc_url( $asset_data ) . '" ]' );
+                $iframe = str_replace( 'src=', 'data-src=', $iframe );
+                echo $iframe;
+                // TO DO DELETE
+                // echo do_shortcode( '[wonderplugin_pdf src="' . esc_url( $asset_data ) . '" ]' );
             else : ?>
                 <div class="cn-asset-popup-wrap">
                     <object data="<?php echo esc_url( $asset_data ); ?>" type="application/pdf"></object>
@@ -55,7 +59,11 @@ switch ( $asset_type ) :
 
         if ( $src_html ) : ?>
             <div class="cn-asset-popup-wrap">
-                <span class="js-iframe-html" data-src="<?php echo esc_attr( $src_html ); ?>"></span>
+                <?php if ( $asset_id && $asset_zip_id ) : ?>
+                    <span class="js-iframe-html js-lazy-loader-iframe" data-src="<?php echo esc_attr( $src_html ); ?>"></span>
+                <?php else :
+                    _e( 'Not found', 'connections' );
+                endif; ?>
             </div>
         <?php endif;
 
@@ -67,6 +75,8 @@ switch ( $asset_type ) :
         
         if ( ! empty( $asset_iframe ) ):
             echo wp_kses_post( $asset_iframe );
+        else:
+            _e( 'Not found', 'connections' );
         endif;
 
     break;

@@ -92,6 +92,7 @@ $col_classes = [
                 $asset_link_class .= ( $asset_type == 'audio' ) ? 'js-item-BC' : 'js-popup';
                 $asset_link_class .= ( $asset_type == 'video' ) ? ' js-item-BC' : '';
                 $asset_link_class .= ( $asset_type == 'html' ) ? ' js-item-html' : '';
+                $asset_link_class .= ( $asset_type == 'pdf' ) ? ' js-lazy-load-asset-pdf' : '';
 
                 $link = isset( $item['link'] ) ? vc_build_link( $item['link'] ) : [];
                 $link_target = ( ! empty( $link['target'] ) ) ? 'target="' . $link['target'] . '"' : '';

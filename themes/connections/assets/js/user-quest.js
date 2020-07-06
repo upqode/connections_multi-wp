@@ -2,7 +2,7 @@
 /* ------------------------------------------------------------------------------------------------------- */
 /* This is main JS file that contains custom rules used in this template */
 /* ------------------------------------------------------------------------------------------------------- */
-/* Template Name: liquid-knowledge */
+/* Template Name: connections */
 /* Version: 1.1.0 Initial Release */
 /* Build Date: */
 /* Author:  */

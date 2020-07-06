@@ -192,3 +192,28 @@ if ( ! function_exists( 'connection_popup_guest_users' ) ) :
 		<?php
 	}
 endif;
+
+
+/**
+ * Displays terms for post.
+ * @param array $categories
+ * @return string
+ */
+function conn_display_post_terms( $terms ) {
+
+	if ( is_array( $terms ) ) {
+		$terms_count = 0;
+
+		foreach ( $terms as $term ) {
+			echo ( $terms_count > 0 ) ? "<span>,</span> " : "";
+			// echo '<a href="' . esc_url( get_term_link( $term->term_id ) ) . '">';
+			echo '<span class="cn-search-item__cats-item-title">';
+				echo esc_html( $term->name );
+			echo '</span>';
+			// echo '</a>';
+			$terms_count++;
+		} // end foreach
+
+	}
+
+}
