@@ -58,11 +58,10 @@
   .cn-video-tab__tablist {
     order: 2;
     max-width: 100%;
-    margin: 0;
+    margin: 20px 0 0;
     padding: 0;
     display: flex;
     flex-wrap: wrap;
-    margin-top: 20px;
   }
   .cn-video-tab__tablist li {
     width: 100%;
