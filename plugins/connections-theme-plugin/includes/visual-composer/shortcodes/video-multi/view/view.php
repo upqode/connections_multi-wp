@@ -24,7 +24,7 @@ $title_class = '';
 $title_class .= " $title_color";
 
 if ( $underline_title && $underline_color ) {
-    $title_class .= " border_{$underline_color}";
+    $title_class .= " border_{$underline_color} cn-video-tabs__title-underline";
 }
 
 $link = vc_build_link( $link );
@@ -52,7 +52,7 @@ $nof_link    = ( ! empty( $link['rel'] ) ) ? 'rel="' . $link['rel'] .'"' : '';
         
                 if ( ! empty( $video['title'] ) ) {
                     $output_tablist .= '<li class="' . esc_attr( $active_item ) . '">';
-                    $output_tablist .= '<a class="js-tablink" href="#' . esc_attr( $tab_id ) . '">' . wp_kses_post( $video['title'] ) . '</a>';
+                    $output_tablist .= '<a class="js-tablink cn-btn" href="#' . esc_attr( $tab_id ) . '">' . wp_kses_post( $video['title'] ) . '</a>';
                     $output_tablist .= '</li>';
                 }
             

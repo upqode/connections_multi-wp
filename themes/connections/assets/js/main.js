@@ -633,4 +633,25 @@
         document.getElementById(currentId).classList.add('active');
     }
 
+	var tabvideolinks = document.getElementsByClassName('js-tablink');
+	for (var i = 0; i < tablinks.length; i++) {
+		tabvideolinks[i].addEventListener('click', openVideoPanel);
+	}
+
+	function openVideoPanel() {
+
+		for (var i = 0; i < tabvideolinks.length; i++) {
+			tabvideolinks[i].parentElement.classList.remove('active');
+		}
+
+		var tabvideopanel = document.getElementsByClassName('js-vid-tabpanel');
+		for (i = 0; i < tabvideopanel.length; i++) {
+			tabvideopanel[i].classList.remove('active');
+		}
+
+		this.parentElement.classList.add('active');
+		var currentId = this.getAttribute('href');
+		document.getElementById(currentId).classList.add('active');
+	}
+
 })(jQuery, window, document);

@@ -1,0 +1,76 @@
+.cn-video-tabs {
+  padding: 15px;
+}
+
+.cn-video-tabs__title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 200;
+  font-style: normal;
+  margin-top: 0;
+  width: 100%;
+}
+.cn-video-tabs__title-underline {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  line-height: 1.5em;
+}
+
+.cn-video-tab__tabpanel {
+  flex-grow: 1;
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.cn-video-tab {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.cn-video-tab__tablist {
+  max-width: 300px;
+  margin: 0;
+  padding: 0 20px 0 0;
+}
+.cn-video-tab__tablist li {
+  list-style: none;
+}
+.cn-video-tab__tablist li a {
+  width: 280px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 991px) {
+  .cn-video-tab__tablist {
+    max-width: 250px;
+  }
+  .cn-video-tab__tablist li a {
+    width: 230px;
+    padding: 15px 20px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .cn-video-tab__tabpanel {
+    width: 100%;
+    order: 1;
+  }
+
+  .cn-video-tab__tablist {
+    order: 2;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  .cn-video-tab__tablist li {
+    width: 100%;
+  }
+  .cn-video-tab__tablist li a {
+    min-width: 200px;
+    width: 100%;
+  }
+}
+
+/*# sourceMappingURL=video_multi.css.map */
