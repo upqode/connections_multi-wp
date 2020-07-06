@@ -544,14 +544,14 @@ i.fa.fa-book {
 }
 
 .cn-header .menu .menu-item-has-children > a {
-  padding-left: 40px;
+  padding-right: 40px;
 }
 
 .cn-header .menu .menu-item-has-children > a span {
   display: block;
   position: absolute;
   top: 50%;
-  left: 15px;
+  right: 15px;
   transform: translateY(-50%);
   color: var(--primary_color_1);
   font-size: 30px;
@@ -614,7 +614,7 @@ i.fa.fa-book {
   position: absolute !important;
   padding: 0;
   top: 50%;
-  right: 15px;
+  left: 15px;
   transform: translateY(-50%);
   color: var(--primary_color_1);
   font-size: 30px;
@@ -635,13 +635,13 @@ i.fa.fa-book {
   -ms-flex-align: center;
   align-items: center;
   font-size: 18px;
-  text-transform: uppercase;
   position: absolute;
   width: 100%;
   height: 100%;
   z-index: 2;
   left: 0;
   top: 0;
+  padding-left: 40px;
 }
 
 .cn-header li.clone-menu-item a {

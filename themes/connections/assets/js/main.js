@@ -162,17 +162,6 @@
 			return false;
 		}
 
-
-		// TO DO DELETE
-		// Brigtcove
-		// if ( $this.hasClass('player-init') ) {
-		//     videojs( currentPlayerID ).pause();
-		//     $itemBC.removeClass('player-init');
-		// } else if ( autoplay ) {
-		//     videojs( currentPlayerID ).play();
-		//     $itemBC.addClass('player-init');
-		// }
-
 		var
 			id = ($this.attr('data-href')) ? $this.attr('data-href') : $this.attr('href'),
 			$player = $(id).find('.js-lazy-load-BC'),
@@ -412,7 +401,7 @@
 		openMenu();
 	});
 
-	var $firstChildLink = $('.cn-header .menu > .menu-item-has-children > a').append('<span class="fa fa-angle-left"></span>');
+	var $firstChildLink = $('.cn-header .menu > .menu-item-has-children > a').append('<span class="fa fa-angle-right"></span>');
 
 	$('.cn-header .menu > .menu-item-has-children').each(function () {
 		var $this = $(this),
@@ -421,7 +410,7 @@
 			e.preventDefault();
 		})
 		if (!$sub_menu.find('.clone-menu-item').length) {
-			$sub_menu.prepend('<li class="clone-menu-item"><span class="fa fa-angle-right"></span><span class="back-title js-back-text"></span></li>');
+			$sub_menu.prepend('<li class="clone-menu-item"><span class="fa fa-angle-left"></span><span class="back-title js-back-text"></span></li>');
 			var $clone_item = $sub_menu.find('> .clone-menu-item');
 			$clone_item.find('span')[1].addEventListener('click', function (e) {
 				if ($(window).width() > 767) {
