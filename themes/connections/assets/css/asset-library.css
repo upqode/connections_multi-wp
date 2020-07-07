@@ -81,7 +81,7 @@
 }
 
 @media screen and (max-width: 1299px) {
-  .cn-asset-library__col--right {
+  .cn-asset-library__nav-col .cn-asset-library__col--right {
     padding: 15px 15px 30px 15px;
   }
 }
