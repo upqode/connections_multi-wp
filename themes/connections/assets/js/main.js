@@ -311,27 +311,27 @@
 					$current = magnificPopup.st.el,
 					classes = $current.attr('class');
 
-				console.log( classes );
-				console.log( classes.indexOf('js-lazy-load-iframe') != -1 );
+				console.log(classes);
+				console.log(classes.indexOf('js-lazy-load-iframe') != -1);
 
 				// window.scrollTop = window.scrollY;
 				$('body, html').addClass('no-scroll');
 
-				if ( classes.indexOf('js-lazy-load-iframe') != -1 ) {
-					console.log( classes );
-					lazyLoadIframe( $( $current.attr('href') ).find('.js-lazy-loader-iframe') );
+				if (classes.indexOf('js-lazy-load-iframe') != -1) {
+					console.log(classes);
+					lazyLoadIframe($($current.attr('href')).find('.js-lazy-loader-iframe'));
 				}
 
-				if ( classes.indexOf('js-lazy-load-asset-pdf') != -1 ) {
-					lazyLoadIframe( $( $current.attr('href') ).find('.wonderplugin-pdf-iframe[data-src]') );
-					$( $current.attr('href') ).find('.wonderplugin-pdf-iframe[data-src]').addClass('wonderplugin-pdf-iframe');
+				if (classes.indexOf('js-lazy-load-asset-pdf') != -1) {
+					lazyLoadIframe($($current.attr('href')).find('.wonderplugin-pdf-iframe[data-src]'));
+					$($current.attr('href')).find('.wonderplugin-pdf-iframe[data-src]').addClass('wonderplugin-pdf-iframe');
 				}
 
 			},
 			beforeClose: function () {
 				var $video = $('.mfp-ready').find('.video-js');
-				if ( $video.length ) {
-					videojs( $video.attr('id') ).pause();
+				if ($video.length) {
+					videojs($video.attr('id')).pause();
 				}
 			},
 			close: function () {
@@ -345,7 +345,7 @@
 	/* LAZY LOAD IFRAME */
 
 	/* ------------------------------------------- */
-	function lazyLoadIframe( $iframeLoader ) {
+	function lazyLoadIframe($iframeLoader) {
 
 		if (!$iframeLoader.hasClass('html-init')) {
 			var $iframe = $('<iframe/>', {
@@ -616,7 +616,9 @@
 	/* ------------------------------------------- */
 	var tablinks = document.getElementsByClassName('js-tablinks');
 	for (var i = 0; i < tablinks.length; i++) {
-		tablinks[i].addEventListener('click', openPanel);
+		if (tablinks[i]) {
+			tablinks[i].addEventListener('click', openPanel);
+		}
 	}
 
 	function openPanel() {
@@ -641,9 +643,12 @@
 		document.getElementById(currentId).classList.add('active');
 	}
 
+
 	var tabvideolinks = document.getElementsByClassName('js-tablink');
 	for (var i = 0; i < tablinks.length; i++) {
-		tabvideolinks[i].addEventListener('click', openVideoPanel);
+		if (tabvideolinks[i]) {
+			tabvideolinks[i].addEventListener('click', openVideoPanel);
+		}
 	}
 
 	function openVideoPanel() {
