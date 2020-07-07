@@ -9,9 +9,6 @@
   padding-top: 20px;
 }
 
-.cn-asset-library__row {
-}
-
 .cn-asset-library {
   h2 {
     margin: 15px;
@@ -92,9 +89,16 @@
 
   .cn-asset-library__col--right {
     flex-grow: 1;
+    padding: 15px 260px 30px 15px;
+
   }
 }
 
+@media screen and (max-width: 1399px) {
+  .cn-asset-library__nav-col .cn-asset-library__col--right {
+    padding: 15px 15px 30px 15px;
+  }
+}
 @media screen and (max-width: 1199px) {
   .sidebar-fixed-top .cn-asset-library__nav {
     max-width: 240px;
