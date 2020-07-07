@@ -80,6 +80,11 @@
   padding: 15px 260px 30px 15px;
 }
 
+@media screen and (max-width: 1299px) {
+  .cn-asset-library__col--right {
+    padding: 15px 15px 30px 15px;
+  }
+}
 @media screen and (max-width: 1199px) {
   .sidebar-fixed-top .cn-asset-library__nav {
     max-width: 240px;
@@ -87,10 +92,6 @@
 
   .cn-asset-library__nav-col .cn-asset-library__col--left {
     width: 240px;
-  }
-
-  .cn-asset-library__col--right {
-    padding: 15px 240px 30px 15px;
   }
 }
 @media screen and (max-width: 991px) {
@@ -100,10 +101,6 @@
 
   .cn-asset-library__nav-col .cn-asset-library__col--left {
     width: 195px;
-  }
-
-  .cn-asset-library__col--right {
-    padding: 15px 195px 30px 15px;
   }
 }
 @media screen and (max-width: 767px) {
@@ -117,7 +114,6 @@
 
   .cn-asset-library__nav-col .cn-asset-library__col--right {
     width: 100%;
-    padding: 15px 15px 30px 15px;
   }
 
   .cn-asset-library__row {
