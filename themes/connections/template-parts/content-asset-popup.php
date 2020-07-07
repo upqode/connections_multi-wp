@@ -16,7 +16,7 @@ switch ( $asset_type ) :
     case 'audio': ?>
 
         <div class="cn-asset-popup-wrap">
-            <?php conn_get_brightcove_source_code( 'audio', $brightcove_user_id, $brightcove_player_id, $asset_data, 'library-' . $popup_id, ' data-autoplay="autoplay"' ); ?>
+            <?php conn_get_brightcove_source_code( 'audio', $brightcove_user_id, $brightcove_player_id, $asset_data, 'library-' . $popup_id, ' data-autoplay="autoplay" ' ); ?>
         </div>
 
         <?php break;

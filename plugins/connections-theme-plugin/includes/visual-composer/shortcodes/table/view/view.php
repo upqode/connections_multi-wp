@@ -24,7 +24,7 @@ $class_title .=  ' cn-table__title ';
 
 // Link
 $link = vc_build_link( $link );
-$link_target = ( ! empty( $link['target'] ) ) ? 'target="' . $link['target'] . '"' : '';
+$link_target = ( ! empty( $link['target'] ) ) ? 'target="' . $link['target'] . '" ' : '';
 $nof_link    = ( ! empty( $link['rel'] ) ) ? 'rel="' . $link['rel'] .'"' : '';
 
 ?>

@@ -28,7 +28,7 @@ if ( $underline_title && $underline_color ) {
 }
 
 $link = vc_build_link( $link );
-$link_target = ( ! empty( $link['target'] ) ) ? 'target="' . $link['target'] . '"' : '';
+$link_target = ( ! empty( $link['target'] ) ) ? 'target="' . $link['target'] . '" ' : '';
 $nof_link    = ( ! empty( $link['rel'] ) ) ? 'rel="' . $link['rel'] .'"' : '';
 
 ?>  
@@ -52,7 +52,7 @@ $nof_link    = ( ! empty( $link['rel'] ) ) ? 'rel="' . $link['rel'] .'"' : '';
         
                 if ( ! empty( $video['title'] ) ) {
                     $output_tablist .= '<li class="' . esc_attr( $active_item ) . '">';
-                    $output_tablist .= '<a class="js-tablink cn-btn" href="#' . esc_attr( $tab_id ) . '">' . wp_kses_post( $video['title'] ) . '</a>';
+                    $output_tablist .= '<a class="js-tablink cn-btn" href="#' . esc_attr( $tab_id ) . '">' . esc_html( $video['title'] ) . '</a>';
                     $output_tablist .= '</li>';
                 }
             
@@ -95,7 +95,7 @@ $nof_link    = ( ! empty( $link['rel'] ) ) ? 'rel="' . $link['rel'] .'"' : '';
         <?php /* TO DO DELETE
         if ( $content ) : ?>
             <div class="cn-tabs__content">
-                <?php echo wp_kses_post( $content ); ?>
+                <?php echo wp_kses_post( "<p>" . $content . "</p>" ); ?>
             </div>
         <?php endif;*/ ?>
 
