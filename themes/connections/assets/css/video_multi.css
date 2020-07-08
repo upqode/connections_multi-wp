@@ -39,18 +39,19 @@
   width: 280px;
   margin-bottom: 10px;
   text-transform: uppercase;
+  padding: 8px 20px;
 }
 
 @media screen and (max-width: 991px) {
   .cn-video-tab__tablist {
-    max-width: 250px;
+    max-width: 230px;
   }
   .cn-video-tab__tablist li a {
-    width: 230px;
-    padding: 15px 20px;
+    width: 210px;
+    padding: 8px 20px;
   }
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .cn-video-tab__tabpanel {
     width: 100%;
     order: 1;
@@ -71,6 +72,9 @@
     min-width: 200px;
     width: 100%;
   }
+}
+.cn-tabs .cn-tabs__tabpanel-item .vjs-poster {
+  background-color: var(--p_main_color_2);
 }
 
 /*# sourceMappingURL=video_multi.css.map */
