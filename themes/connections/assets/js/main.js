@@ -672,11 +672,6 @@
 		$("video").each(function(){
 			$(this).not($video).get(0).pause();
 		});
-	
-		console.log($(this).find("video").get(0));
-
-		console.log($(this));
-		console.log('e');
 	});
 
 
