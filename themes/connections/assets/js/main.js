@@ -669,7 +669,6 @@
 
 	$('.video-js').on('click', function(){
 		$video = $(this).find("video");
-		console.log($(this).find("video"));
 		$("video").each(function(){
 			$(this).not($video).get(0).pause();
 		});
