@@ -52,10 +52,11 @@ function connections_customize_partial_blogdescription() {
 	bloginfo( 'description' );
 }
 
+// TO DO RESTORE
 /**
  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
  */
-function connections_customize_preview_js() {
-	wp_enqueue_script( 'connections-customizer', CN_THEME_URI . '/js/customizer.js', array( 'customize-preview' ), '20151215', true );
-}
-add_action( 'customize_preview_init', 'connections_customize_preview_js' );
+// function connections_customize_preview_js() {
+// 	wp_enqueue_script( 'connections-customizer', CN_THEME_URI . '/assets/js/customizer.js', array( 'customize-preview' ), '20151215', true );
+// }
+// add_action( 'customize_preview_init', 'connections_customize_preview_js' );

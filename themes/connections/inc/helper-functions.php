@@ -233,8 +233,12 @@ function conn_get_path_unzip_html( $unique_id, $path = 'basedir' ) {
         $base_dir_upload = str_replace( $subsite_str, '', $base_dir_upload );
     }
 
+    if ( $unique_id ) {
+        $unique_id = "zip_{$unique_id}";
+    }
+
     // Path to unzip file
-    return "{$base_dir_upload}/unip_files{$subsite_folder}zip_{$unique_id}";
+    return "{$base_dir_upload}/unip_files{$subsite_folder}{$unique_id}";
 
 }
 

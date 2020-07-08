@@ -73,9 +73,33 @@ function connections_scripts() {
 add_action( 'wp_enqueue_scripts', 'connections_scripts' );
 
 
+/**
+ * Admin Scripts
+ */
+function conn_admin_scripts() {
+
+    $user  = wp_get_current_user();
+	$roles = ( array ) $user->roles;
+	    
+    // Hide some option PMXE_Plugin for a user whose role is a content manager
+    if ( in_array( 'content-manager', $roles ) ) {
+        $css = '
+        .toplevel_page_pmxe-admin-home .wp-submenu .wp-first-item, 
+        .toplevel_page_pmxe-admin-home .wp-submenu > li:last-child {
+            display: none !important;
+        }';
+        wp_add_inline_style( 'pmxe-admin-style', $css );
+    }
+    
+}
+
+add_action( 'admin_enqueue_scripts', 'conn_admin_scripts' );
+
+
 
 function wpb_add_google_fonts() {
 	wp_enqueue_style( 'wpb-google-fonts', 'https://fonts.googleapis.com/css?family=Montserrat', false );
 }
 
-   add_action( 'wp_enqueue_scripts', 'wpb_add_google_fonts' );
+add_action( 'wp_enqueue_scripts', 'wpb_add_google_fonts' );
+

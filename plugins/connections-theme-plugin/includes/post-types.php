@@ -69,14 +69,6 @@ function cn_get_taxonomies() {
 			'singular_name' 			=> 'Category',
 			'plural_name' 				=> 'Categories',
 		],
-//		'cn-asset-tag' 				=> [
-//			'post_types' 				=> 'cn-asset',
-//			'singular_name' 			=> 'Episode',
-//			'plural_name' 				=> 'Episodes',
-//			'rewrite_args' 				=>  [
-//				'hierarchical'        		=> false,
-//			],
-//		],
 		'cn-contributor-category' 	=> [
 			'post_types' 				=> 'cn-contributor',
 			'singular_name' 			=> 'Category',

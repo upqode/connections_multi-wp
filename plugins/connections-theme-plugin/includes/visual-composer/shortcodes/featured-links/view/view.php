@@ -107,9 +107,9 @@ $col_classes = [
                     <?php endif; ?>
 
                     <?php if ( ! empty( $item['content'] ) ) : ?>
-                        <p class="text <?php echo esc_attr( $content_class ); ?>">
+                        <div class="text <?php echo esc_attr( $content_class ); ?>">
                             <?php echo wp_kses_post( "<p>" . $item['content'] ."</p>" ); ?>
-                        </p>
+                        </div>
                     <?php endif; ?>
                     
                     <?php if ( $item['type_link'] == 'asset_library' && ! empty( $asset_id ) ) : ?>
