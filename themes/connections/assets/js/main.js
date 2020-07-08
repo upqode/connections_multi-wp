@@ -672,8 +672,7 @@
 		$("video").each(function(){
 			$(this).not($video).get(0).pause();
 		});
-		// $(this).find("video").get(0).played ? $(this).find("video").get(0).pause() : $(this).find("video").get(0).play();
-		// $(this).find("video").get(0).play();
+	
 		console.log($(this).find("video").get(0));
 
 		console.log($(this));
