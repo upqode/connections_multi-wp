@@ -4,51 +4,71 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#search-result
  *
- * @package connections
+ * @package liquid-knowledge
  */
+
+$search_query = isset( $_GET['s'] ) ? trim( $_GET['s'] ) : "";
 
 get_header();
 ?>
 
-	<main class="container">
+	<div class="cn-main-wrapp__inner cn-bg-grey-light cn-search js-only-fullheight">
+		<div class="cn-search__top">
+			<div class="container">
+				<div class="row">
+					<div class="col-12">
 
-		<?php if ( have_posts() ) : ?>
+						<?php if ( have_posts() ) : ?>
+							<h3 class="cn-search__title cn-color-black">
+								<?php echo esc_html__( 'Search results for: ', 'liquid-knowledge' ) . '<span class="cn-color-pink">' . $_GET['s'] . '</span>'; ?>
+							</h3>
+						<?php elseif ( ! empty( $search_query ) && strlen( $search_query ) <= 2 ) : ?>
+							<h3 class="cn-search__title cn-color-black">
+								<?php echo esc_html__( 'Search value must be greater than 2 symbols', 'liquid-knowledge' ); ?>
+							</h3>
+							<div class="cn-search-form">
+								<?php get_search_form(); ?>
+							</div>
+						<?php else : ?>
+							<h3 class="cn-search__title cn-color-black">
+								<?php echo esc_html__( 'Sorry, No Posts Matched Your Criteria.', 'liquid-knowledge' ); ?>
+							</h3>
+							<div class="cn-search-form">
+								<?php get_search_form(); ?>
+							</div>
+						<?php endif; ?>
 
-			<header class="page-header">
-				<h1 class="page-title">
-					<?php
-					/* translators: %s: search query. */
-					printf( esc_html__( 'Search Results for: %s', 'connections' ), '<span>' . get_search_query() . '</span>' );
-					?>
-				</h1>
-			</header><!-- .page-header -->
-
-			<?php
-			/* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
-
-				/**
-				 * Run the loop for the search to output the results.
-				 * If you want to overload this in a child theme then include a file
-				 * called content-search.php and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', 'search' );
-
-			endwhile; ?>
-
-			<div class="cn-pagination">
-				<?php echo paginate_links(); ?>
+					</div>
+				</div>
 			</div>
+		</div>
+		<?php if ( have_posts() ) : ?>
+			<div class="cn-search__bottom cn-bg-white">
+				<div class="container">
+					<div class="row">
+						<div class="col-12">
 
-		<?php else :
+							<!-- Start the Loop -->
+							<?php while( have_posts() ) : the_post(); ?>
 
-			get_template_part( 'template-parts/content', 'none' );
+								<div class="cn-search__item">
+									<?php
+									get_template_part( 'template-parts/content', 'search' );
+									?>
+								</div>
 
-		endif;
-		?>
+							<?php endwhile; ?>
 
-	</main><!-- #main -->
+							<div class="cn-pagination">
+								<?php echo paginate_links(); ?>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		<?php endif; ?>
+	</div>
 
 <?php
 get_footer();
