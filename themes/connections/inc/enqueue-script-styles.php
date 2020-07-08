@@ -30,6 +30,7 @@ function connections_scripts() {
 	wp_enqueue_style('connections-accordion', CN_THEME_URI . '/assets/css/accordion.css', array(),_S_VERSION);
 	wp_enqueue_style('connections-colout', CN_THEME_URI . '/assets/css/colout.css', array(),_S_VERSION);
 	wp_enqueue_style('connections-tabs', CN_THEME_URI . '/assets/css/tabs.css', array(),_S_VERSION);
+	wp_enqueue_style('connections-search', CN_THEME_URI . '/assets/css/search.css', array(),_S_VERSION);
 	wp_enqueue_style('connections-video_multi', CN_THEME_URI . '/assets/css/video_multi.css', array(),_S_VERSION);
 	wp_enqueue_style('connections-content_block', CN_THEME_URI . '/assets/css/content_block.css', array(),_S_VERSION);
 	wp_enqueue_style('connections-featured_links', CN_THEME_URI . '/assets/css/featured_links.css', array(),_S_VERSION);
@@ -71,6 +72,7 @@ function connections_scripts() {
 
 add_action( 'wp_enqueue_scripts', 'connections_scripts' );
 
+
 /**
  * Admin Scripts
  */
@@ -92,3 +94,12 @@ function conn_admin_scripts() {
 }
 
 add_action( 'admin_enqueue_scripts', 'conn_admin_scripts' );
+
+
+
+function wpb_add_google_fonts() {
+	wp_enqueue_style( 'wpb-google-fonts', 'https://fonts.googleapis.com/css?family=Montserrat', false );
+}
+
+add_action( 'wp_enqueue_scripts', 'wpb_add_google_fonts' );
+
