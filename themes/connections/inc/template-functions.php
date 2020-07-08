@@ -69,18 +69,6 @@ if ( function_exists('acf_add_options_page') ) {
 }
 
 /**
- * Get Main site link
- * @return boolean
- */
-function conn_main_link(){
-    if( !is_multisite() || is_main_site() )
-        return false;
-
-    return main_site_link();
-}
-
-
-/**
  * Added to extend allowed files types in Media upload
  */
 function conn_upload_mimes ( $existing_mimes = array() ) {
@@ -115,7 +103,7 @@ add_filter( 'mce_buttons_2', 'conn_mce_buttons_2' );
  */
 function conn_unzip_asset( $asset_id ) {
 
-	$asset_type = get_post_meta( $asset_id, 'asset_type', true );
+	$asset_type = isset( $_POST['acf']['field_5ccac25b97adf'] ) ? $_POST['acf']['field_5ccac25b97adf'] : get_post_meta( $asset_id, 'asset_type', true );
 	$current_blog_id = get_current_blog_id();
 	$subsite_folder = "subsite_{$current_blog_id}";
 	$action = isset( $_POST['action'] ) ? $_POST['action'] : '';
@@ -144,6 +132,8 @@ function conn_unzip_asset( $asset_id ) {
 }
 
 add_action( 'save_post_cn-asset', 'conn_unzip_asset' );
+add_action( 'publish_cn-asset', 'conn_unzip_asset' );
+
 
 /**
  * Remove unnecessary files when asset delete
@@ -159,6 +149,21 @@ function conn_remove_unzip_files_trash_asset( $id ) {
 }
 
 add_action('delete_post', 'conn_remove_unzip_files_trash_asset');
+
+
+/**
+ * Remove unnecessary files when subsite delete
+ */
+function conn_remove_unzip_files_delete_subsite( $id ) {
+
+	$dir_subsite = conn_get_path_unzip_html('');
+	// $dirs = glob( "{$src_html}*", GLOB_ONLYDIR );
+	conn_delete_directory( $dir_subsite );
+
+}
+
+add_action('delete_blog', 'conn_remove_unzip_files_delete_subsite');
+
 
 /**
  * Add iFrame to allowed wp_kses_post tags
@@ -184,3 +189,56 @@ function conn_wpkses_post_tags( $tags, $context ) {
 }
 
 add_filter( 'wp_kses_allowed_html', 'conn_wpkses_post_tags', 10, 2 );
+
+
+/**
+ * Hide admin bar for non-admins and non content manager
+ */
+function conn_hide_admin_bar( $show ) {
+
+	if ( ! current_user_can( 'administrator' ) && ! current_user_can( 'content-manager' ) ) {
+		return false;
+	}
+
+	return $show;
+}
+
+add_filter( 'show_admin_bar', 'conn_hide_admin_bar' );
+
+
+/**
+ * Block wp-admin access for non-admins and non content manager
+ */
+function conn_wp_admin() {
+	if ( is_admin() && ! current_user_can( 'administrator' ) && ! current_user_can( 'content-manager' ) ) {
+		wp_redirect( home_url() );
+		exit;
+	}
+}
+
+add_action( 'admin_init', 'conn_wp_admin' );
+
+
+/**
+ * Run init
+ */
+function conn_init() {
+
+	/**
+	 * Add access to WP All Export Plugin for a user whose role is a content manager
+	 */
+	if ( is_user_logged_in() && class_exists( 'PMXE_Plugin' ) ) {
+		$user = wp_get_current_user();
+		$roles = ( array ) $user->roles;
+		if ( in_array( 'content-manager', $roles ) ) {
+			PMXE_Plugin::$capabilities = 'read';
+			// Disable access some option PMXE_Plugin for a user whose role is a content manager
+			if ( isset( $_GET['page'] ) && ( $_GET['page'] == 'pmxe-admin-export' || $_GET['page'] == 'pmxe-admin-settings' ) ) {
+				wp_redirect( admin_url('admin.php?page=pmxe-admin-manage') );
+			}
+		}
+	}
+
+}
+
+add_action( 'init', 'conn_init' );

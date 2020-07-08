@@ -93,22 +93,23 @@ if ( ! function_exists( 'connections_entry_footer' ) ) :
 			echo '</span>';
 		}
 
-		edit_post_link(
-			sprintf(
-				wp_kses(
-					/* translators: %s: Name of current post. Only visible to screen readers */
-					__( 'Edit <span class="screen-reader-text">%s</span>', 'connections' ),
-					array(
-						'span' => array(
-							'class' => array(),
-						),
-					)
-				),
-				wp_kses_post( get_the_title() )
-			),
-			'<span class="edit-link">',
-			'</span>'
-		);
+		// TO DO DELETE
+		// edit_post_link(
+		// 	sprintf(
+		// 		wp_kses(
+		// 			/* translators: %s: Name of current post. Only visible to screen readers */
+		// 			__( 'Edit <span class="screen-reader-text">%s</span>', 'connections' ),
+		// 			array(
+		// 				'span' => array(
+		// 					'class' => array(),
+		// 				),
+		// 			)
+		// 		),
+		// 		wp_kses_post( get_the_title() )
+		// 	),
+		// 	'<span class="edit-link">',
+		// 	'</span>'
+		// );
 	}
 endif;
 
@@ -172,7 +173,12 @@ if ( ! function_exists( 'connection_popup_guest_users' ) ) :
 	function connection_popup_guest_users() {
 		$url_page_popup = get_field('fu_popup_page_url', 'option');
 		$page_popup_id = url_to_postid( $url_page_popup );
-		$content_popup = get_the_content( null, false, $page_popup_id ); ?>
+		$content_popup = get_the_content( null, false, $page_popup_id );
+		
+		if ( ! $url_page_popup )
+			return;
+
+		?>
 		<a href="#page-popup" class="js-user-guest-popup"></a>
 
 		<div id="page-popup" class="white-popup-block mfp-hide lk-user-guest-popup">

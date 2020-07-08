@@ -175,9 +175,3 @@ require CN_THEME_PATH . '/inc/template-functions.php';
  * Customizer additions.
  */
 require CN_THEME_PATH . '/inc/customizer.php';
-
-// TO DO DELETE
-/**
- * ACF Hooks
- */
-//require CN_THEME_PATH . '/inc/conn-acf-network.php';

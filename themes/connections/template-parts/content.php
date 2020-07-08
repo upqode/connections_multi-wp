@@ -9,7 +9,8 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class('text-center'); ?>>
+
 	<header class="entry-header">
 		<?php
 		if ( is_singular() ) :
@@ -60,4 +61,5 @@
 	<footer class="entry-footer">
 		<?php connections_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
+	
 </article><!-- #post-<?php the_ID(); ?> -->
