@@ -25,23 +25,23 @@ function conn_get_brightcove_source_code( $source_type, $user_id, $player_id, $s
     if ( $source_type === "video" ) {
 
         if ( $lazy_load ) {
-            $source_format = '<div id="'. $src_id .'" class="js-lazy-load-BC" data-video-id="'. $src_id .'" data-class="video-js lk-video '. $classes .'" '. $attributes .'></div>';
+            $source_format = '<div class="js-lazy-load-BC" data-video-id="'. $src_id .'" data-class="video-js lk-video '. $classes .'" '. $attributes .'></div>';
         } else {
-            $source_format = '<video-js data-account="%s" data-player="%s" data-video-id="%s" id="%s" data-embed="default" '. $attributes .' data-application-id class="video-js js-video-BC lk-video '. $classes .'" controls ></video-js>';
+            $source_format = '<video-js data-account="%s" data-player="%s" data-video-id="%s" data-embed="default" '. $attributes .' data-application-id class="video-js js-video-BC lk-video '. $classes .'" controls ></video-js>';
         }
         
     }
     else {
 
         if ( $lazy_load ) {
-            $source_format = '<div id="'. $src_id .'" class="js-lazy-load-BC" data-video-id="'. $src_id .'" data-class="video-js lk-video '. $classes .'"'. $attributes .'></div>';
+            $source_format = '<div class="js-lazy-load-BC" data-video-id="'. $src_id .'" data-class="video-js lk-video '. $classes .'"'. $attributes .'></div>';
         } else {
-            $source_format = '<video-js data-test="uruie" data-account="%s" data-player="%s" data-video-id="%s" id="%s" data-embed="default" '. $attributes .' data-application-id class="video-js js-video-BC lk-video '. $classes .'" controls></video-js>';
+            $source_format = '<video-js data-test="uruie" data-account="%s" data-player="%s" data-video-id="%s" data-embed="default" '. $attributes .' data-application-id class="video-js js-video-BC lk-video '. $classes .'" controls></video-js>';
         }
         
     }
 
-    $source_code = sprintf( $source_format, $user_id, $player_id, $src_id, $post_id );
+    $source_code = sprintf( $source_format, $user_id, $player_id, $src_id );
 
     echo $source_code;
 }
