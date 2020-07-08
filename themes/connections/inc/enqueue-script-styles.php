@@ -85,7 +85,9 @@ function conn_admin_scripts() {
     if ( in_array( 'content-manager', $roles ) ) {
         $css = '
         .toplevel_page_pmxe-admin-home .wp-submenu .wp-first-item, 
-        .toplevel_page_pmxe-admin-home .wp-submenu > li:last-child {
+        .toplevel_page_pmxe-admin-home .wp-submenu > li:last-child,
+        .toplevel_page_pmxe-admin-home.opensub .wp-submenu .wp-first-item, 
+        .toplevel_page_pmxe-admin-home.opensub .wp-submenu > li:last-child {
             display: none !important;
         }';
         wp_add_inline_style( 'pmxe-admin-style', $css );
