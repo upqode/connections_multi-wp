@@ -78,7 +78,7 @@
   }
 }
 @media screen and (max-width: 450px) {
-  .cn-next-back-links {
+  .cn-next-back-links .cn-next-back-links-wrap {
     flex-wrap: wrap;
   }
   .cn-next-back-links a {
