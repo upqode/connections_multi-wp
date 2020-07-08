@@ -22,20 +22,8 @@ function connections_scripts() {
 	wp_enqueue_style( 'font-awesome', CN_THEME_URI . '/assets/css/font-awesome.css', array(), _S_VERSION );
 	wp_enqueue_style( 'bootstrap-grid', CN_THEME_URI . '/assets/css/bootstrap-grid.css', array(), _S_VERSION );
 	wp_enqueue_style( 'magnific-popup', CN_THEME_URI . '/assets/css/magnific-popup.css', array(), _S_VERSION );
-	wp_enqueue_style('connections-header', CN_THEME_URI . '/assets/css/header.css', array(),_S_VERSION);
-	wp_enqueue_style('connections-banner', CN_THEME_URI . '/assets/css/banner.css', array(),_S_VERSION);
-	wp_enqueue_style('connections-typography', CN_THEME_URI . '/assets/css/typography.css', array(),_S_VERSION);
-	wp_enqueue_style('connections-table', CN_THEME_URI . '/assets/css/table.css', array(),_S_VERSION);
-	wp_enqueue_style('connections-sheet', CN_THEME_URI . '/assets/css/sheet.css', array(),_S_VERSION);
-	wp_enqueue_style('connections-accordion', CN_THEME_URI . '/assets/css/accordion.css', array(),_S_VERSION);
-	wp_enqueue_style('connections-colout', CN_THEME_URI . '/assets/css/colout.css', array(),_S_VERSION);
-	wp_enqueue_style('connections-tabs', CN_THEME_URI . '/assets/css/tabs.css', array(),_S_VERSION);
-	wp_enqueue_style('connections-search', CN_THEME_URI . '/assets/css/search.css', array(),_S_VERSION);
-	wp_enqueue_style('connections-video_multi', CN_THEME_URI . '/assets/css/video_multi.css', array(),_S_VERSION);
-	wp_enqueue_style('connections-content_block', CN_THEME_URI . '/assets/css/content_block.css', array(),_S_VERSION);
-	wp_enqueue_style('connections-featured_links', CN_THEME_URI . '/assets/css/featured_links.css', array(),_S_VERSION);
-	wp_enqueue_style('connections-asset-library', CN_THEME_URI . '/assets/css/asset-library.css', array(),_S_VERSION);
-	wp_enqueue_style('connections-next_back_link', CN_THEME_URI . '/assets/css/next_back_link.css', array(),_S_VERSION);
+	wp_enqueue_style('connections-style-main', CN_THEME_URI . '/assets/css/style.css', array(),_S_VERSION);
+
 
 	$custom_css = '';
 	$custom_css .= conn_bg_colors_css();
@@ -49,7 +37,7 @@ function connections_scripts() {
 	wp_style_add_data( 'connections-style', 'rtl', 'replace' );
 
 //	wp_enqueue_script( 'brightcove-player', "//players.brightcove.net/{$brightcove_user_id}/{$brightcove_player_id}_default/index.min.js?ver=5.0.4", array(), _S_VERSION, true );
-	
+
 	wp_enqueue_script( 'magnific-popup', CN_THEME_URI . '/assets/js/jquery.magnific-popup.min.js', array('jquery'), time(), true );
 	wp_enqueue_script( 'connections-main', CN_THEME_URI . '/assets/js/main.js', array('jquery'), time(), true );
 	wp_enqueue_script( 'connections-user-quest', CN_THEME_URI . '/assets/js/user-quest.js', array('jquery'), time(), true );
