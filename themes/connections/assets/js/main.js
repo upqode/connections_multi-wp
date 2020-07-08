@@ -667,12 +667,12 @@
 		document.getElementById(currentId).classList.add('active');
 	}
 
-	$('.video-js').not('video').on('click', function(){
+	$('.video-js').on('click', function(){
 		$video = $(this).find("video");
+		console.log($(this).find("video"));
 		$("video").each(function(){
 			$(this).not($video).get(0).pause();
 		});
 	});
-
 
 })(jQuery, window, document);
