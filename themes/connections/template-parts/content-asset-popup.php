@@ -8,7 +8,7 @@ switch ( $asset_type ) :
     case 'image': ?>
 
         <div class="cn-asset-popup-wrap">
-            <img src="<?php echo esc_url( wp_get_attachment_image_url( $asset_data, 'full') ); ?>" alt="">
+            <img src="<?php echo esc_url( wp_get_attachment_image_url( $asset_data, 'full') ); ?>" alt="image">
         </div>
 
         <?php break;
