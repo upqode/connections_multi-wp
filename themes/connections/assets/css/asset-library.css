@@ -269,7 +269,13 @@ iframe {
   position: relative;
 }
 
-.mfp-close, .mfp-close-btn-in .mfp-close {
+.asset-pdf .mfp-close, .asset-pdf .mfp-close-btn-in .mfp-close,
+.asset-video .mfp-close,
+.asset-video .mfp-close-btn-in .mfp-close,
+.asset-image .mfp-close,
+.asset-image .mfp-close-btn-in .mfp-close,
+.asset-iframe .mfp-close,
+.asset-iframe .mfp-close-btn-in .mfp-close {
   position: absolute;
   top: 85px;
   right: 30px;

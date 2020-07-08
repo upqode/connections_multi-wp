@@ -99,6 +99,7 @@
     padding: 15px 15px 30px 15px;
   }
 }
+
 @media screen and (max-width: 1199px) {
   .sidebar-fixed-top .cn-asset-library__nav {
     max-width: 240px;
@@ -302,15 +303,20 @@ iframe {
   position: relative;
 }
 
-.mfp-close, .mfp-close-btn-in .mfp-close {
-  position: absolute;
-  top: 85px;
-  right: 30px;
-  color: var(--p_main_color_2);
-  background-color: var(--primary_color_1);
-  width: 30px;
-  height: 30px;
-  opacity: 1;
-  min-width: auto;
-  line-height: 32px;
+.asset-pdf,
+.asset-video,
+.asset-image,
+.asset-iframe {
+  .mfp-close, .mfp-close-btn-in .mfp-close {
+    position: absolute;
+    top: 85px;
+    right: 30px;
+    color: var(--p_main_color_2);
+    background-color: var(--primary_color_1);
+    width: 30px;
+    height: 30px;
+    opacity: 1;
+    min-width: auto;
+    line-height: 32px;
+  }
 }
