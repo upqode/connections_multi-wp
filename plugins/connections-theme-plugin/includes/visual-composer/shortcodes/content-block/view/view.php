@@ -45,7 +45,7 @@ $media_wrap_class = isset( $layout_classes['media'][ $content_layout_width ] ) ?
 $media_wrap_class .= " {$type_image}";
 
 $link = vc_build_link( $btn_link );
-$link_target = ( ! empty( $link['target'] ) ) ? 'target="' . $link['target'] . '"' : '';
+$link_target = ( ! empty( $link['target'] ) ) ? 'target="' . $link['target'] . '" ' : '';
 $nof_link    = ( ! empty( $link['rel'] ) ) ? 'rel="' . $link['rel'] .'"' : '';
 
 $style_wrap = '';
@@ -107,7 +107,7 @@ $btn_class .= ( ! empty( $btn_align ) ) ? " {$btn_align}" : '';
                 <?php 
                 if ( $content ) : ?>
                     <div class="text">
-                        <?php echo wp_kses_post( $content ); ?>
+                        <?php echo wp_kses_post( "<p>" . $content . "</p>" ); ?>
                     </div>
                 <?php endif;
 

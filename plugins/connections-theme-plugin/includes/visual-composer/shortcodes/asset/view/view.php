@@ -4,7 +4,7 @@
  */
 global $brightcove_user_id, $brightcove_player_id;
 
-extract($atts);
+extract( $atts );
 
 $class = !empty($el_class) ? $el_class : '';
 $class .= vc_shortcode_custom_css_class($class);
@@ -99,7 +99,7 @@ $terms    = get_terms($args);
 
 					if ( !empty($link['title']) && !empty($link['url']) ) :
 
-						$link_target = (!empty($link['target'])) ? 'target="' . $link['target'] . '"' : '';
+						$link_target = (!empty($link['target'])) ? 'target="' . $link['target'] . '" ' : '';
 						$nof_link = (!empty($link['rel'])) ? 'rel="' . $link['rel'] . '"' : ''; ?>
 
 						<a href="<?php echo $link['url']; ?>"

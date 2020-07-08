@@ -28,13 +28,18 @@ while ( $glossary_posts->have_posts() ) : $glossary_posts->the_post();
             <?php the_title('<h5 class="cn-glossary-item__title">', '</h5>'); ?>
 
             <?php if ( $audio || $audioMP3 ) : ?>
+
                 <div id="<?php echo $unique_id; ?>" class="cn-glossary-item__audio-box audio">
 
                     <span data-href="#<?php echo $unique_id; ?>" class="cn-btn-icon js-item-BC" data-type-audio="<?php echo esc_attr( $glossary_type_audio ); ?>" data-custom-audio-src="<?php echo esc_attr( $audioMP3 ); ?>">
                         <i class="fa fa-play-circle" aria-hidden="true"></i>
                     </span>
 
-                    <?php conn_get_brightcove_source_code( 'audio', $brightcove_user_id, $brightcove_player_id, $audio, 'glossary-' . get_the_ID(), 'data-autoplay="autoplay"' ); ?>
+                    <?php 
+                    if ( $audio ) {
+                        conn_get_brightcove_source_code( 'audio', $brightcove_user_id, $brightcove_player_id, $audio, 'glossary-' . get_the_ID(), ' data-autoplay="autoplay"' );
+                    }
+                    ?>
                     
                 </div>
 

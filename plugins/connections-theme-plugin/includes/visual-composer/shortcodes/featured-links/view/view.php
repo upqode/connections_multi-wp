@@ -95,7 +95,7 @@ $col_classes = [
                 $asset_link_class .= ( $asset_type == 'pdf' ) ? ' js-lazy-load-asset-pdf' : '';
 
                 $link = isset( $item['link'] ) ? vc_build_link( $item['link'] ) : [];
-                $link_target = ( ! empty( $link['target'] ) ) ? 'target="' . $link['target'] . '"' : '';
+                $link_target = ( ! empty( $link['target'] ) ) ? 'target="' . $link['target'] . '" ' : '';
                 $nof_link    = ( ! empty( $link['rel'] ) ) ? 'rel="' . $link['rel'] .'"' : ''; ?>
 
                 <div class="cn-featured-links__items__item <?php echo esc_attr( $items_class ); ?>" <?php echo $el_item_id; ?>>
@@ -108,7 +108,7 @@ $col_classes = [
 
                     <?php if ( ! empty( $item['content'] ) ) : ?>
                         <p class="text <?php echo esc_attr( $content_class ); ?>">
-                            <?php echo wp_kses_post( $item['content'] ); ?>
+                            <?php echo wp_kses_post( "<p>" . $item['content'] ."</p>" ); ?>
                         </p>
                     <?php endif; ?>
                     
@@ -118,7 +118,7 @@ $col_classes = [
                         </a>
                     <?php else :
                         if ( ! empty( $link['title'] ) && ! empty( $link['url'] ) ) :
-                            $link_target = ( ! empty( $link['target'] ) ) ? 'target="' . $link['target'] . '"' : '';
+                            $link_target = ( ! empty( $link['target'] ) ) ? 'target="' . $link['target'] . '" ' : '';
                             $nof_link = ( ! empty( $link['rel'] ) ) ? 'rel="' . $link['rel'] .'"' : ''; ?>
                             <a href="<?php echo $link['url']; ?>" class="<?php echo esc_attr( $btn_class ); ?>" <?php echo $link_target, $nof_link; ?>>
                                 <?php echo esc_html( $link['title'] ); ?>
