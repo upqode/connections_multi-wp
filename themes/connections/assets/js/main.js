@@ -56,11 +56,12 @@
 
 	// Execute Check
 	checkMobile();
+	
+	smBPoint = 768;
+	
 	/* ------------------------------------------- */
 	/* Load mp3 */
 	/* ------------------------------------------- */
-	smBPoint = 768;
-
 	function loadMP3(src) {
 		var sound = document.createElement('audio');
 		sound.id = 'audio-player';
@@ -71,7 +72,9 @@
 		return sound;
 	}
 
-
+	/* ------------------------------------------- */
+	/* MP3 Player */
+	/* ------------------------------------------- */
 	function controlMP3($player, audio) {
 
 		$(audio).on('play', function () {
@@ -85,8 +88,17 @@
 	}
 
 	/* ------------------------------------------- */
-	/* LOAD BRIGTCOVE PLAYER DUNAMICALLY */
+	/* Pause MP3 Player */
 	/* ------------------------------------------- */
+	function pauseCurrentMP3( $player ) {
+	
+		var $audio = $player.find('audio');
+	
+		$audio[0].pause();
+		$audio.closest('.player-init').removeClass('player-init');
+	  } 
+
+	
 	if (typeof pageCalculations !== 'function') {
 		var winW,
 			winH,
@@ -109,6 +121,10 @@
 			pageCalculations();
 		});
 	}
+
+	/* ------------------------------------------- */
+	/* LOAD BRIGTCOVE PLAYER DUNAMICALLY */
+	/* ------------------------------------------- */
 	var
 		playerData = (typeof connectionsData.brigtcovePlayerData == 'object') ? connectionsData.brigtcovePlayerData : {},
 		currentPlayerID = '',
@@ -130,6 +146,32 @@
 			$this = $(this),
 			typeAudio = $this.attr('data-type-audio'),
 			customAudioSrc = $this.attr('data-custom-audio-src');
+
+		var 
+			id            = ( $this.attr('data-href') ) ? $this.attr('data-href') : $this.attr('href'),
+			$player       = $( id ).find('.js-lazy-load-BC'),
+			playID        = $player.attr('data-video-id'),
+			isLoaded      = $player.find('video-js').length;
+	
+		$itemsBC.removeClass('current-player');
+		$this.addClass('current-player');
+
+		// Pause current player
+		$('.player-init:not(.current-player)').each(function() {
+
+			var _this = $(this),
+				typeAudio = _this.attr('data-type-audio');
+	  
+			if ( typeAudio == 'custom' ) {
+			  pauseCurrentMP3( _this );
+			} else {
+			  if ( currentPlayerID && currentPlayerID != 'bc-player-' + playID ) {
+				videojs( currentPlayerID ).pause();
+				$itemsBC.removeClass('player-init');
+			  }
+			}
+	  
+		});
 
 		// Custom audio file
 		if (typeAudio == 'custom' && customAudioSrc) {
@@ -162,11 +204,12 @@
 			return false;
 		}
 
-		var
-			id = ($this.attr('data-href')) ? $this.attr('data-href') : $this.attr('href'),
-			$player = $(id).find('.js-lazy-load-BC'),
-			playID = $player.attr('data-video-id'),
-			isLoaded = $player.find('video-js').length;
+		// TO DO DELETE
+		// var
+		// 	id = ($this.attr('data-href')) ? $this.attr('data-href') : $this.attr('href'),
+		// 	$player = $(id).find('.js-lazy-load-BC'),
+		// 	playID = $player.attr('data-video-id'),
+		// 	isLoaded = $player.find('video-js').length;
 
 		// Check errors
 		if (!$player.length) {
@@ -178,11 +221,12 @@
 			return false;
 		}
 
+		// TO DO DELETE
 		// Stop current player
-		if (currentPlayerID && currentPlayerID != 'bc-player-' + playID) {
-			videojs(currentPlayerID).pause();
-			$itemsBC.removeClass('player-init');
-		}
+		// if (currentPlayerID && currentPlayerID != 'bc-player-' + playID) {
+		// 	videojs(currentPlayerID).pause();
+		// 	$itemsBC.removeClass('player-init');
+		// }
 
 		currentPlayerID = 'bc-player-' + playID;
 		autoplay = $player.attr('data-autoplay');
