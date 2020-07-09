@@ -717,5 +717,10 @@
 			$(this).not($video).get(0).pause();
 		});
 	});
+	$('.js-tablink').on('click', function(){
+		$("video").each(function(){
+			$(this).get(0).pause();
+		});
+	});
 
 })(jQuery, window, document);
