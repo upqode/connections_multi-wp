@@ -2696,6 +2696,10 @@ p {
     line-height: 25px;
   }
 }
+.cn-search__top .search-form{
+  display: flex;
+  flex-wrap: wrap;
+}
 .cn-search__top input[type="search"].search-field{
   font-size: 16px;
   padding: 7px;
