@@ -1003,10 +1003,11 @@ iframe {
   transition: transform 0.3s ease;
   transition: transform 0.3s ease, -webkit-transform 0.3s ease;
   color: var(--primary_color1);
-
+  font-size: 17px;
   &::placeholder {
     opacity: 0.99;
     line-height: normal;
+    vertical-align: middle;
   }
 }
 
