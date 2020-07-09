@@ -34,14 +34,14 @@ if ( ! empty( $responsive_classes ) ) {
 
         if ( $desc ) : ?>
             <div class="cn-sheet__description">
-                <?php echo wp_kses_post( "<p>" . $desc ."</p>" ); ?>
+                <?php echo wp_kses_post( force_balance_tags( $desc ) ); ?>
             </div>
         <?php endif; ?>
     </div>
 
     <?php if ( $content ) : ?>
         <div class="cn-sheet__content">
-            <?php echo wp_kses_post( "<p>" . $content . "</p>" ); ?>
+            <?php echo wp_kses_post( force_balance_tags( $content ) ); ?>
         </div>
     <?php endif; ?>
 

@@ -95,7 +95,7 @@ $nof_link    = ( ! empty( $link['rel'] ) ) ? 'rel="' . $link['rel'] .'"' : '';
         <?php /* TO DO DELETE
         if ( $content ) : ?>
             <div class="cn-tabs__content">
-                <?php echo wp_kses_post( "<p>" . $content . "</p>" ); ?>
+                <?php echo wp_kses_post( force_balance_tags( $content ) ); ?>
             </div>
         <?php endif;*/ ?>
 

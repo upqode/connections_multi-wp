@@ -108,7 +108,7 @@ $col_classes = [
 
                     <?php if ( ! empty( $item['content'] ) ) : ?>
                         <div class="text <?php echo esc_attr( $content_class ); ?>">
-                            <?php echo wp_kses_post( "<p>" . $item['content'] ."</p>" ); ?>
+                            <?php echo wp_kses_post( force_balance_tags( $item['content'] ) ); ?>
                         </div>
                     <?php endif; ?>
                     
