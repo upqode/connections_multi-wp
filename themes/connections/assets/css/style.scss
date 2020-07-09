@@ -84,6 +84,9 @@
   margin-bottom: 50px;
 }
 
+.admin-bar .sidebar-fixed-top .cn-asset-library__nav {
+  top: 80px;
+}
 .sidebar-fixed-top .cn-asset-library__nav {
   position: fixed;
   top: 50px;
@@ -130,6 +133,8 @@
 .cn-asset-library__nav-col {
   .cn-asset-library__row {
     display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
   }
 
   .cn-asset-library__col--left {
@@ -139,7 +144,7 @@
 
   .cn-asset-library__col--right {
     flex-grow: 1;
-    padding: 15px 260px 30px 15px;
+    padding: 15px 15px 30px 15px;
 
   }
 }
