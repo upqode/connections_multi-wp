@@ -1251,7 +1251,9 @@ i.fa.fa-book {
   background-color: var(--primary_color_1);
 
 }
-
+.admin-bar .cn-main-wrap .cn-header.fixed{
+  top: 32px;
+}
 .cn-header.fixed {
   position: fixed;
   top: 0;
