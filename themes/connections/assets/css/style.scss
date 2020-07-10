@@ -869,10 +869,18 @@ iframe {
     padding: 10px 40px;
     display: table;
     margin: 20px auto 0;
+    border-width: 2px;
+    border-style: solid;
+    border-color: transparent;
     text-decoration: none;
     transition: 0.5s;
     &:visited{
       color: var(--primary_color_6);
+    }
+    &:hover{
+      background-color: transparent;
+      border-color: var(--primary_color_2);
+      color: var(--primary_color_2);
     }
   }
 }
