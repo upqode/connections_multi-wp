@@ -31,6 +31,7 @@ if ( $is_active_ACF ) {
 }
 
 $link_target = ( ! empty( $link['target'] ) ) ? 'target="_blank"' : '';
+$referer_page = ( ! empty( $_SERVER['HTTP_REFERER'] ) ) ? $_SERVER['HTTP_REFERER'] : '';
 ?>
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
@@ -40,11 +41,13 @@ $link_target = ( ! empty( $link['target'] ) ) ? 'target="_blank"' : '';
 	<header class="cn-header  <?php echo esc_attr( $header_class ); ?>">
 
 		<div class="cn-header__wrapp">
+
 			<div class="cn-header__nav-panel">
 
 				<span class="cn-menu-btn js-nav-menu-btn"><i></i></span>
 
 				<div class="cn-header__nav js-header-nav">
+
 					<?php
 					wp_nav_menu(
 						array(
@@ -61,6 +64,13 @@ $link_target = ( ! empty( $link['target'] ) ) ? 'target="_blank"' : '';
 						<?php endif; ?>
 					</div>
 				</div>
+
+				<?php if ( $referer_page ) : ?>
+					<a href="<?php echo $referer_page; ?>" class="cn-btn-icon cn-btn-icon--back">
+						<i class="fa fa-angle-left"></i>
+					</a>
+				<?php endif; ?>
+
 				<h3 class="cn-breadcrumbs"><?php echo esc_html(get_the_title()); ?></h3>
 			</div>
 
