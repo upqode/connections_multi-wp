@@ -632,7 +632,7 @@
 			if (target.length) {
 				var targetOffset = target.offset().top;
 				$('html, body').animate({
-					scrollTop: targetOffset - $('#wpadminbar').innerHeight() - $('.js-sticky-header').innerHeight(),
+					scrollTop: targetOffset - $('#wpadminbar').innerHeight() - $('.js-sticky-header').innerHeight() - 20,
 				}, 600);
 				return false;
 			}
