@@ -319,10 +319,15 @@ iframe {
   border: 2px solid var(--primary_color_1);
   color: var(--primary_color_1);
   text-decoration: none;
+  transition: 0.5s;
   margin: 30px auto 0;
 
   &:visited {
     color: var(--primary_color_1);
+  }
+  &:hover{
+    background-color: var(--primary_color_1);
+    color: var(--p_main_color_2);
   }
 }
 
@@ -507,6 +512,14 @@ iframe {
       border-bottom-style: solid;
       border-bottom-width: 2px;
       line-height: 1.5em;
+    }
+  }
+  .btn{
+    transition: 0.5s;
+    &:hover{
+      background-color: var(--primary_color_1);
+      border-color: var(--primary_color_1);
+      color: var(--p_main_color_2);
     }
   }
   .content-block{
