@@ -129,7 +129,7 @@
 		playerData = (typeof connectionsData.brigtcovePlayerData == 'object') ? connectionsData.brigtcovePlayerData : {},
 		currentPlayerID = '',
 		autoplay = false,
-		iconClass = '',
+		iconClass = 'fa fa-pause',
 		animateClass = 'fa fa-spinner fa-spin fa-3x fa-fw',
 		$itemsBC = $('.js-item-BC'),
 		errorMessage = 'Can\'t reproduce. Please verify the entered data for this player.',
@@ -231,7 +231,7 @@
 		currentPlayerID = 'bc-player-' + playID;
 		autoplay = $player.attr('data-autoplay');
 		$itemBC = $this;
-		$icon = $this.find('.fa');
+		$icon = $this.find('.fa.cn-asset-item__icon-state');
 		iconClass = $icon.attr('class');
 
 		if (isLoaded) {

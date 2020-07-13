@@ -48,7 +48,7 @@
 }
  // ASSET LIBRARY
 .cn-asset__title{
-  margin: 0;
+  margin: 0 0 15px 0;
   padding: 30px 0;
 }
 .cn-asset__row {
@@ -260,14 +260,22 @@
   }
 }
 
-.cn-asset-item__icon-state {
+.cn-asset-item__icon-state ,
+.fa-spinner,
+.fa-pause{
   display: none;
 }
 
-.player-init .cn-asset-item__icon-state {
+.player-init .cn-asset-item__icon-state,
+.player-init .fa-pause,
+.player-freezed  .fa-spinner {
   display: inline-block;
 }
 
+.player-init .fa-spinner
+{
+  display: none;
+}
 .player-init span,
 .player-init .cn-asset-item__icon,
 .player-freezed span,

@@ -85,7 +85,8 @@ $icon_classes .= ( ! empty( $asset_icon ) ) ? " {$asset_icon}" : '';
             
             // State icon
             if ( $asset_type == 'audio' ) : ?>
-                <i class="fa fa-pause cn-asset-item__icon-state" aria-hidden="true"></i>
+                <i class="fa cn-asset-item__icon-state" aria-hidden="true"></i>
+                <i class="fa fa-pause cn-asset-item__icon-paused"></i>
             <?php endif; ?>
 
         </div>
