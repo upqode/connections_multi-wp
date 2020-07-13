@@ -38,7 +38,7 @@ function connections_scripts() {
 
 
 	wp_enqueue_script( 'magnific-popup', CN_THEME_URI . '/assets/js/jquery.magnific-popup.min.js', array('jquery'), time(), true );
-	wp_enqueue_script( 'connections-main', CN_THEME_URI . '/assets/js/main.js', array('jquery'), time(), true );
+	wp_enqueue_script( 'connections-main', CN_THEME_URI . '/assets/js/main.min.js', array('jquery'), time(), true );
 	wp_enqueue_script( 'connections-user-quest', CN_THEME_URI . '/assets/js/user-quest.js', array('jquery'), time(), true );
 
 	// Localize

@@ -1,17 +1,4 @@
-/* SCRIPT.JS */
-/* ------------------------------------------------------------------------------------------------------- */
-/* This is main JS file that contains custom rules used in this template */
-/* ------------------------------------------------------------------------------------------------------- */
-
-/* -------------------------------------------------------- */
-/* TABLE OF CONTENTS: */
-/* -------------------------------------------------------- */
-/*
-  
-*/
-/* -------------------------------------------------------- */
-;
-(function ($, window, document, underfined) {
+;(function ($, window, document, underfined) {
 
 	let connectionsData = (typeof connections_data == 'object') ? connections_data : {};
 
@@ -57,8 +44,7 @@
 	// Execute Check
 	checkMobile();
 	
-	smBPoint = 768;
-	
+
 	/* ------------------------------------------- */
 	/* Load mp3 */
 	/* ------------------------------------------- */
@@ -204,12 +190,7 @@
 			return false;
 		}
 
-		// TO DO DELETE
-		// var
-		// 	id = ($this.attr('data-href')) ? $this.attr('data-href') : $this.attr('href'),
-		// 	$player = $(id).find('.js-lazy-load-BC'),
-		// 	playID = $player.attr('data-video-id'),
-		// 	isLoaded = $player.find('video-js').length;
+
 
 		// Check errors
 		if (!$player.length) {
@@ -221,12 +202,7 @@
 			return false;
 		}
 
-		// TO DO DELETE
-		// Stop current player
-		// if (currentPlayerID && currentPlayerID != 'bc-player-' + playID) {
-		// 	videojs(currentPlayerID).pause();
-		// 	$itemsBC.removeClass('player-init');
-		// }
+
 
 		currentPlayerID = 'bc-player-' + playID;
 		autoplay = $player.attr('data-autoplay');
@@ -605,7 +581,7 @@
 			var columnWrap = document.querySelector('.cn-asset-library__col--left');
 			var columnWrapTop = columnWrap.getBoundingClientRect().top;
 			var sidebarWrap = document.querySelector('.js-sidebar');
-			if (winW >= smBPoint) {
+			if (winW >= 768) {
 				if (columnWrapTop > 50) {
 					columnWrap.classList.remove('sidebar-fixed-top');
 					columnWrap.classList.remove('sidebar-fixed-bottom');
