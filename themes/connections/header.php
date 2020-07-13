@@ -27,6 +27,7 @@ $link = [];
 
 if ( $is_active_ACF ) {
 	$link = get_field( 'menu_link', 'option' ) ?: [];
+	$back_button = get_field( 'back_button', 'option' ) ?: false;
 	$header_class .= get_field( 'header_position', 'option' ) ?: '';
 }
 
@@ -65,7 +66,7 @@ $referer_page = ( ! empty( $_SERVER['HTTP_REFERER'] ) ) ? $_SERVER['HTTP_REFERER
 					</div>
 				</div>
 
-				<?php if ( $referer_page ) : ?>
+				<?php if ( $referer_page  && $back_button == true) : ?>
 					<a href="<?php echo $referer_page; ?>" class="cn-btn-icon cn-btn-icon--back">
 						<i class="fa fa-angle-left"></i>
 					</a>
