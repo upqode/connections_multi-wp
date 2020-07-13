@@ -1,3 +1,10 @@
+body.error404 .cn-main-wrap{
+  padding-top: 100px;
+  @media screen and (max-width: 991px) {
+    padding-top: 60px;
+  }
+}
+
 //ACCORDION
 
 .cn-accordion {
