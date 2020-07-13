@@ -331,14 +331,12 @@
 					$current = magnificPopup.st.el,
 					classes = $current.attr('class');
 
-				console.log(classes);
-				console.log(classes.indexOf('js-lazy-load-iframe') != -1);
+
 
 				// window.scrollTop = window.scrollY;
 				$('body, html').addClass('no-scroll');
 
 				if (classes.indexOf('js-lazy-load-iframe') != -1) {
-					console.log(classes);
 					lazyLoadIframe($($current.attr('href')).find('.js-lazy-loader-iframe'));
 				}
 
