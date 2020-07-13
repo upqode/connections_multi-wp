@@ -36,7 +36,6 @@ function connections_scripts() {
 
 	wp_style_add_data( 'connections-style', 'rtl', 'replace' );
 
-//	wp_enqueue_script( 'brightcove-player', "//players.brightcove.net/{$brightcove_user_id}/{$brightcove_player_id}_default/index.min.js?ver=5.0.4", array(), _S_VERSION, true );
 
 	wp_enqueue_script( 'magnific-popup', CN_THEME_URI . '/assets/js/jquery.magnific-popup.min.js', array('jquery'), time(), true );
 	wp_enqueue_script( 'connections-main', CN_THEME_URI . '/assets/js/main.js', array('jquery'), time(), true );
