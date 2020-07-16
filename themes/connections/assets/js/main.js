@@ -697,4 +697,21 @@
 		});
 	});
 
+
+
+	$('.js-select-landing-block, body').not('.js-select-landing').on('click', function(){
+		if (!$(event.target).closest('.js-select-landing').length) {
+		$('.js-select-landing-block').removeClass('cn-landing__select-block-open');
+		}
+	});
+	$('.js-select-landing').on('click', function(){
+		$('.js-select-landing-block').toggleClass('cn-landing__select-block-open');
+	});
+	$(document).on('click', 'a[href^="#"]', function (event) {
+		event.preventDefault();
+
+		$('html, body').animate({
+			scrollTop: $($.attr(this, 'href')).offset().top - 50
+		}, 500);
+	});
 })(jQuery, window, document);

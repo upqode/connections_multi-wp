@@ -68,6 +68,7 @@ class ConnectionsThemePlugin {
                 'featured-links',
                 'content-block',
                 'asset-library',
+                'landing',
             ];
 
             // Order shortcodes
