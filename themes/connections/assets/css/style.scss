@@ -3099,7 +3099,7 @@ a.cn-btn {
 
   .cn-btn-sel {
     margin-right: 10px;
-    padding: 5px 15px;
+    padding: 5px 10px;
     min-width: 250px;
   }
 
@@ -3109,6 +3109,7 @@ a.cn-btn {
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    margin-right: 0;
 
     &::after {
       content: '\f35f';
