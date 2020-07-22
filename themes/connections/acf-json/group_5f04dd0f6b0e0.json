@@ -15,8 +15,8 @@
                 "class": "",
                 "id": ""
             },
-            "display_format": "m-d-Y",
-            "return_format": "m-d-Y",
+            "display_format": "m\/d\/Y",
+            "return_format": "m\/d\/Y",
             "first_day": 1
         },
         {
@@ -82,7 +82,7 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "active": 1,
+    "active": true,
     "description": "",
-    "modified": 1594157707
+    "modified": 1595402684
 }

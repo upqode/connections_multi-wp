@@ -1,6 +1,7 @@
 ;(function ($, window, document, underfined) {
 
-	let connectionsData = (typeof connections_data == 'object') ? connections_data : {};
+	let connectionsData = (typeof connections_data == 'object') ? connections_data : {},
+		isMobile = navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i);
 
 	/* ------------------------------------------- */
 	/* LAZY LOAD IFRAME */
@@ -104,6 +105,7 @@
 		};
 
 		pageCalculations(function () {
+			menuFixedHeight();
 			pageCalculations();
 		});
 	}
@@ -512,8 +514,9 @@
 
 	function menuFixedHeight() {
 		if ($('.js-sticky-header').length) {
-			var fixedMenuHeight = $('.js-sticky-header').innerHeight();
-			$('.js-sticky-container').css('height', fixedMenuHeight);
+			var fixedMenuHeight = $('.js-sticky-header').innerHeight(),
+				retreat = isMobile ? 10 : 25;
+			$('.js-sticky-retreat').css( 'padding-top', fixedMenuHeight + retreat );
 		}
 	}
 

@@ -3033,18 +3033,22 @@ a.cn-btn {
   $p: &;
 
   #{$p}__container {
-    max-width: 1230px;
+    // max-width: 1230px;
     margin: 0 auto;
   }
   #{$p}__container-item {
-    max-width: 1230px;
+    // max-width: 1230px;
     margin: 0 auto;
-    padding: 0 15px;
+    // padding: 0 15px;
   }
   #{$p}__header-wrap {
     background-size: contain;
-    background-position: top right;
+    background-position: bottom right;
     background-repeat: no-repeat;
+    &.fixed {
+      position: fixed;
+      width: 100%;
+    }
   }
   #{$p}__header {
     display: flex;
@@ -3052,10 +3056,13 @@ a.cn-btn {
     align-items: center;
     justify-content: space-between;
     border-bottom: 5px solid var(--primary_color_1);
-    margin-bottom: 45px;
+    // margin-bottom: 25px;
     background-size: contain;
     background-position: top right;
     background-repeat: no-repeat;
+    @media screen and (max-width: 1024px) {
+      margin-bottom: 5px;
+    }
     @media screen and (max-width: 767px) {
       flex-direction: column;
     }
@@ -3095,6 +3102,9 @@ a.cn-btn {
         margin: 5px 0;
       }
     }
+    @media screen and (max-width: 767px) {
+      margin-bottom: 15px;
+    }
   }
 
   .cn-btn-sel {
@@ -3112,12 +3122,18 @@ a.cn-btn {
     margin-right: 0;
 
     &::after {
-      content: '\f35f';
-      color: inherit;
-      font-family: 'Ionicons';
-      font-size: 45px;
-      margin-left: 10px;
-      line-height: 0;
+      // content: '\f35f';
+      content: "";
+      // color: inherit;
+      // font-family: 'Ionicons';
+      width: 0;
+      height: 0;
+      border: 0 solid transparent;
+      border-left-width: 15px;
+      border-right-width: 15px;
+      border-top: 15px solid #fff;
+      position: absolute;
+      right: 15px;
     }
 
     #{$p}__select-block {
@@ -3146,6 +3162,9 @@ a.cn-btn {
       color: var(--primary_color_1);
       padding: 5px;
       border-bottom: 1px solid var(--primary_color_1);
+      &:hover {
+        opacity: .7;
+      }
     }
 
   }
@@ -3164,6 +3183,7 @@ a.cn-btn {
   #{$p}__content-block {
     color: var(--bg_main_color_1);
     margin: 0;
+    text-transform: uppercase;
     @media screen and (max-width: 575px) {
       margin-bottom: 15px;
     }
@@ -3172,7 +3192,10 @@ a.cn-btn {
   #{$p}__btn {
     color: var(--bg_main_color_1);
     border-color: var(--bg_main_color_1);
-    margin-right: 20px;
+    margin-right: 100px;
+    @media screen and (max-width: 991px) {
+      margin-right: 20px;
+    }
     @media screen and (max-width: 575px) {
       margin-right: 0;
 
@@ -3186,7 +3209,7 @@ a.cn-btn {
   #{$p}__item-blocks {
     display: flex;
     flex-wrap: wrap;
-
+    padding: 0 10px;
   }
 
   #{$p}__item-block {

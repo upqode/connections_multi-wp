@@ -40,7 +40,8 @@ if ( $btn_text_color ) {
 		$top_image = '';
 		$top_image .= (!empty($image_top)) ? wp_get_attachment_image_url($image_top, 'full') : '';
 		?>
-		<div class="cn-landing__header-wrap" style="background-image: url(<?php echo esc_attr($top_image); ?>);">
+		<div class="cn-landing__header-wrap fixed js-sticky-header" style="background-image: url(<?php echo esc_attr($top_image); ?>);">
+		<!-- <div class="js-sticky-container"></div> -->
 		<div class="cn-landing__header cn-landing__container">
 			<?php if ( !empty($image_logo) ): ?>
 				<div class="cn-landing__logo">
@@ -64,6 +65,7 @@ if ( $btn_text_color ) {
 					<div class="cn-btn-sel js-select-landing cn-landing__select <?php echo esc_attr($link_class); ?>">
 						<?php echo esc_html($title_select); ?>
 						<div class="cn-landing__select-block js-select-landing-block">
+							
 							<?php foreach ( $items as $key => $item ) : ?>
 								<?php if ( !empty($item['title']) ): ?>
 									<a href="#block_landing_<?php echo $key; ?>" class="cn-landing__link">
@@ -78,45 +80,47 @@ if ( $btn_text_color ) {
 		</div>
 		</div>
 
-
-		<?php foreach ( $items as $key => $item ) : ?>
-			<div class=" cn-landing__item cn-landing__container-item">
-				<div class=" cn-landing__item-header <?php echo esc_attr($item['block_color']); ?>">
-					<?php if ( !empty($item['title']) ): ?>
-						<h3 id="block_landing_<?php echo $key; ?>" class="cn-landing__content-block">
-							<?php echo esc_html($item['title']); ?>
-						</h3>
-					<?php endif; ?>
-					<?php $item_btn = vc_build_link($item['btn_link']);
-					if ( !empty($item_btn['title']) && !empty($item_btn['url']) ): ?>
-						<a href="<?php echo esc_url($item_btn['url']); ?>"
-						   class="cn-btn-sel cn-landing__btn" target="<?php echo $item_btn['target']; ?>">
-							<?php echo esc_html($item_btn['title']); ?>
-						</a>
-					<?php endif; ?>
-				</div>
-				<div class=" cn-landing__item-blocks">
-					<?php
-					$item['items']      = (array)vc_param_group_parse_atts($item['items']);
-					foreach ( $item['items'] as $key => $block ) : ?>
-						<?php if ( !empty($block['url']) ):
-							$style_wrap = '';
-							$style_wrap .= (!empty($block['image'])) ? wp_get_attachment_image_url($block['image'], 'full') : '';
-							?>
-							<a href="<?php echo esc_url($block['url']); ?>"
-							   class=" cn-landing__item-block"
-							   style="background-image: url(<?php echo esc_attr($style_wrap); ?>);">
-								<?php if ( !empty($block['title']) ): ?>
-									<h4 class=" cn-landing__item-blocks-name <?php echo esc_attr($item['block_color']) . ' ' . esc_attr($item['block_text_color']); ?>">
-										<?php echo esc_html($block['title']); ?>
-									</h4>
-								<?php endif; ?>
+		<div class="cn-landing__items js-sticky-retreat">
+			<?php foreach ( $items as $key => $item ) : ?>
+				<div class=" cn-landing__item cn-landing__container-item">
+					<div class=" cn-landing__item-header <?php echo esc_attr($item['block_color']); ?>">
+						<?php if ( !empty($item['title']) ): ?>
+							<h3 id="block_landing_<?php echo $key; ?>" class="cn-landing__content-block">
+								<?php echo esc_html($item['title']); ?>
+							</h3>
+						<?php endif; ?>
+						<?php $item_btn = vc_build_link($item['btn_link']);
+						if ( !empty($item_btn['title']) && !empty($item_btn['url']) ): ?>
+							<a href="<?php echo esc_url($item_btn['url']); ?>"
+							class="cn-btn-sel cn-landing__btn" target="<?php echo $item_btn['target']; ?>">
+								<?php echo esc_html($item_btn['title']); ?>
 							</a>
 						<?php endif; ?>
-					<?php endforeach; ?>
+					</div>
+					<div class=" cn-landing__item-blocks">
+						<?php
+						$item['items']      = (array)vc_param_group_parse_atts($item['items']);
+						foreach ( $item['items'] as $key => $block ) : ?>
+							<?php if ( !empty($block['url']) ):
+								$style_wrap = '';
+								$style_wrap .= (!empty($block['image'])) ? wp_get_attachment_image_url($block['image'], 'full') : '';
+								?>
+								<a href="<?php echo esc_url($block['url']); ?>"
+								class=" cn-landing__item-block"
+								style="background-image: url(<?php echo esc_attr($style_wrap); ?>);">
+									<?php if ( !empty($block['title']) ): ?>
+										<h4 class=" cn-landing__item-blocks-name <?php echo esc_attr($item['block_color']) . ' ' . esc_attr($item['block_text_color']); ?>">
+											<?php echo esc_html($block['title']); ?>
+										</h4>
+									<?php endif; ?>
+								</a>
+							<?php endif; ?>
+						<?php endforeach; ?>
+					</div>
 				</div>
-			</div>
-		<?php endforeach; ?>
+			<?php endforeach; ?>
+		</div>
+	
 		<?php
 		$bottom_image = '';
 		$bottom_image .= (!empty($image_bottom)) ? wp_get_attachment_image_url($image_bottom, 'full') : '';
