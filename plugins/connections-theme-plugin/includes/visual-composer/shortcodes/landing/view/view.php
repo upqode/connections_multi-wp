@@ -85,9 +85,9 @@ if ( $btn_text_color ) {
 				<div class=" cn-landing__item cn-landing__container-item">
 					<div class=" cn-landing__item-header <?php echo esc_attr($item['block_color']); ?>">
 						<?php if ( !empty($item['title']) ): ?>
-							<h3 id="block_landing_<?php echo $key; ?>" class="cn-landing__content-block">
+							<h2 id="block_landing_<?php echo $key; ?>" class="cn-landing__content-block">
 								<?php echo esc_html($item['title']); ?>
-							</h3>
+							</h2>
 						<?php endif; ?>
 						<?php $item_btn = vc_build_link($item['btn_link']);
 						if ( !empty($item_btn['title']) && !empty($item_btn['url']) ): ?>

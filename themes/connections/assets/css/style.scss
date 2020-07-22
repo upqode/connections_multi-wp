@@ -2894,7 +2894,8 @@ a.cn-btn {
   font-family: 'Montserrat', sans-serif;
   font-weight: 200;
   font-style: normal;
-  font-size: 20px;
+  font-size: 19px;
+  letter-spacing: -1px;
   text-align: center;
   padding: 15px 50px;
   text-decoration: none;
@@ -3045,9 +3046,12 @@ a.cn-btn {
     background-size: contain;
     background-position: bottom right;
     background-repeat: no-repeat;
+    border-bottom: 5px solid var(--primary_color_1);
     &.fixed {
       position: fixed;
       width: 100%;
+      z-index: 99;
+      background-color: #fff;
     }
   }
   #{$p}__header {
@@ -3055,7 +3059,7 @@ a.cn-btn {
     padding: 0 20px;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 5px solid var(--primary_color_1);
+    // border-bottom: 5px solid var(--primary_color_1);
     // margin-bottom: 25px;
     background-size: contain;
     background-position: top right;
@@ -3081,6 +3085,9 @@ a.cn-btn {
   #{$p}__logo {
     max-width: 25%;
     margin-right: auto;
+    @media screen and (max-width: 1199px) {
+      max-width: 70%;
+    }
     @media screen and (max-width: 767px) {
       max-width: 300px;
       margin: 15px auto;
@@ -3184,6 +3191,7 @@ a.cn-btn {
     color: var(--bg_main_color_1);
     margin: 0;
     text-transform: uppercase;
+    font-weight: 600;
     @media screen and (max-width: 575px) {
       margin-bottom: 15px;
     }
