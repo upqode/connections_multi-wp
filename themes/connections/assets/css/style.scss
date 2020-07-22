@@ -3037,6 +3037,10 @@ a.cn-btn {
   #{$p}__container {
     // max-width: 1230px;
     margin: 0 auto;
+    @media screen and (max-width: 767px) {
+      max-height: 50px;
+      overflow: hidden;
+    }
   }
   #{$p}__container-item {
     // max-width: 1230px;
