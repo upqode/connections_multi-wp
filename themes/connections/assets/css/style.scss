@@ -2902,9 +2902,9 @@ a.cn-btn {
   transition: 0.5s;
 
   &:hover {
-    // color: var(--primary_color_1);
-    // background-color: var(--p_main_color_2);
-    opacity: .7;
+    color: var(--primary_color_1);
+    background-color: var(--p_main_color_2);
+    // opacity: .7;
   }
 }
 
