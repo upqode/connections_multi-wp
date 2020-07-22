@@ -3173,10 +3173,16 @@ a.cn-btn {
       border: 0 solid transparent;
       border-left-width: 15px;
       border-right-width: 15px;
-      border-top: 15px solid var(--primary_color_7);
+      border-top: 15px solid var(--bg_main_color_1);
       position: absolute;
       right: 15px;
       transition: .5s;
+    }
+
+    &:hover{
+      &::after {
+        border-top: 15px solid var(--primary_color_1);
+      }
     }
 
     #{$p}__select-block {
