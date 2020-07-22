@@ -12,6 +12,8 @@ get_header('landing');
 
 	<main id="primary" class="site-main">
 
+		<h1 class="hidden"><?php _e( 'Connections', 'connections' ); ?></h1>
+
 		<?php
 		while ( have_posts() ) :
 			the_post();

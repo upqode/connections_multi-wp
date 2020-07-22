@@ -33,51 +33,64 @@ if ( $btn_text_color ) {
 }
 ?>
 
+<?php ob_start(); ?>
+<div class="cn-landing__buttons-wrap">
+	<?php if ( !empty($btn_link_first['url']) && !empty($btn_link_first['title']) ) : ?>
+		<a href="<?php echo esc_url($btn_link_first['url']); ?>"
+			class="cn-btn-sel <?php echo esc_attr($link_class); ?>" <?php echo $link_target1, $nof_link1; ?>>
+			<?php echo esc_html($btn_link_first['title']); ?>
+		</a>
+	<?php endif; ?>
+	<?php if ( !empty($btn_link_second['url']) && !empty($btn_link_second['title']) ) : ?>
+		<a href="<?php echo esc_url($btn_link_second['url']); ?>"
+			class="cn-btn-sel <?php echo esc_attr($link_class); ?>" <?php echo $link_target2, $nof_link2; ?>>
+			<?php echo esc_html($btn_link_second['title']); ?>
+		</a>
+	<?php endif; ?>
+	<?php if ( !empty($items) && !empty($title_select) ): ?>
+		<div class="cn-btn-sel js-select-landing cn-landing__select <?php echo esc_attr($link_class); ?>">
+			<?php echo esc_html($title_select); ?>
+			<div class="cn-landing__select-block js-select-landing-block">
+				
+				<?php foreach ( $items as $key => $item ) : ?>
+					<?php if ( !empty($item['title']) ): ?>
+						<a href="#block_landing_<?php echo $key; ?>" class="cn-landing__link">
+							<?php echo esc_html($item['title']); ?>
+						</a>
+					<?php endif; ?>
+				<?php endforeach; ?>
+			</div>
+		</div>
+	<?php endif; ?>
+</div>
+<?php $buttons_links = ob_get_clean(); ?>
+
 <?php if ( !empty($items) ) : ?>
 
 	<div <?php echo $el_id; ?> class="cn-landing  <?php echo esc_attr($class); ?>">
+		
 		<?php
 		$top_image = '';
 		$top_image .= (!empty($image_top)) ? wp_get_attachment_image_url($image_top, 'full') : '';
 		?>
 		<div class="cn-landing__header-wrap fixed js-sticky-header" style="background-image: url(<?php echo esc_attr($top_image); ?>);">
-		<!-- <div class="js-sticky-container"></div> -->
-		<div class="cn-landing__header cn-landing__container">
-			<?php if ( !empty($image_logo) ): ?>
-				<div class="cn-landing__logo">
-					<img src="<?php echo esc_url(wp_get_attachment_image_url($image_logo, 'full')); ?>" alt="logo">
-				</div>
-			<?php endif; ?>
-			<div class="cn-landing__buttons-wrap">
-				<?php if ( !empty($btn_link_first['url']) && !empty($btn_link_first['title']) ) : ?>
-					<a href="<?php echo esc_url($btn_link_first['url']); ?>"
-					   class="cn-btn-sel <?php echo esc_attr($link_class); ?>" <?php echo $link_target1, $nof_link1; ?>>
-						<?php echo esc_html($btn_link_first['title']); ?>
-					</a>
-				<?php endif; ?>
-				<?php if ( !empty($btn_link_second['url']) && !empty($btn_link_second['title']) ) : ?>
-					<a href="<?php echo esc_url($btn_link_second['url']); ?>"
-					   class="cn-btn-sel <?php echo esc_attr($link_class); ?>" <?php echo $link_target2, $nof_link2; ?>>
-						<?php echo esc_html($btn_link_second['title']); ?>
-					</a>
-				<?php endif; ?>
-				<?php if ( !empty($items) && !empty($title_select) ): ?>
-					<div class="cn-btn-sel js-select-landing cn-landing__select <?php echo esc_attr($link_class); ?>">
-						<?php echo esc_html($title_select); ?>
-						<div class="cn-landing__select-block js-select-landing-block">
-							
-							<?php foreach ( $items as $key => $item ) : ?>
-								<?php if ( !empty($item['title']) ): ?>
-									<a href="#block_landing_<?php echo $key; ?>" class="cn-landing__link">
-										<?php echo esc_html($item['title']); ?>
-									</a>
-								<?php endif; ?>
-							<?php endforeach; ?>
-						</div>
+			<span class="cn-landing__hamburger cn-menu-btn js-landing-haburger"><i></i></span>
+			<div class="cn-landing__header cn-landing__container">
+				<?php if ( !empty($image_logo) ): ?>
+					<div class="cn-landing__logo">
+						<img src="<?php echo esc_url(wp_get_attachment_image_url($image_logo, 'full')); ?>" alt="logo">
 					</div>
 				<?php endif; ?>
+
+				<div class="cn-landing__desktop-menu">
+					<?php echo $buttons_links; ?>
+				</div>
+
 			</div>
 		</div>
+
+		<div class="cn-landing__mobile-links js-landing-mobile-links">
+			<?php echo $buttons_links; ?>
 		</div>
 
 		<div class="cn-landing__items js-sticky-retreat">

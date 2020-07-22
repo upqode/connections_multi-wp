@@ -980,3 +980,9 @@ textarea {
 	text-align: center;
 	font-family: "Montserrat", sans-serif;
 }
+
+/* General classes */
+
+.hidden {
+	display: none !important;
+}

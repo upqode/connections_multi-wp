@@ -520,6 +520,11 @@
 		}
 	}
 
+	$('.js-landing-haburger').on('click', function() {
+		$('.js-landing-mobile-links').toggleClass('active');
+		$(this).toggleClass('cn-menu-btn--active');
+	});
+
 	/* ------------------------------------------- */
 	/* SEARCH */
 	/* ------------------------------------------- */

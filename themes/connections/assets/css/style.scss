@@ -2902,8 +2902,9 @@ a.cn-btn {
   transition: 0.5s;
 
   &:hover {
-    color: var(--primary_color_1);
-    background-color: var(--p_main_color_2);
+    // color: var(--primary_color_1);
+    // background-color: var(--p_main_color_2);
+    opacity: .7;
   }
 }
 
@@ -3071,7 +3072,7 @@ a.cn-btn {
       flex-direction: column;
     }
     @media screen and (max-width: 575px) {
-      margin-bottom: 25px;
+      margin-bottom: 0;
     }
   }
 
@@ -3089,8 +3090,8 @@ a.cn-btn {
       max-width: 70%;
     }
     @media screen and (max-width: 767px) {
-      max-width: 300px;
-      margin: 15px auto;
+      max-width: 125px;
+      margin: 0 auto;
     }
     img {
       max-width: 100%;
@@ -3111,6 +3112,40 @@ a.cn-btn {
     }
     @media screen and (max-width: 767px) {
       margin-bottom: 15px;
+    }
+  }
+
+  &__mobile-links {
+    background-color: #ffffff;
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+    padding: 15px;
+    top: 50px;
+    transform: translateX( -100% );
+    transition: transform .5;
+    @media screen and (min-width: 768px) {
+      display: none;
+    }
+    &.active {
+      transform: translateX(0);
+    }
+    .admin-bar & {
+      top: 95px;
+    }
+  }
+
+  &__desktop-menu {
+    @media screen and (max-width: 767px) {
+      display: none;
+    }
+  }
+
+  &__hamburger {
+    position: absolute;
+    background-color: var(--primary_color_1);
+    @media screen and (min-width: 768px) {
+      display: none;
     }
   }
 
@@ -3138,9 +3173,10 @@ a.cn-btn {
       border: 0 solid transparent;
       border-left-width: 15px;
       border-right-width: 15px;
-      border-top: 15px solid #fff;
+      border-top: 15px solid var(--primary_color_7);
       position: absolute;
       right: 15px;
+      transition: .5s;
     }
 
     #{$p}__select-block {
