@@ -3048,7 +3048,7 @@ a.cn-btn {
     // padding: 0 15px;
   }
   #{$p}__header-wrap {
-    background-size: contain;
+    background-size: cover;
     background-position: bottom right;
     background-repeat: no-repeat;
     border-bottom: 5px solid var(--primary_color_1);
@@ -3090,6 +3090,9 @@ a.cn-btn {
     margin-right: auto;
     @media screen and (max-width: 1199px) {
       max-width: 70%;
+    }
+    @media screen and (min-width: 768px) and (max-width: 1198px) {
+      max-width: 65%;
     }
     @media screen and (max-width: 767px) {
       max-width: 125px;
@@ -3340,7 +3343,7 @@ a.cn-btn {
   }
 
   #{$p}__bottom_block {
-    background-size: contain;
+    background-size: cover;
     background-position: bottom left;
     background-repeat: no-repeat;
     padding-top: 160px;

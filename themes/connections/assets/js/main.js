@@ -718,8 +718,15 @@
 	$(document).on('click', 'a[href^="#"]', function (event) {
 		event.preventDefault();
 
-		$('html, body').animate({
-			scrollTop: $($.attr(this, 'href')).offset().top - 50
-		}, 500);
+		var $this = $(this),
+			headerHeight = parseInt( $('.js-sticky-header').outerHeight() ),
+			adminBarHeight = ( $('#wpadminbar').length ) ? parseInt( $('#wpadminbar').outerHeight() ) : 0;
+
+		if ( $($.attr(this, 'href')).length ) {
+			$('html, body').animate({
+				scrollTop: $($.attr(this, 'href')).offset().top - ( headerHeight + adminBarHeight + 10 ),
+			}, 500);
+		}
+
 	});
 })(jQuery, window, document);
