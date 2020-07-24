@@ -112,21 +112,32 @@ if ( $btn_text_color ) {
 					</div>
 					<div class=" cn-landing__item-blocks">
 						<?php
-						$item['items']      = (array)vc_param_group_parse_atts($item['items']);
+						$item['items']      = (array) vc_param_group_parse_atts( $item['items'] );
+						$column_classes = [
+							1 => 'col-12',
+							2 => 'col-6',
+							3 => 'col-4',
+							4 => 'col-3',
+						];
 						foreach ( $item['items'] as $key => $block ) : ?>
-							<?php if ( !empty($block['url']) ):
+							<?php if ( ! empty( $block['url'] ) ) :
 								$style_wrap = '';
-								$style_wrap .= (!empty($block['image'])) ? wp_get_attachment_image_url($block['image'], 'full') : '';
+								$style_wrap .= ( ! empty( $block['image'] ) ) ? wp_get_attachment_image_url($block['image'], 'full') : '';
+								$item_class = '';
+								$item_class .= ( isset( $item['column'] ) && $item['column'] > 1 ) ? "{$column_classes[ $item['column'] ]}" : 'col-12';
 								?>
-								<a href="<?php echo esc_url($block['url']); ?>"
-								class=" cn-landing__item-block"
-								style="background-image: url(<?php echo esc_attr($style_wrap); ?>);">
-									<?php if ( !empty($block['title']) ): ?>
-										<h4 class=" cn-landing__item-blocks-name <?php echo esc_attr($item['block_color']) . ' ' . esc_attr($item['block_text_color']); ?>">
-											<?php echo esc_html($block['title']); ?>
-										</h4>
-									<?php endif; ?>
-								</a>
+								<div class="item-col <?php echo esc_attr( $item_class ); ?>">
+									<a href="<?php echo esc_url($block['url']); ?>"
+									class=" cn-landing__item-block "
+									style="background-image: url(<?php echo esc_attr($style_wrap); ?>);">
+										<?php if ( !empty($block['title']) ): ?>
+											<h4 class=" cn-landing__item-blocks-name <?php echo esc_attr($item['block_color']) . ' ' . esc_attr($item['block_text_color']); ?>">
+												<?php echo esc_html($block['title']); ?>
+											</h4>
+										<?php endif; ?>
+									</a>
+								</div>
+								
 							<?php endif; ?>
 						<?php endforeach; ?>
 					</div>

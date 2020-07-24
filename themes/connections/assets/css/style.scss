@@ -3267,38 +3267,58 @@ a.cn-btn {
     padding: 0 10px;
   }
 
+  .item-col {
+    padding-right: 7.5px;
+    padding-left: 7.5px;
+    @media(max-width: 767px) {
+      width: 100%;
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
+
   #{$p}__item-block {
     background-size: cover;
     background-position: center;
-    padding-top: 150px;
-    width: 16%;
-    margin: 10px 0.33% 0 0.33%;
+    padding-top: 250px;
+    // width: 24%;
+    // margin: 10px 0.5% 0 0.5%;
+    padding: 250px 15px 0;
     text-decoration: none;
     display: flex;
+    margin-bottom: 10px;
 
-    &:nth-child(1),
-    &:nth-child(2),
-    &:nth-child(3),
-    &:nth-child(4) {
-      padding-top: 250px;
-      padding-bottom: 10px;
-      width: 24%;
-      margin: 10px 0.5% 0 0.5%;
-
-      #{$p}__item-blocks-name {
-        padding: 10px 15px;
-        max-width: calc(100% - 20px);
-        margin: auto 0 0 auto;
-        color: var(--bg_main_color_1);
-        opacity: 0.8;
-      }
+    #{$p}__item-blocks-name {
+      padding: 10px 15px;
+      max-width: calc(100% - 20px);
+      margin: auto 0 0 auto;
+      color: var(--bg_main_color_1);
+      opacity: 0.8;
     }
 
-    &:nth-child(n + 5) {
-      #{$p}__item-blocks-name {
-        background-color: rgba(255, 255, 255, 0.6);
-      }
-    }
+    // &:nth-child(1),
+    // &:nth-child(2),
+    // &:nth-child(3),
+    // &:nth-child(4) {
+    //   padding-top: 250px;
+    //   padding-bottom: 10px;
+    //   width: 24%;
+    //   margin: 10px 0.5% 0 0.5%;
+
+    //   #{$p}__item-blocks-name {
+    //     padding: 10px 15px;
+    //     max-width: calc(100% - 20px);
+    //     margin: auto 0 0 auto;
+    //     color: var(--bg_main_color_1);
+    //     opacity: 0.8;
+    //   }
+    // }
+
+    // &:nth-child(n + 5) {
+    //   #{$p}__item-blocks-name {
+    //     background-color: rgba(255, 255, 255, 0.6);
+    //   }
+    // }
     @media screen and (max-width: 991px) {
       padding-top: 100px;
       &:nth-child(1),
@@ -3309,13 +3329,13 @@ a.cn-btn {
       }
     }
     @media screen and (max-width: 767px) {
-      width: 24%;
+      // width: 24%;
       margin: 10px 0.5% 0 0.5%;
       &:nth-child(1),
       &:nth-child(2),
       &:nth-child(3),
       &:nth-child(4) {
-        width: 48%;
+        // width: 48%;
         margin: 10px 1% 0 1%;
       }
     }

@@ -40,6 +40,17 @@ class CN_Landing_Item extends CN_Base_Shortcode {
 				'param_name'  => 'btn_link',
 			),
 			array(
+                'heading' 	  => esc_html__( 'Columns', 'connections' ),
+                'type' 		  => 'dropdown',
+                'param_name'  => 'column',
+                'value' 	  => array(
+                    esc_html__( 'Column 1', 'connections' ) => '1',
+                    esc_html__( 'Column 2', 'connections' ) => '2',
+                    esc_html__( 'Column 3', 'connections' ) => '3',
+                    esc_html__( 'Column 4', 'connections' ) => '4',
+                )
+            ),
+			array(
 				'type' 			=> 'param_group',
 				'heading' 		=> esc_html__( 'Items', 'js_composer' ),
 				'param_name' 	=> 'items',
