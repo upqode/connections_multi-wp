@@ -115,9 +115,9 @@ if ( $btn_text_color ) {
 						$item['items']      = (array) vc_param_group_parse_atts( $item['items'] );
 						$column_classes = [
 							1 => 'col-12',
-							2 => 'col-6',
-							3 => 'col-4',
-							4 => 'col-3',
+							2 => 'col-12 col-lg-6',
+							3 => 'col-12 col-md-6 col-lg-4',
+							4 => 'col-12 col-md-6 col-lg-3',
 						];
 						foreach ( $item['items'] as $key => $block ) : ?>
 							<?php if ( ! empty( $block['url'] ) ) :
