@@ -707,7 +707,7 @@
 
 
 
-	$('.js-select-landing-block, body').not('.js-select-landing').on('click', function(){
+	$('.js-select-landing-block, body').not('.js-select-landing').on('click', function(event){
 		if (!$(event.target).closest('.js-select-landing').length) {
 		$('.js-select-landing-block').removeClass('cn-landing__select-block-open');
 		}
