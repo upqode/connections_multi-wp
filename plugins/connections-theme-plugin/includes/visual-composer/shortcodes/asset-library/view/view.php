@@ -36,7 +36,7 @@ $terms    = get_terms($args);
 
 <?php if ( !empty($terms) ) : ?>
 
-	<div <?php echo $el_id; ?> class="cn-asset-library <?php echo esc_attr($class); ?>">
+	<div <?php echo $el_id; ?> class="cn-asset-library cn-asset-library-section <?php echo esc_attr($class); ?>">
 		<div class="cn-asset-library__row">
 
 			<div class="cn-asset-library__col cn-asset-library__col--left">
