@@ -78,6 +78,7 @@ $icon_classes .= ( ! empty( $asset_icon ) ) ? " {$asset_icon}" : '';
             if ( $type_icon == 'icon' ) :
                 if ( ! empty( $asset_icon_url ) ) : ?>
                     <img src="<?php echo $asset_icon_url; ?>" alt="icon">
+                    <?php //$svg = file_get_contents( $asset_icon_url ); ?>
                 <?php endif;
             else : ?>
                 <span class="<?php echo esc_attr( $icon_classes ); ?>"></span>
