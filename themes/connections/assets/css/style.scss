@@ -262,6 +262,10 @@ body.error404 .cn-main-wrap {
   justify-content: center;
   margin: 0 auto;
   color: var(--p_main_color_2);
+
+  svg {
+    width: 35px;
+  }
   
   .cn-asset-library-section & {
     background-color: var(--primary_color_2);

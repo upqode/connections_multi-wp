@@ -77,8 +77,14 @@ $icon_classes .= ( ! empty( $asset_icon ) ) ? " {$asset_icon}" : '';
             <?php 
             if ( $type_icon == 'icon' ) :
                 if ( ! empty( $asset_icon_url ) ) : ?>
-                    <img src="<?php echo $asset_icon_url; ?>" alt="icon">
-                    <?php //$svg = file_get_contents( $asset_icon_url ); ?>
+
+                    <?php if ( strpos( $asset_icon_url, '.svg' ) !== false ) : 
+                        $svg_icon = file_get_contents( $asset_icon_url ); ?>
+                        <span class="<?php echo esc_attr( $color_icon ); ?>"><?php echo conn_sanitize_svg( $svg_icon ); ?></span>
+                    <?php else : ?>
+                        <img src="<?php echo $asset_icon_url; ?>" alt="icon">
+                    <?php endif; ?>
+
                 <?php endif;
             else : ?>
                 <span class="<?php echo esc_attr( $icon_classes ); ?>"></span>

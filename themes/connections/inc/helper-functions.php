@@ -136,7 +136,8 @@ function conn_text_colors_css() {
 
     foreach ( $colors as $key => $color ) {
         if ( $color ) {
-            $css .= sprintf( '.%s{ color: %s }', $key, $color );
+            $css .= sprintf( '.%s { color: %s }', $key, $color );
+            $css .= sprintf( '.%s svg { fill: %s }', $key, $color );
         }
     }
     
@@ -365,5 +366,38 @@ function conn_clean_unzip_assets( $asset_id ) {
     foreach ( $dirs as $dir ) {
         conn_delete_directory( $dir );
     }
+
+}
+
+/**
+ * Saniztize SVG
+ *  
+ * @param string $svg
+ * 
+ * @return string
+ */
+function conn_sanitize_svg( $svg ) {
+
+    $kses_defaults = wp_kses_allowed_html( 'post' );
+
+    $svg_args = array(
+        'svg'   => array(
+            'class' => true,
+            'aria-hidden' => true,
+            'aria-labelledby' => true,
+            'role' => true,
+            'xmlns' => true,
+            'width' => true,
+            'height' => true,
+            'viewbox' => true, // <= Must be lower case!
+        ),
+        'g'     => array( 'fill' => true ),
+        'title' => array( 'title' => true ),
+        'path'  => array( 'd' => true, 'fill' => true,  ),
+    );
+
+    $allowed_tags = array_merge( $kses_defaults, $svg_args );
+
+    return wp_kses( $svg, $allowed_tags );
 
 }

@@ -103,9 +103,10 @@ if ( $btn_text_color ) {
 							</h2>
 						<?php endif; ?>
 						<?php $item_btn = vc_build_link($item['btn_link']);
-						if ( !empty($item_btn['title']) && !empty($item_btn['url']) ): ?>
+						if ( !empty($item_btn['title']) && !empty($item_btn['url']) ):
+							$item_btn_target = ( ! empty( $item_btn['target'] ) ) ? "target='{$item_btn['target']}'" : ''; ?>
 							<a href="<?php echo esc_url($item_btn['url']); ?>"
-							class="cn-btn-sel cn-landing__btn" target="<?php echo $item_btn['target']; ?>">
+							class="cn-btn-sel cn-landing__btn" <?php echo $item_btn_target; ?>>
 								<?php echo esc_html($item_btn['title']); ?>
 							</a>
 						<?php endif; ?>
@@ -131,9 +132,10 @@ if ( $btn_text_color ) {
 									class=" cn-landing__item-block "
 									style="background-image: url(<?php echo esc_attr($style_wrap); ?>);">
 										<?php if ( !empty($block['title']) ): ?>
-											<h4 class=" cn-landing__item-blocks-name <?php echo esc_attr($item['block_color']) . ' ' . esc_attr($item['block_text_color']); ?>">
-												<?php echo esc_html($block['title']); ?>
-											</h4>
+											<h3 class=" cn-landing__item-blocks-name <?php esc_attr( $item['block_text_color'] ); ?>">
+												<span class="bg-color-wrap <?php echo esc_attr( $item['block_color'] ) ?>"></span>
+												<span class="text"><?php echo esc_html( $block['title'] ); ?></span>
+											</h3>
 										<?php endif; ?>
 									</a>
 								</div>
