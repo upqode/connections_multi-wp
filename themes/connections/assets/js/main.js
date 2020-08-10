@@ -729,4 +729,15 @@
 		}
 
 	});
+
+
+	$(document).on('click', function (e) {
+        var $this = $(e.target).closest('.js-header-nav');
+
+        if ( ! $(event.target).closest(".js-header-nav").length ) {
+            $('.js-header-nav').removeClass('cn-header__nav--active');
+            $('.js-nav-menu-btn').removeClass('cn-menu-btn--active');
+        } 
+	});
+	
 })(jQuery, window, document);
