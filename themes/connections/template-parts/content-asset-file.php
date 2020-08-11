@@ -65,6 +65,10 @@ $icon_classes  = '';
 $icon_classes .= ( ! empty( $color_icon ) ) ? " {$color_icon}" : '';
 $icon_classes .= ( ! empty( $asset_icon ) ) ? " {$asset_icon}" : '';
 
+if ( ! isset( $color_icon ) ) {
+    $color_icon = '';
+}
+
 ?>
 
 <div class="cn-asset__item <?php echo $asset_item_wrap_class; ?>">
@@ -80,7 +84,10 @@ $icon_classes .= ( ! empty( $asset_icon ) ) ? " {$asset_icon}" : '';
 
                     <?php if ( strpos( $asset_icon_url, '.svg' ) !== false ) : 
                         $svg_icon = file_get_contents( $asset_icon_url ); ?>
-                        <span class="<?php echo esc_attr( $color_icon ); ?>"><?php echo conn_sanitize_svg( $svg_icon ); ?></span>
+                        <span class="<?php echo esc_attr( $color_icon ); ?> svg-icon">
+                            <?php echo $svg_icon; ?>
+                            <?php //echo conn_sanitize_svg( $svg_icon ); ?>
+                        </span>
                     <?php else : ?>
                         <img src="<?php echo $asset_icon_url; ?>" alt="icon">
                     <?php endif; ?>

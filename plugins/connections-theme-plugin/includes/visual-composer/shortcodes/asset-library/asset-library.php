@@ -76,6 +76,16 @@ class CN_Asset_Library extends CN_Base_Shortcode {
             ),
 
             array(
+		        'heading'     => esc_html__( 'Color Icon', 'connections' ),
+		        'type'        => 'dropdown',
+		        'param_name'  => 'color_icon',
+                'value'       => cn_get_heading_vc_colors( 'title' ),
+		        'description' => __( 'Type icon should be font in the asset', 'connections' ),
+            ),
+
+            
+
+            array(
                 'heading'     => esc_html__( 'Posts Per Page', 'connections' ),
                 'type'        => 'textfield',
                 'param_name'  => 'posts_per_page',

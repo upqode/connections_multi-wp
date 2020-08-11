@@ -37,7 +37,7 @@ $terms    = get_terms($args);
 <?php if ( !empty($terms) ) : ?>
 
 	<div <?php echo $el_id; ?> class="cn-asset-library cn-asset-library-section <?php echo esc_attr($class); ?>">
-		<div class="cn-asset-library__row">
+		<div class="cn-asset-library__row asset-library">
 
 			<div class="cn-asset-library__col cn-asset-library__col--left">
 				<ul class="cn-asset-library__nav js-sidebar">
@@ -102,8 +102,9 @@ $terms    = get_terms($args);
 								<div class="cn-asset__row <?php echo esc_attr($row_class); ?>">
 
 									<?php while ( $assets->have_posts() ) : $assets->the_post();
-
-										get_template_part('template-parts/content-asset-file'); ?>
+										
+										$asset_id = get_the_ID();
+										include locate_template('template-parts/content-asset-file.php'); ?>
 
 									<?php endwhile;
 									wp_reset_postdata(); ?>

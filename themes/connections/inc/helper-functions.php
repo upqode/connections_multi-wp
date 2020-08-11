@@ -138,6 +138,7 @@ function conn_text_colors_css() {
         if ( $color ) {
             $css .= sprintf( '.%s { color: %s }', $key, $color );
             $css .= sprintf( '.%s svg { fill: %s }', $key, $color );
+            $css .= sprintf( '.%s svg * { fill: %s }', $key, $color );
         }
     }
     
@@ -381,19 +382,35 @@ function conn_sanitize_svg( $svg ) {
     $kses_defaults = wp_kses_allowed_html( 'post' );
 
     $svg_args = array(
-        'svg'   => array(
-            'class' => true,
-            'aria-hidden' => true,
-            'aria-labelledby' => true,
-            'role' => true,
-            'xmlns' => true,
-            'width' => true,
-            'height' => true,
-            'viewbox' => true, // <= Must be lower case!
+        'svg'       => array(
+            'class'             => true,
+            'aria-hidden'       => true,
+            'aria-labelledby'   => true,
+            'role'              => true,
+            'xmlns'             => true,
+            'width'             => true,
+            'height'            => true,
+            'viewbox'           => true, // <= Must be lower case!
         ),
-        'g'     => array( 'fill' => true ),
-        'title' => array( 'title' => true ),
-        'path'  => array( 'd' => true, 'fill' => true,  ),
+        'rect'      => array( 
+            'd'                 => true, 
+            'fill'              => true,
+            'width'             => true,
+            'height'            => true,
+            'class'             => true,
+            'x'                 => true,
+            'y'                 => true,
+        ),
+        'g'         => array( 
+            'fill'              => true, 
+            'rect'              => true 
+        ),
+        'title'     => array( 'title' => true ),
+        'path'      => array( 
+            'd'                 => true, 
+            'fill'              => true,
+            'class'             => true,
+        ),
     );
 
     $allowed_tags = array_merge( $kses_defaults, $svg_args );
