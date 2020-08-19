@@ -336,7 +336,14 @@ function conn_asset_popup( $asset_id, $popup_id ) {
 
         $asset_type = get_field( 'asset_type', $asset_id );
                         
-        // $asset_key  = ( $asset_type == 'html' ) ? 'asset_zip' : "asset_{$asset_type}";
+        // if ( $asset_type == 'pdf' ) {
+        //     $type_pdf = get_field( 'type_pdf', $asset_id );
+        //     $pdf_field_key = ( $type_pdf == 'url' ) ? 'url_pdf' : "asset_{$asset_type}";
+        //     $asset_data = get_field( $pdf_field_key, $asset_id );
+        //     // var_dump( $asset_data );
+        // }  else {
+        //     $asset_data = get_field( "asset_{$asset_type}", $asset_id );
+        // }     
         $asset_data = get_field( "asset_{$asset_type}", $asset_id );
         
         $popup_class = '';

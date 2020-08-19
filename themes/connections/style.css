@@ -986,3 +986,14 @@ textarea {
 .hidden {
 	display: none !important;
 }
+
+#toolbarViewer {
+    display: none;
+}
+
+.cn-asset-popup-wrap,
+.asset-pdf.white-popup-block iframe,
+.cn-asset-popup-wrap iframe {
+	width: 100vw;
+	text-align: center;
+}
