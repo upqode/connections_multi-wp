@@ -123,7 +123,7 @@ function conn_text_colors_css() {
     $colors = function_exists( 'cn_get_colors' ) ?  cn_get_colors( 'primary_color', CN_PRIMARY_COLORS ) : [];
     
     // Theme options color
-    $theme_options_colors =  ( function_exists('get_field') && get_field( 'h_main_color', 'option' ) ) ?: [];
+    $theme_options_colors =  ( function_exists('get_field') && get_field( 'h_main_color', 'option' ) ) ? get_field( 'h_main_color', 'option' ) : [];
     $counter = count( $colors ) + 1;
 
     if ( $theme_options_colors ) {
