@@ -128,7 +128,8 @@
 
 	$('.js-item-BC').on('click', function (e) {
 
-		e.preventDefault();
+		// e.preventDefault();
+		e.stopPropagation();
 
 		var
 			$this = $(this),

@@ -38,6 +38,9 @@ if ( $type_icon == 'icon' ) {
 
 $asset_item_class   = '';
 
+$asset_type_audio = get_field( 'type_audio', $asset_id );
+$asset_audio_custom = get_field( 'mp3', $asset_id );
+
 if ( $asset_type != 'audio' ) {
     $asset_item_class   .= ' js-popup';
 }
@@ -73,46 +76,48 @@ if ( ! isset( $color_icon ) ) {
 
 <div class="cn-asset__item <?php echo $asset_item_wrap_class; ?>">
     
-    <a href="#library-<?php echo esc_attr( $unique_section_id ); ?>" class="cn-asset-item__link <?php echo esc_attr( $asset_item_class); ?>">
+    <a href="#library-<?php echo esc_attr( $unique_section_id ); ?>" class="cn-asset-item__link <?php echo esc_attr( $asset_item_class); ?>" data-type-audio="<?php echo esc_attr( $asset_type_audio ); ?>" data-custom-audio-src="<?php echo esc_attr( $asset_audio_custom ); ?>">
     
-    <div class="cn-asset-item">
-        <div class="cn-asset-item__image <?php echo esc_attr( $icon_wrap_classes ); ?>">
+        <div class="cn-asset-item">
+            <div class="cn-asset-item__image <?php echo esc_attr( $icon_wrap_classes ); ?>">
 
-            <?php 
-            if ( $type_icon == 'icon' ) :
-                if ( ! empty( $asset_icon_url ) ) : ?>
+                <?php 
+                if ( $type_icon == 'icon' ) :
+                    if ( ! empty( $asset_icon_url ) ) : ?>
 
-                    <?php if ( strpos( $asset_icon_url, '.svg' ) !== false ) : 
-                        $svg_icon = file_get_contents( $asset_icon_url ); ?>
-                        <span class="<?php echo esc_attr( $color_icon ); ?> svg-icon">
-                            <?php echo $svg_icon; ?>
-                            <?php //echo conn_sanitize_svg( $svg_icon ); ?>
-                        </span>
-                    <?php else : ?>
-                        <img src="<?php echo $asset_icon_url; ?>" alt="icon">
-                    <?php endif; ?>
+                        <?php if ( strpos( $asset_icon_url, '.svg' ) !== false ) : 
+                            $svg_icon = file_get_contents( $asset_icon_url ); ?>
+                            <span class="<?php echo esc_attr( $color_icon ); ?> svg-icon">
+                                <?php echo $svg_icon; ?>
+                                <?php //echo conn_sanitize_svg( $svg_icon ); ?>
+                            </span>
+                        <?php else : ?>
+                            <img src="<?php echo $asset_icon_url; ?>" alt="icon">
+                        <?php endif; ?>
 
+                    <?php endif;
+                else : ?>
+                    <span class="<?php echo esc_attr( $icon_classes ); ?>"></span>
                 <?php endif;
-            else : ?>
-                <span class="<?php echo esc_attr( $icon_classes ); ?>"></span>
-            <?php endif;
-            
-            // State icon
-            if ( $asset_type == 'audio' ) : ?>
-                <i class="fa cn-asset-item__icon-state" aria-hidden="true"></i>
-                <i class="fa fa-pause cn-asset-item__icon-paused"></i>
+                
+                // State icon
+                if ( $asset_type == 'audio' ) : ?>
+                    <i class="fa cn-asset-item__icon-state" aria-hidden="true"></i>
+                    <i class="fa fa-pause cn-asset-item__icon-paused"></i>
+                <?php endif; ?>
+
+            </div>
+
+            <?php if ( $alt_title ) : ?>
+                <div class="cn-asset-item__bottom text-center">
+                    <h5 class="cn-asset-item__title"><?php echo esc_html( $alt_title ); ?></h5>
+                </div>
             <?php endif; ?>
 
         </div>
 
-        <?php if ( $alt_title ) : ?>
-            <div class="cn-asset-item__bottom text-center">
-                <h5 class="cn-asset-item__title"><?php echo esc_html( $alt_title ); ?></h5>
-            </div>
-        <?php endif; ?>
-
-    </div>
-	</a>
+    </a>
+    
 </div>
 
 

@@ -12,6 +12,9 @@ $terms              = wp_get_post_terms( $post->ID, 'cn-asset-category' );
 $asset_id           = get_the_ID();
 $unique_section_id  = sprintf( 'library-%s-%s', $asset_id, rand( 0, 99 ) );
 
+$asset_type_audio = get_field( 'type_audio', $post->ID );
+$asset_audio_custom = get_field( 'mp3', $post->ID );
+
 $article_link_classes = [
     'iframe'    => 'js-lazy-load-iframe',
     'html'      => 'js-lazy-load-iframe',
@@ -25,7 +28,7 @@ $article_link_class .= isset( $article_link_classes[ $asset_type ] ) ? " {$artic
 
 if ( ! empty( $asset_type ) || ! empty( $terms ) ) : ?>
 
-    <a href="#<?php echo esc_attr( $unique_section_id ); ?>" class="<?php echo esc_attr( $article_link_class ); ?>">
+    <a href="#<?php echo esc_attr( $unique_section_id ); ?>" class="<?php echo esc_attr( $article_link_class ); ?>" data-type-audio="<?php echo esc_attr( $asset_type_audio ); ?>" data-custom-audio-src="<?php echo esc_attr( $asset_audio_custom ); ?>">
 		<?php the_title("<h3 class='title'>", "</h3>"); ?>
 	</a>
 

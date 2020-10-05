@@ -117,11 +117,11 @@
             "mime_types": ""
         },
         {
-            "key": "field_5ccac35e7008d",
-            "label": "Asset audio",
-            "name": "asset_audio",
-            "type": "text",
-            "instructions": "Insert audio ID",
+            "key": "field_5f61c6565fa63",
+            "label": "Type Audio",
+            "name": "type_audio",
+            "type": "select",
+            "instructions": "",
             "required": 0,
             "conditional_logic": [
                 [
@@ -137,11 +137,71 @@
                 "class": "",
                 "id": ""
             },
+            "choices": {
+                "brightcove": "Brightcove",
+                "custom": "Custom"
+            },
+            "default_value": false,
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_5ccac35e7008d",
+            "label": "Asset audio",
+            "name": "asset_audio",
+            "type": "text",
+            "instructions": "Insert audio ID",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5f61c6565fa63",
+                        "operator": "==",
+                        "value": "brightcove"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "default_value": "",
             "placeholder": "",
             "prepend": "",
             "append": "",
             "maxlength": ""
+        },
+        {
+            "key": "field_5f61c6915fa64",
+            "label": "MP3",
+            "name": "mp3",
+            "type": "file",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5f61c6565fa63",
+                        "operator": "==",
+                        "value": "custom"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "url",
+            "library": "all",
+            "min_size": "",
+            "max_size": "",
+            "mime_types": ".mp3"
         },
         {
             "key": "field_5ccac4197008e",
@@ -171,31 +231,6 @@
             "maxlength": ""
         },
         {
-            "key": "field_5f339ba7c5326",
-            "label": "Type PDF",
-            "name": "type_pdf",
-            "type": "select",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "upload": "Upload File",
-                "url": "URL"
-            },
-            "default_value": false,
-            "allow_null": 0,
-            "multiple": 0,
-            "ui": 0,
-            "return_format": "value",
-            "ajax": 0,
-            "placeholder": ""
-        },
-        {
             "key": "field_5ccac4327008f",
             "label": "Asset PDF",
             "name": "asset_pdf",
@@ -208,11 +243,6 @@
                         "field": "field_5ccac25b97adf",
                         "operator": "==",
                         "value": "pdf"
-                    },
-                    {
-                        "field": "field_5f339ba7c5326",
-                        "operator": "==",
-                        "value": "upload"
                     }
                 ]
             ],
@@ -226,30 +256,6 @@
             "min_size": "",
             "max_size": "",
             "mime_types": ".pdf"
-        },
-        {
-            "key": "field_5f339bf9c5329",
-            "label": "URL PDF",
-            "name": "url_pdf",
-            "type": "url",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_5f339ba7c5326",
-                        "operator": "==",
-                        "value": "url"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": ""
         },
         {
             "key": "field_5ccac4bb70090",
@@ -414,5 +420,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1597217832
+    "modified": 1600243709
 }

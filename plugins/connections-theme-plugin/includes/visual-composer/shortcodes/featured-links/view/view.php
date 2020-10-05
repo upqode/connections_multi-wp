@@ -112,8 +112,10 @@ $col_classes = [
                         </div>
                     <?php endif; ?>
                     
-                    <?php if ( $item['type_link'] == 'asset_library' && ! empty( $asset_id ) ) : ?>
-                        <a href="#<?php echo $unique_id; ?>" class="<?php echo esc_attr( $btn_class ); ?> <?php echo esc_attr( $asset_link_class ); ?>">
+                    <?php if ( $item['type_link'] == 'asset_library' && ! empty( $asset_id ) ) : 
+                        $asset_type_audio = get_field( 'type_audio', $asset_id );
+                        $asset_audio_custom = get_field( 'mp3', $asset_id ); ?>
+                        <a href="#<?php echo $unique_id; ?>" class="<?php echo esc_attr( $btn_class ); ?> <?php echo esc_attr( $asset_link_class ); ?>" data-type-audio="<?php echo esc_attr( $asset_type_audio ); ?>" data-custom-audio-src="<?php echo esc_attr( $asset_audio_custom ); ?>">
                             <?php echo ( $item['title_link'] ) ? $item['title_link'] : __( 'Open Asset', 'connections' ); ?>
                         </a>
                     <?php else :
