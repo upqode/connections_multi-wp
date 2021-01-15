@@ -48,7 +48,7 @@ function vc_table_parse_table_param($param_string) {
                         } else if(preg_match('/^align\-/', $cell_value)) {
                             $css_style[] = 'text-align:' . preg_replace('/^align\-/', '', $cell_value) . ';';
                         } else if(preg_match('/^valign\-/', $cell_value)) {
-                            $css_style[] = 'vertical-align:' . preg_replace('/^valign\-/', '', $cell_value) + ';';
+                            $css_style[] = 'vertical-align:' . preg_replace('/^valign\-/', '', $cell_value) . ';';
                         }
                     }
                 }

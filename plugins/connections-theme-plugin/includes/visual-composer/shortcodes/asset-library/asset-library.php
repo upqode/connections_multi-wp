@@ -80,6 +80,7 @@ class CN_Asset_Library extends CN_Base_Shortcode {
 		        'type'        => 'dropdown',
 		        'param_name'  => 'color_icon',
                 'value'       => cn_get_heading_vc_colors( 'title' ),
+                'std'         => 'primary_color_9',
 		        'description' => __( 'Type icon should be font in the asset', 'connections' ),
             ),
 
