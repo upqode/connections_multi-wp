@@ -171,12 +171,19 @@ endif;
  */
 if ( ! function_exists( 'connection_popup_guest_users' ) ) :
 	function connection_popup_guest_users() {
+
+		if ( is_user_logged_in() )
+			return;
+
 		$url_page_popup = get_field('fu_popup_page_url', 'option');
 		$page_popup_id = url_to_postid( $url_page_popup );
 		$content_popup = get_the_content( null, false, $page_popup_id );
+
+		echo '432424';
+		var_dump( $url_page_popup );
 		
-		if ( ! $url_page_popup )
-			return;
+		// if ( ! $url_page_popup )
+		// 	return;
 
 		?>
 		<a href="#page-popup" class="js-user-guest-popup"></a>

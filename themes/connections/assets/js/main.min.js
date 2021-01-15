@@ -709,7 +709,7 @@
 
 
 	$('.js-select-landing-block, body').not('.js-select-landing').on('click', function(event){
-		if (!$(event.target).closest('.js-select-landing').length) {
+		if ( event && !$(event.target).closest('.js-select-landing').length) {
 		$('.js-select-landing-block').removeClass('cn-landing__select-block-open');
 		}
 	});
@@ -735,7 +735,7 @@
 	$(document).on('click', function (e) {
         var $this = $(e.target).closest('.js-header-nav');
 
-        if ( ! $(event.target).closest(".js-header-nav").length ) {
+        if ( event && ! $(event.target).closest(".js-header-nav").length ) {
             $('.js-header-nav').removeClass('cn-header__nav--active');
             $('.js-nav-menu-btn').removeClass('cn-menu-btn--active');
         } 
