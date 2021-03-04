@@ -175,3 +175,34 @@ require CN_THEME_PATH . '/inc/template-functions.php';
  * Customizer additions.
  */
 require CN_THEME_PATH . '/inc/customizer.php';
+
+/**
+ * Restrict access
+ */
+function upq_restrict_access_site() {
+
+	if ( isset( $_GET['upq-security-404'] ) ) {
+		global $wp_query;
+		$wp_query->set_404();
+		status_header( 404 );
+		add_action( 'request',       'upq_change_request', 999 );
+		add_action( 'parse_request', 'upq_change_parse_request', 999 );
+	}
+	
+}
+
+add_action( 'init', 'upq_restrict_access_site', 9999 );
+
+function upq_change_request( $query_vars ) {
+	return array();
+}
+
+function upq_change_parse_request( $object ) {
+	
+	$object->request            =   NULL;
+	$object->matched_rule       =   NULL;
+	$object->matched_query      =   NULL;
+	
+	$object->query_vars['error']    =   404;
+		
+}
